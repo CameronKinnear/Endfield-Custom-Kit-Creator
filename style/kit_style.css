@@ -1,0 +1,39 @@
+.underline {
+    text-decoration: underline;
+}
+
+.color-cryo {
+    color: #00C0CB;
+}
+
+.color-heat {
+    color: #FF5A50;
+}
+
+.color-nature {
+    color: #9CD54A;
+}
+
+.color-electric {
+    color: #FDC038;
+}
+
+.color-physical {
+    color: #DFBB92;
+}
+
+.color-healing {
+    color: #ABD040
+}
+
+.color-stagger {
+    color: #FFAE6B;
+}
+
+.color-numeric {
+    color: #8DA2DF;;
+}
+
+.color-keyword {
+    color:#33C2FF;
+}
