@@ -4,12 +4,37 @@
         <link rel="stylesheet" href="style/kit_style.css">
     </head>
     <body>
+
+
         <div id="char-info">
+            <div id="class-box">
+                <label id="class-label">Class</label>
+                <div id="class-selector">
+                    <button id="button-guard" class="class-button"><img class="image-class" src="classes/guard.png"></button>
+                    <button id="button-caster" class="class-button"><img class="image-class" src="classes/caster.png"></button>
+                    <button id="button-striker" class="class-button"><img class="image-class" src="classes/striker.png"></button>
+                    <button id="button-vanguard" class="class-button"><img class="image-class" src="classes/vanguard.png"></button>
+                    <button id="button-defender" class="class-button"><img class="image-class" src="classes/defender.png"></button>
+                    <button id="button-supporter" class="class-button"><img class="image-class" src="classes/supporter.png"></button>                    
+                </div>
+            </div>
+            <div id="weapon-type-box">
+                <label>Weapon Type</label>
+                <div id="weapon-type-selector">
+                    <button id="button-arts-unit" class="weapon-button" onclick="SelectWeapon(this)"><img class="image-weapon" src="weapons/arts-unit.png"></button>
+                    <button id="button-great-sword" class="weapon-button" onclick="SelectWeapon(this)"><img class="image-weapon" src="weapons/great-sword.png"></button>
+                    <button id="button-hand-cannon" class="weapon-button" onclick="SelectWeapon(this)"><img class="image-weapon" src="weapons/hand-cannon.png"></button>
+                    <button id="button-polearm" class="weapon-button" onclick="SelectWeapon(this)"><img class="image-weapon" src="weapons/polearm.png"></button>
+                    <button id="button-sword" class="weapon-button" onclick="SelectWeapon(this)"><img class="image-weapon" src="weapons/sword.png"></button>
+                </div>
+            </div>
             <div id="name-box">
                 <label id="name-label">Name</label>
                 <input type="text" id="name-input">
             </div>
         </div>
+
+
         <div id="char-stats">
             <div id="str-box">
                 <label id="str-label">Strength</label>
@@ -28,26 +53,31 @@
                 <input type="number" id="wil-val">
             </div>
         </div>
-        <div id="batk-box" class="skill-box">
-            <label id="batk-label" class="skill-label">Basic Attack</label>
-            <textarea id="batk-edit" class="skill-edit"></textarea>
-            <div id="batk-display" class="skill-display"></div>
+
+
+        <div id="skills-boxes">
+            <div id="batk-box" class="skill-box">
+                <label id="batk-label" class="skill-label">Basic Attack</label>
+                <textarea id="batk-edit" class="skill-edit"></textarea>
+                <div id="batk-display" class="skill-display"></div>
+            </div>
+            <div id="bskl-box" class="skill-box">
+                <label id="bskl-label" class="skill-label">Battle Skill</label>
+                <textarea id="bskl-edit" class="skill-edit"></textarea>
+                <div id="bskl-display" class="skill-display"></div>
+            </div>
+            <div id="cskl-box" class="skill-box">
+                <label id="cskl-label" class="skill-label">Combo Skill</label>
+                <textarea id="cskl-edit" class="skill-edit"></textarea>
+                <div id="cskl-display" class="skill-display"></div>
+            </div>
+            <div id="uskl-box" class="skill-box">
+                <label id="uskl-label" class="skill-label">Ultimate</label>
+                <textarea id="uskl-edit" class="skill-edit"></textarea>
+                <div id="uskl-display" class="skill-display"></div>
+            </div>
         </div>
-        <div id="bskl-box" class="skill-box">
-            <label id="bskl-label" class="skill-label">Battle Skill</label>
-            <textarea id="bskl-edit" class="skill-edit"></textarea>
-            <div id="bskl-display" class="skill-display"></div>
-        </div>
-        <div id="cskl-box" class="skill-box">
-            <label id="cskl-label" class="skill-label">Combo Skill</label>
-            <textarea id="cskl-edit" class="skill-edit"></textarea>
-            <div id="cskl-display" class="skill-display"></div>
-        </div>
-        <div id="uskl-box" class="skill-box">
-            <label id="uskl-label" class="skill-label">Ultimate</label>
-            <textarea id="uskl-edit" class="skill-edit"></textarea>
-            <div id="uskl-display" class="skill-display"></div>
-        </div>
+
 
         <div id="passives-box">
             <div id="passive-1-box">
@@ -63,6 +93,7 @@
                 <div id="passive-2-display" class="passive-display"></div>
             </div>
         </div>
+
 
         <div id="base-skills-box">
             <div id="base-skill-1">
@@ -82,7 +113,7 @@
             <input type="text" id="custom-keywords">
             <button id="custom-keywords-update-button" onclick="GetCustomKeywords()">Apply</button>
         </div>
-
-            <script src="script/live_formatting.js"></script>
+        <script src="script/button_selector.js"></script>
+        <script src="script/live_formatting.js"></script>
     </body>
 </html>

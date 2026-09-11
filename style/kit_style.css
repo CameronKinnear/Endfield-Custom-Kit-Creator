@@ -37,3 +37,30 @@
 .color-keyword {
     color:#33C2FF;
 }
+
+.image-icon {
+    height: 1em;
+    width: auto;
+}
+
+
+
+.image-class {
+    width: 40px;
+    height: 40px;
+    background-color: black;
+}
+
+.image-weapon {
+    width: 40px;
+    height: 40px;
+    background-color: black;
+}
+
+.selected-class {
+
+}
+
+.selected-weapon {
+    background-color: gray;
+}
