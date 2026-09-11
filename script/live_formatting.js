@@ -12,10 +12,19 @@ batkEditBox.addEventListener('input', () => {
     batkDisplayBox.innerHTML = formattedText;
 })
 
-// Removes any text commented out from being edited
-function TrimText(text) {
 
+let customKeywords = [];
+// Grabs the inputted custom keywords and applies formatting to them
+function GetCustomKeywords() {
+    const keywordsInput = document.getElementById('custom-keywords').value;
+    keywordsInput.replaceAll(' ', '');
+    keywordsInput.replaceAll('_', ' ');
+    customKeywords = keywordsInput.split(',');
+
+    console.log(customKeywords);
 }
+
+
 
 function DetermineFormatting(text) {
 
@@ -71,6 +80,15 @@ function DetermineFormatting(text) {
         text = text.replaceAll('Lift', '<img src="icons/lift-icon.png"><span class="color-physical">Lift</span>');
     }
     
+    // ' Final Strike '
+    if (text.includes('Final Strike')) {
+        text = text.replaceAll('Final Strike', '<span class="underline">Final Strike</span>')
+    }
+
+
+    //if (text.includes('')) {
+    //    text = text.replaceAll('', '<span> </span>');
+    //}
 
     return text;
 }
