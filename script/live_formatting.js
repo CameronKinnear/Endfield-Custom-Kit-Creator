@@ -1,30 +1,54 @@
 let batkDisplayBox = document.getElementById("batk-display");
 const batkEditBox = document.getElementById("batk-edit");
-
-
-// When inputting on basic attack box
 batkEditBox.addEventListener('input', () => {
-    
     let editorText = batkEditBox.value;
-    
     let formattedText = DetermineFormatting(editorText);
-
     batkDisplayBox.innerHTML = formattedText;
 })
+
+let bsklDisplayBox = document.getElementById("bskl-display");
+const bsklEditBox = document.getElementById("bskl-edit");
+bsklEditBox.addEventListener('input', () => {
+    let editorText = bsklEditBox.value;
+    let formattedText = DetermineFormatting(editorText);
+    bsklDisplayBox.innerHTML = formattedText;
+})
+
+let csklDisplayBox = document.getElementById("cskl-display");
+const csklEditBox = document.getElementById("cskl-edit");
+csklEditBox.addEventListener('input', () => {
+    let editorText = csklEditBox.value;
+    let formattedText = DetermineFormatting(editorText);
+    csklDisplayBox.innerHTML = formattedText;
+})
+
+let usklDisplayBox = document.getElementById("uskl-display");
+const usklEditBox = document.getElementById("uskl-edit");
+usklEditBox.addEventListener('input', () => {
+    let editorText = usklEditBox.value;
+    let formattedText = DetermineFormatting(editorText);
+    usklDisplayBox.innerHTML = formattedText;
+})
+
 
 
 let customKeywords = [];
 // Grabs the inputted custom keywords and applies formatting to them
 function GetCustomKeywords() {
     const keywordsInput = document.getElementById('custom-keywords').value;
-    keywordsInput.replaceAll(' ', '');
-    keywordsInput.replaceAll('_', ' ');
-    customKeywords = keywordsInput.split(',');
-
-    console.log(customKeywords);
+    customKeywords = keywordsInput.replaceAll(/\s*,\s*/g, ',').trim();
+    customKeywords = customKeywords.split(',');
+    console.log("Current Keywords: " + customKeywords);
 }
 
-
+function CheckCustomKeywords(text) {
+    for (let i = 0; i < customKeywords.length; i++) {
+        if (text.includes(customKeywords[i])) {
+            text = text.replaceAll(customKeywords[i], '<span class="color-keyword">' + customKeywords[i] + '</span>')
+        }
+    }
+    return text;
+}
 
 function DetermineFormatting(text) {
 
@@ -51,33 +75,33 @@ function DetermineFormatting(text) {
         }
     }
 
-    // ' {element} Infliction
+    // ' {element} Infliction '
     if (text.includes("Infliction")) {
         if (text.includes('Electric Infliction')) {
-            text = text.replaceAll('Electric Infliction', '<img src="icons/electric-infliction-icon.png"><span class="color-electric">Electric Infliction</span>');
+            text = text.replaceAll('Electric Infliction', '<img src="icons/electric-infliction-icon.png"><span class="color-electric underline">Electric Infliction</span>');
         }
 
         if (text.includes('Nature Infliction')) {
-            text = text.replaceAll('Nature Infliction', '<img src="icons/nature-infliction-icon.png"><span class="color-nature">Nature Infliction</span>');
+            text = text.replaceAll('Nature Infliction', '<img src="icons/nature-infliction-icon.png"><span class="color-nature underline">Nature Infliction</span>');
         }
 
         if (text.includes('Cryo Infliction')) {
-            text = text.replaceAll('Cryo Infliction', '<img src="icons/cryo-infliction-icon.png"><span class="color-cryo">Cryo Infliction</span>');
+            text = text.replaceAll('Cryo Infliction', '<img src="icons/cryo-infliction-icon.png"><span class="color-cryo underline">Cryo Infliction</span>');
         }
 
         if (text.includes('Heat Infliction')) {
-            text = text.replaceAll('Heat Infliction', '<img src="icons/heat-infliction-icon.png"><span class="color-heat">Heat Infliction</span>');
+            text = text.replaceAll('Heat Infliction', '<img src="icons/heat-infliction-icon.png"><span class="color-heat underline">Heat Infliction</span>');
         }
     }
 
     // ' Knock Down '
     if (text.includes('Knock Down')) {
-        text = text.replaceAll('Knock Down', '<img src="icons/knock-down-icon.png"><span class="color-physical">Knock Down</span>');
+        text = text.replaceAll('Knock Down', '<img src="icons/knock-down-icon.png"><span class="color-physical underline">Knock Down</span>');
     }
 
     // ' Lift '
     if (text.includes('Lift')) {
-        text = text.replaceAll('Lift', '<img src="icons/lift-icon.png"><span class="color-physical">Lift</span>');
+        text = text.replaceAll('Lift', '<img src="icons/lift-icon.png"><span class="color-physical underline">Lift</span>');
     }
     
     // ' Final Strike '
@@ -85,10 +109,80 @@ function DetermineFormatting(text) {
         text = text.replaceAll('Final Strike', '<span class="underline">Final Strike</span>')
     }
 
+    // ' Vulnerability '
+    if (text.includes('Vulnerability')) {
+        text = text.replaceAll('Vulnerability', '<img src="icons/vulnerability-icon.png"><span class="color-physical underline">Vulnerability</span>');
+    }
 
-    //if (text.includes('')) {
-    //    text = text.replaceAll('', '<span> </span>');
-    //}
+    // ' Arts {string} '
+    if (text.includes("Arts")) {
+        if (text.includes("Arts Infliction")) {
+            text = text.replaceAll('Arts Infliction', '<span class="underline color-keyword">Arts Infliction</span>')
+        }
+        
+        if (text.includes("Arts Reaction")) {
+            text = text.replaceAll('Arts Reaction', '<span class="underline color-keyword">Arts Reaction</span>')
+        }
+    }
+
+    // Elemental Reactions
+    if (text.includes('Electrification')) {
+        text = text.replaceAll('Electrification', '<img src="icons/electrification-icon.png"><span class="color-electric underline">Electrification</span>');
+    }
+
+    if (text.includes('Corrosion')) {
+        text = text.replaceAll('Corrosion', '<img src="icons/corrosion-icon.png"><span class="color-nature underline">Corrosion</span>');
+    }
+
+    if (text.includes('Combustion')) {
+        text = text.replaceAll('Combustion', '<img src="icons/combustion-icon.png"><span class="color-heat underline">Combustion</span>');
+    }
+
+    if (text.includes('Shatter')) {
+        text = text.replaceAll('Shatter', '<img src="icons/shatter-icon.png"><span class="color-cryo underline">Shatter</span>');
+    }
+
+    if (text.includes('Breach')) {
+        text = text.replaceAll('Breach', '<img src="icons/breach-icon.png"><span class="color-physical underline">Breach</span>');
+    }
+
+    if (text.includes('Crush')) {
+        text = text.replaceAll('Crush', '<img src="icons/crush-icon.png"><span class="color-physical underline">Crush</span>');
+    }
+
+    if (text.includes('Solidification')) {
+        text = text.replaceAll('Solidification', '<img src="icons/solidification-icon.png"><span class="color-cryo underline">Solidification</span>');
+    }
+
+    // ' Susceptibility '
+    if (text.includes("Susceptibility")) {
+        text = text.replaceAll('Arts Susceptibility', '<img src="icons/arts-susceptibility-icon.png"><span class="color-keyword underline">Arts Susceptibility</span>');
+        text = text.replaceAll('Physical Susceptibility', '<img src="icons/physical-susceptibility-icon.png"><span class="color-keyword underline">Physical Susceptibility</span>');
+        text = text.replaceAll('Electric Susceptibility', '<img src="icons/electric-susceptibility-icon.png"><span class="color-electric underline">Electric Susceptibility</span>');
+        text = text.replaceAll('Nature Susceptibility', '<img src="icons/nature-susceptibility-icon.png"><span class="color-nature underline">Nature Susceptibility</span>');
+        text = text.replaceAll('Cryo Susceptibility', '<img src="icons/cryo-susceptibility-icon.png"><span class="color-cryo underline">Cryo Susceptibility</span>');
+        text = text.replaceAll('Heat Susceptibility', '<img src="icons/heat-susceptibility-icon.png"><span class="color-heat underline">Heat Susceptibility</span>');
+    }
+
+    // ' Amp '
+    if (text.includes("Amp")) {
+        text = text.replaceAll('Arts Amp', '<img src="icons/arts-amp-icon.png"><span class="color-keyword underline">Arts Amp</span>');
+        text = text.replaceAll('Physical Amp', '<img src="icons/physical-amp-icon.png"><span class="color-keyword underline">Physical Amp</span>');
+        text = text.replaceAll('Electric Amp', '<img src="icons/electric-amp-icon.png"><span class="color-electric underline">Electric Amp</span>');
+        text = text.replaceAll('Nature Amp', '<img src="icons/nature-amp-icon.png"><span class="color-nature underline">Nature Amp</span>');
+        text = text.replaceAll('Cryo Amp', '<img src="icons/cryo-amp-icon.png"><span class="color-cryo underline">Cryo Amp</span>');
+        text = text.replaceAll('Heat Amp', '<img src="icons/heat-amp-icon.png"><span class="color-heat underline">Heat Amp</span>');
+    }
+
+    if (text.includes("Link")) {
+        text = text.replaceAll('Link', '<img src="icons/link-icon.png"><span class="color-keyword underline">Link</span>')
+    }
+
+    if (text.includes("Protected")) {
+        text = text.replaceAll('Protected', '<img src="icons/protected-icon.png"><span class="color-keyword underline">Protected</span>')
+    }
+
+    text = CheckCustomKeywords(text);
 
     return text;
 }
