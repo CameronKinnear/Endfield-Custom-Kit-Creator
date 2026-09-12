@@ -1,0 +1,60 @@
+@font-face {
+    font-family: "Harmony OS Sans Regular";
+    src: url('fonts/harmonyossans/HarmonyOS_Sans_Regular.woff2');
+}
+
+@font-face {
+    font-family: "Harmony OS Sans Bold";
+    src: url('fonts/harmonyossans/Bold.woff2');
+}
+
+.skill-display {
+    background-color: #313131;
+    color: rgb(204, 204, 204);
+}
+
+.skill-button {
+    width: 40px;
+    height: 40px;
+}
+
+.selected-skill {
+    background-color: gray;
+}
+
+.skill-box-invisible {
+    display: none;
+    visibility: hidden;
+}
+
+.edit-box-invisible {
+    display: none;
+    visibility: hidden;
+}
+
+#skills-boxes {
+    display: flex;
+    align-items: flex-start;
+    height: auto;
+}
+
+#skills-buttons {
+    display: flex;
+}
+
+.skill-display {
+    width: auto;
+}
+
+.skill-box {
+    position: absolute;
+    background-color: #313131;
+    color: rgb(204, 204, 204);
+    font-family: 'Harmony OS Sans Regular';
+    width: 25%;
+}
+
+#skill-popups {
+    position: relative;
+    flex: 1;
+}

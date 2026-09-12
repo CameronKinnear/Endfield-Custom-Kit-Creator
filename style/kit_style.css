@@ -86,3 +86,8 @@
 .selected-weapon {
     background-color: gray;
 }
+
+.selected-rarity {
+    background-color: gray;
+    color: white;
+}

@@ -10,27 +10,38 @@
             <div id="class-box">
                 <label id="class-label">Class</label>
                 <div id="class-selector">
-                    <button id="button-guard" class="class-button" onclick="SelectClass(this)"><img class="image-class" src="classes/guard.png"></button>
-                    <button id="button-caster" class="class-button" onclick="SelectClass(this)"><img class="image-class" src="classes/caster.png"></button>
-                    <button id="button-striker" class="class-button" onclick="SelectClass(this)"><img class="image-class" src="classes/striker.png"></button>
-                    <button id="button-vanguard" class="class-button" onclick="SelectClass(this)"><img class="image-class" src="classes/vanguard.png"></button>
-                    <button id="button-defender" class="class-button" onclick="SelectClass(this)"><img class="image-class" src="classes/defender.png"></button>
-                    <button id="button-supporter" class="class-button" onclick="SelectClass(this)"><img class="image-class" src="classes/supporter.png"></button>                    
+                    <button id="button-guard" class="class-button" onclick="SelectClass(this)"><img class="image-class" src="images/classes/guard.png"></button>
+                    <button id="button-caster" class="class-button" onclick="SelectClass(this)"><img class="image-class" src="images/classes/caster.png"></button>
+                    <button id="button-striker" class="class-button" onclick="SelectClass(this)"><img class="image-class" src="images/classes/striker.png"></button>
+                    <button id="button-vanguard" class="class-button" onclick="SelectClass(this)"><img class="image-class" src="images/classes/vanguard.png"></button>
+                    <button id="button-defender" class="class-button" onclick="SelectClass(this)"><img class="image-class" src="images/classes/defender.png"></button>
+                    <button id="button-supporter" class="class-button" onclick="SelectClass(this)"><img class="image-class" src="images/classes/supporter.png"></button>                    
                 </div>
             </div>
             <div id="weapon-type-box">
                 <label>Weapon Type</label>
                 <div id="weapon-type-selector">
-                    <button id="button-arts-unit" class="weapon-button" onclick="SelectWeapon(this)"><img class="image-weapon" src="weapons/arts-unit.png"></button>
-                    <button id="button-great-sword" class="weapon-button" onclick="SelectWeapon(this)"><img class="image-weapon" src="weapons/great-sword.png"></button>
-                    <button id="button-hand-cannon" class="weapon-button" onclick="SelectWeapon(this)"><img class="image-weapon" src="weapons/hand-cannon.png"></button>
-                    <button id="button-polearm" class="weapon-button" onclick="SelectWeapon(this)"><img class="image-weapon" src="weapons/polearm.png"></button>
-                    <button id="button-sword" class="weapon-button" onclick="SelectWeapon(this)"><img class="image-weapon" src="weapons/sword.png"></button>
+                    <button id="button-arts-unit" class="weapon-button" onclick="SelectWeapon(this)"><img class="image-weapon" src="images/weapons/arts-unit.png"></button>
+                    <button id="button-great-sword" class="weapon-button" onclick="SelectWeapon(this)"><img class="image-weapon" src="images/weapons/great-sword.png"></button>
+                    <button id="button-hand-cannon" class="weapon-button" onclick="SelectWeapon(this)"><img class="image-weapon" src="images/weapons/hand-cannon.png"></button>
+                    <button id="button-polearm" class="weapon-button" onclick="SelectWeapon(this)"><img class="image-weapon" src="images/weapons/polearm.png"></button>
+                    <button id="button-sword" class="weapon-button" onclick="SelectWeapon(this)"><img class="image-weapon" src="images/weapons/sword.png"></button>
                 </div>
             </div>
             <div id="name-box">
                 <label id="name-label">Name</label>
                 <input type="text" id="name-input">
+            </div>
+            <div id="char-element">
+
+            </div>
+            <div id="rarity-box">
+                <div>
+                    <label id="rarity-label">Rarity</label>
+                    <button id="rarity-4-star-button" class="rarity-button" onclick="SelectRarity(this)">4*</button>
+                    <button id="rarity-5-star-button" class="rarity-button" onclick="SelectRarity(this)">5*</button>
+                    <button id="rarity-6-star-button" class="rarity-button" onclick="SelectRarity(this)">6*</button>
+                </div>
             </div>
         </div>
 
@@ -54,27 +65,35 @@
             </div>
         </div>
 
-
+        <label id="skills-box-label">Skills</label>
         <div id="skills-boxes">
-            <div id="batk-box" class="skill-box">
-                <label id="batk-label" class="skill-label">Basic Attack</label>
-                <textarea id="batk-edit" class="skill-edit"></textarea>
-                <div id="batk-display" class="skill-display body-text"></div>
+            <div id="skills-buttons">
+                <button id="batk-button" class="skill-button" onclick="SelectSkill(this)" value="basic">BA</button>
+                <button id="bskl-button" class="skill-button" onclick="SelectSkill(this)" value="battle">BS</button>
+                <button id="cskl-button" class="skill-button" onclick="SelectSkill(this)" value="combo">CS</button>
+                <button id="uskl-button" class="skill-button" onclick="SelectSkill(this)" value="ult">Ult</button>
             </div>
-            <div id="bskl-box" class="skill-box">
-                <label id="bskl-label" class="skill-label">Battle Skill</label>
-                <textarea id="bskl-edit" class="skill-edit"></textarea>
-                <div id="bskl-display" class="skill-display body-text"></div>
-            </div>
-            <div id="cskl-box" class="skill-box">
-                <label id="cskl-label" class="skill-label">Combo Skill</label>
-                <textarea id="cskl-edit" class="skill-edit"></textarea>
-                <div id="cskl-display" class="skill-display body-text"></div>
-            </div>
-            <div id="uskl-box" class="skill-box">
-                <label id="uskl-label" class="skill-label">Ultimate</label>
-                <textarea id="uskl-edit" class="skill-edit"></textarea>
-                <div id="uskl-display" class="skill-display body-text"></div>
+            <div id="skill-popups">
+                <div id="batk-box" class="skill-box skill-box-invisible">
+                    <label id="batk-label" class="skill-label">Basic Attack</label>
+                    <textarea id="batk-edit" class="skill-edit edit-box-invisible"></textarea>
+                    <div id="batk-display" class="skill-display body-text"></div>
+                </div>
+                <div id="bskl-box" class="skill-box skill-box-invisible">
+                    <label id="bskl-label" class="skill-label">Battle Skill</label>
+                    <textarea id="bskl-edit" class="skill-edit edit-box-invisible"></textarea>
+                    <div id="bskl-display" class="skill-display body-text"></div>
+                </div>
+                <div id="cskl-box" class="skill-box skill-box-invisible">
+                    <label id="cskl-label" class="skill-label">Combo Skill</label>
+                    <textarea id="cskl-edit" class="skill-edit edit-box-invisible"></textarea>
+                    <div id="cskl-display" class="skill-display body-text"></div>
+                </div>
+                <div id="uskl-box" class="skill-box skill-box-invisible">
+                    <label id="uskl-label" class="skill-label">Ultimate</label>
+                    <textarea id="uskl-edit" class="skill-edit edit-box-invisible"></textarea>
+                    <div id="uskl-display" class="skill-display body-text"></div>
+                </div>
             </div>
         </div>
 
