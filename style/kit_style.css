@@ -1,3 +1,13 @@
+@font-face {
+    font-family: "Harmony OS Sans Regular";
+    src: url('fonts/harmonyossans/HarmonyOS_Sans_Regular.woff2');
+}
+
+@font-face {
+    font-family: "Harmony OS Sans Bold";
+    src: url('fonts/harmonyossans/Bold.woff2');
+}
+
 .underline {
     text-decoration: underline;
 }
@@ -41,9 +51,21 @@
 .image-icon {
     height: 1em;
     width: auto;
+    margin-right: 2px;
 }
 
+.body-text {
+    font-family: 'Harmony OS Sans Regular', sans-serif;
+}
 
+.body-text-bold {
+    font-family: 'Harmony OS Sans Bold', sans-serif;
+    font-weight: bold;
+}
+
+.footnote-text {
+    color:  #4f4f4f;
+}
 
 .image-class {
     width: 40px;
@@ -58,7 +80,7 @@
 }
 
 .selected-class {
-
+    background-color: gray;
 }
 
 .selected-weapon {

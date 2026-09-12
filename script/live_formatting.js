@@ -50,6 +50,26 @@ function CheckCustomKeywords(text) {
     return text;
 }
 
+function BoldFormatting(text) {
+    if (text.includes('SKILL DESCRIPTION')) {
+        text = text.replaceAll('SKILL DESCRIPTION', '<span class="body-text-bold">SKILL DESCRIPTION</span>')
+    }
+    if (text.includes('COMBO TRIGGER')) {
+        text = text.replaceAll('COMBO TRIGGER', '<span class="body-text-bold">COMBO TRIGGER</span>')
+    }
+    if (text.includes('BASIC ATTACK:')) {
+        text = text.replaceAll('BASIC ATTACK:', '<span class="body-text-bold">BASIC ATTACK</span>:')
+    }
+    if (text.includes('DIVE ATTACK:')) {
+        text = text.replaceAll('DIVE ATTACK:', '<span class="body-text-bold">DIVE ATTACK</span>:')
+    }
+    if (text.includes('FINISHER:')) {
+        text = text.replaceAll('FINISHER:', '<span class="body-text-bold">FINISHER</span>:')
+    }
+
+    return text;
+}
+
 function DetermineFormatting(text) {
 
     // ' {element} DMG '
@@ -183,6 +203,16 @@ function DetermineFormatting(text) {
     }
 
     text = CheckCustomKeywords(text);
+    text = BoldFormatting(text);
+
+    // Formats newline to work with div element
+    text = text.replaceAll('\n', '<br>');
+
+    // Formats note tag
+    text = text.replaceAll(/\/note\((.*?)\)/g, '<span class="footnote-text">$1</span>');
+
+    // Formats num tag
+    text = text.replaceAll(/\/num\((.*?)\)/g, '<span class="color-numeric">$1</span>');
 
     return text;
 }
