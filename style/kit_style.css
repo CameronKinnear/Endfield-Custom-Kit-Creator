@@ -52,6 +52,7 @@
     height: 1em;
     width: auto;
     margin-right: 2px;
+    text-decoration: none;
 }
 
 .body-text {
@@ -90,4 +91,8 @@
 .selected-rarity {
     background-color: gray;
     color: white;
+}
+
+.format-span {
+    display: inline-block;
 }
