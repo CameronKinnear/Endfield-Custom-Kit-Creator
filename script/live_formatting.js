@@ -171,7 +171,7 @@ function DetermineFormatting(text) {
     }
 
     if (text.includes('Solidification')) {
-        text = text.replaceAll('Solidification', '<img class="image-icon" src="images/icons/solidification-icon.png"><span class="format-span format-span color-cryo underline">Solidification</span>');
+        text = text.replaceAll('Solidification', '<span class="format-span format-span color-cryo underline"><img class="image-icon" src="images/icons/solidification-icon.png">Solidification</span>');
     }
 
     // ' Susceptibility '

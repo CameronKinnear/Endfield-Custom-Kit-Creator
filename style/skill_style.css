@@ -9,8 +9,9 @@
 }
 
 .skill-display {
-    background-color: #313131;
+    background-color: inherit;
     color: rgb(204, 204, 204);
+    margin-top: 3px;
 }
 
 .skill-button {
@@ -44,7 +45,7 @@
 
 .skill-display {
     width: auto;
-    margin-left: 2.5%;
+
 }
 
 .skill-box {
@@ -52,7 +53,8 @@
     width: 400px;
     color: rgb(204, 204, 204);
     font-family: 'Harmony OS Sans Regular';
-    padding-top: 5px;
+    padding: 1%;
+    border-radius: 10px;
 }
 
 #skill-popups {
@@ -62,18 +64,17 @@
 
 .skill-label {
     display: block;
-    width: 90%;
-    padding-top: 5px;
-    padding-right: 5px;
+    width: auto;
+    margin-left: auto;
     text-align: right;
     color: #929292;
 }
 
 .skill-edit-image {
     width: 20px;
-    height: auto;
-    background-color: #313131;
-    
+    height: auto; 
+    margin-bottom: 3px;   
+    filter: brightness(0%) invert(1) sepia(1) saturate(10000%) hue-rotate(8deg);
 }
 
 .skill-top-row {
@@ -81,7 +82,7 @@
 }
 
 .skill-edit-button {
-    width: 10%;
+    padding-right: auto;
 }
 
 .skill-bot-row {
@@ -90,24 +91,22 @@
 }
 
 .skill-name {
-    background-color: #313131;
+    background-color: inherit;
     border: none;
     color: rgb(204, 204, 204);
     font-size: 20px;
-    margin-left: 2.5%;
-    padding-left: 0;
+    padding: 0;
 }
 
 .skill-rank-label {
     color: #919090;
-    margin-left: 2.5%;
 }
 
 .skill-seperator-line {
-    margin-left: 2.5%;
-    width: 95%;
+    width: 100%;
     height: 1px;
     background-color: #919090;
+    margin-top: 2px;
 }
 
 button.strip-style {
@@ -119,4 +118,12 @@ button.strip-style {
   color: inherit;
   cursor: pointer;
   outline: none;
+}
+
+.skill-edit {
+    width: 100%;
+    field-sizing: content;
+    resize: none;
+    background-color: #3f3f3f;
+    color: white;
 }
