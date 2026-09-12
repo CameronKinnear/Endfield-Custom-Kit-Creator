@@ -60,3 +60,25 @@ function SwapSkillVisibility(skillButton) {
         return;
     }
 }
+
+function ToggleEditBox(editButton) {
+    console.log(editButton.value);
+    if (editButton == null) return;
+
+    if (editButton.value == 'basic') {
+        document.getElementById('batk-edit').classList.toggle("edit-box-invisible");
+        return;
+    }
+    if (editButton.value == 'battle') {
+        document.getElementById('bskl-edit').classList.toggle("edit-box-invisible");
+        return;
+    }
+    if (editButton.value == 'combo') {
+        document.getElementById('cskl-edit').classList.toggle("edit-box-invisible");
+        return;
+    }
+    if (editButton.value == 'ult') {
+        document.getElementById('uskl-edit').classList.toggle("edit-box-invisible");
+        return;
+    }
+}

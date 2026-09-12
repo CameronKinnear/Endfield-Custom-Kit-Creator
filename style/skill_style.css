@@ -47,14 +47,46 @@
 }
 
 .skill-box {
-    position: absolute;
     background-color: #313131;
+    width: 400px;
     color: rgb(204, 204, 204);
     font-family: 'Harmony OS Sans Regular';
-    width: 25%;
 }
 
 #skill-popups {
     position: relative;
     flex: 1;
+}
+
+.skill-label {
+    display: block;
+    width: 90%;
+    padding-top: 5px;
+    padding-right: 5px;
+    text-align: right;
+    color: #929292;
+}
+
+.skill-edit-image {
+    width: 20px;
+    height: auto;
+    background-color: #313131;
+    
+}
+
+.skill-top-row {
+    display: flex;
+}
+
+.skill-edit-button {
+    width: 10%;
+}
+
+.skill-bot-row {
+    display: flex;
+    flex-direction: column;
+}
+
+.skill-edit {
+    width: 50%;
 }

@@ -1,6 +1,6 @@
 <html>
     <head>
-        <link rel="stylesheet" href="style/main_style.css">
+        <link rel="stylesheet" href="style/skill_style.css">
         <link rel="stylesheet" href="style/kit_style.css">
     </head>
     <body>
@@ -74,23 +74,36 @@
                 <button id="uskl-button" class="skill-button" onclick="SelectSkill(this)" value="ult">Ult</button>
             </div>
             <div id="skill-popups">
+
+
                 <div id="batk-box" class="skill-box skill-box-invisible">
-                    <label id="batk-label" class="skill-label">Basic Attack</label>
-                    <textarea id="batk-edit" class="skill-edit edit-box-invisible"></textarea>
-                    <div id="batk-display" class="skill-display body-text"></div>
+                    <div id="batk-top-row" class="skill-top-row">
+                        <button id="batk-edit-button" class="skill-edit-button" onclick="ToggleEditBox(this)" value="basic"><img src="images/edit-icon.png" class="skill-edit-image"></button>
+                        <label id="batk-label" class="skill-label">Basic Attack</label>
+                    </div>
+                    <input type="text" id="batk-name" class="skill-name">
+                    <div id="batk-bot-row" class="skill-bot-row">
+                        <textarea id="batk-edit" class="skill-edit edit-box-invisible"></textarea>
+                        <div id="batk-display" class="skill-display body-text"></div>
+                    </div>
                 </div>
+
+
                 <div id="bskl-box" class="skill-box skill-box-invisible">
                     <label id="bskl-label" class="skill-label">Battle Skill</label>
+                    <input type="text" id="bskl-name" class="skill-name">
                     <textarea id="bskl-edit" class="skill-edit edit-box-invisible"></textarea>
                     <div id="bskl-display" class="skill-display body-text"></div>
                 </div>
                 <div id="cskl-box" class="skill-box skill-box-invisible">
                     <label id="cskl-label" class="skill-label">Combo Skill</label>
+                    <input type="text" id="cskl-name" class="skill-name">
                     <textarea id="cskl-edit" class="skill-edit edit-box-invisible"></textarea>
                     <div id="cskl-display" class="skill-display body-text"></div>
                 </div>
                 <div id="uskl-box" class="skill-box skill-box-invisible">
                     <label id="uskl-label" class="skill-label">Ultimate</label>
+                    <input type="text" id="cskl-name" class="skill-name">
                     <textarea id="uskl-edit" class="skill-edit edit-box-invisible"></textarea>
                     <div id="uskl-display" class="skill-display body-text"></div>
                 </div>
