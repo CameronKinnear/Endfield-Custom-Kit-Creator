@@ -30,8 +30,17 @@ function SelectRarity(selectedRarity) {
 
 function SelectSkill(selectedSkill) {
 
+    if (selectedSkill == currentlySelectedSkill) {
+        SwapSkillVisibility(currentlySelectedSkill);
+        currentlySelectedSkill.classList.remove("selected-skill");
+        currentlySelectedSkill = null;
+        return;
+    }
+
     SwapSkillVisibility(selectedSkill);
     SwapSkillVisibility(currentlySelectedSkill);
+
+    MakeAllEditBoxesInvisible();
 
     if (currentlySelectedSkill != null) {
         currentlySelectedSkill.classList.remove('selected-skill')
@@ -77,8 +86,17 @@ function ToggleEditBox(editButton) {
         document.getElementById('cskl-edit').classList.toggle("edit-box-invisible");
         return;
     }
-    if (editButton.value == 'ult') {
+    if (editButton.value == 'ultimate') {
         document.getElementById('uskl-edit').classList.toggle("edit-box-invisible");
         return;
     }
+}
+
+// Makes all the boxes for skill editing invisible
+// Used when swapping between skill popups
+function MakeAllEditBoxesInvisible() {
+    document.getElementById('batk-edit').classList.add("edit-box-invisible");
+    document.getElementById('bskl-edit').classList.add("edit-box-invisible");
+    document.getElementById('cskl-edit').classList.add("edit-box-invisible");
+    document.getElementById('uskl-edit').classList.add("edit-box-invisible");
 }
