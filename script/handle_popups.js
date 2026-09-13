@@ -22,7 +22,7 @@ async function SelectButton(buttonSelected) {
         popupBox.classList.remove("popup-box-invisible");
     }
     else {
-        popupBox.classList.add("popup-box-invisible");
+        popupBox.classList.toggle("popup-box-invisible");
 
     }
 
