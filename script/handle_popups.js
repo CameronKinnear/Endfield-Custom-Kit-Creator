@@ -3,12 +3,33 @@ let popupLabel = document.getElementById('popup-label');
 let popupName = document.getElementById('popup-name');
 let popupEdit = document.getElementById('popup-edit');
 let popupDisplay = document.getElementById('popup-display');
+let localDetails = null;
+
+// Loads the char details json on startup
+window.addEventListener('DOMContentLoaded', async () => {
+    try {
+        const dater = await fetch('../data/char_details.json');
+        localDetails = await dater.json();
+    } catch (error) {
+    }
+});
 
 // When a button that creates a popup is selected
 async function SelectButton(buttonSelected) {
-    const data = await GetPopupDetails(buttonSelected.value);
-    console.log(data);
-    PopulateBox(data);
+
+    if (currentlySelectedButton != null) {
+        console.log("raning");
+        SavePopupDetails(currentlySelectedButton.value);
+        currentlySelectedButton.classList.remove('selected-button')
+    }
+
+    buttonSelected.classList.add("selected-button");
+    currentlySelectedButton = buttonSelected;
+
+    //const data = await GetPopupDetails(buttonSelected.value);
+    PopulateBox(localDetails[buttonSelected.value]);
+    console.log(localDetails);
+    UpdateDisplay();
 }
 
 // Toggles the visibility of the edit box
@@ -17,12 +38,14 @@ function ToggleEditBox() {
 }
 
 // Gets the details for the popup box from json file
-async function GetPopupDetails(popupName) {
+async function GetPopupDetails(popupType) {
     try {
-        console.log(popupName);
         const jsonResponse = await fetch('../data/char_details.json');
         const data = await jsonResponse.json();
-        return data[popupName];
+        if (localDetails == null) {
+            localDetails = data;
+        }
+        return data[popupType];
     }
     catch {
         console.log("Error loading file");
@@ -35,12 +58,13 @@ function PopulateBox(data) {
     popupLabel.innerHTML = data.type;
     popupName.value = data.name;
     popupEdit.value = data.text;
-    
 }
 
 // Saves relevant data to json file
-function SavePopupDetails(popup) {
-
+function SavePopupDetails(popupType) {
+    console.log("Saving for: " + popupType);
+    localDetails[popupType].name = popupName.value;
+    localDetails[popupType].text = popupEdit.value;
 }
 
 popupEdit.addEventListener('input', () => {
