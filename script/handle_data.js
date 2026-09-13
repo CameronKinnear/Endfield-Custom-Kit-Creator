@@ -19,13 +19,13 @@ let rar6 = document.getElementById('rarity-6-star-button');
 let localDetails = null;
 let customKeywords = [];
 
-// Selects a rarity 
-function SelectRarity(selectedRarity) {
-    if (selectedRarity.value == 4) {
+// 
+function SelectRarity(rarityValue) {
+    if (rarityValue == 4) {
         rar5.classList.add('rarity-inactive');
         rar6.classList.add('rarity-inactive');
     }
-    else if (selectedRarity.value == 5) {
+    else if (rarityValue == 5) {
         rar5.classList.remove('rarity-inactive');
         rar6.classList.add('rarity-inactive');
     }
@@ -35,21 +35,6 @@ function SelectRarity(selectedRarity) {
     }
 }
 
-// Selects Rerity on startup
-function LoadRarityFromJSON() {
-    if (localDetails.rarity == 4) {
-        rar5.classList.add('rarity-inactive');
-        rar6.classList.add('rarity-inactive');
-    }
-    else if (localDetails.rarity == 5) {
-        rar5.classList.remove('rarity-inactive');
-        rar6.classList.add('rarity-inactive');
-    }
-    else {
-        rar5.classList.remove('rarity-inactive'); 
-        rar6.classList.remove('rarity-inactive');
-    }
-}
 
 // Loads the default char template on start up
 window.addEventListener('DOMContentLoaded', async () => {
@@ -59,7 +44,7 @@ window.addEventListener('DOMContentLoaded', async () => {
         customKeywords = localDetails["custom keywords"];
         LoadCustomKeywordsFromJSON(customKeywords);
         LoadStatsFromJSON();
-        LoadRarityFromJSON();
+        SelectRarity(localDetails.rarity);
     } catch (error) {
     }
 });
