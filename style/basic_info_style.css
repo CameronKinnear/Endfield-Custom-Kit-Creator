@@ -1,0 +1,14 @@
+.rarity-icon {
+    width: 30px;
+    height: auto;
+}
+
+.rarity-button {
+    padding: 0;
+    border: none;
+    background-color: transparent;
+}
+
+.rarity-inactive {
+    opacity: 0.4;
+}

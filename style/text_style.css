@@ -33,3 +33,8 @@
     font-family: "Harmony OS Sans Bold";
     font-size: 15px;
 }
+
+.generic-text-invisible {
+    visibility: hidden;
+    display: none;
+}

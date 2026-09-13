@@ -1,6 +1,7 @@
 body {
     display: flex;
     flex-direction: row;
+    background-color: rgb(155, 154, 154);
 }
 
 #buttons-col-1 {

@@ -1,0 +1,66 @@
+{
+    "class" : "",
+    "weapon" : "",
+    "rarity" : 4,
+    "charname" : "",
+    
+    "str" : {
+        "val" : 123,
+        "level": 2
+    },
+    "agl" : {
+        "val" : 140,
+        "level": 3
+    },
+    "int" : {
+        "val" : 96,
+        "level": 1
+    },
+    "wil" : {
+        "val" : 107,
+        "level": 1
+    },
+    
+    "basic" : {
+        "type" : "Basic Attack",
+        "name" : "Destructive Sequence",
+        "text" : "BASIC ATTACK:\nAn attack with up to 5 sequences that deals Physical DMG. As the controlled operator, Final Strike also deals /stagger(18) Stagger.\n\nDIVE ATTACK:\nBasic attack performed in mid-air becomes a dive attack that deals Physical DMG to nearby enemies.\n\nFINISHER:\nBasic attack performed near a Staggered enemy becomes a finisher attack that deals massive Physical DMG and recovers some SP.",
+        "rank" : 9
+    },
+    "battle" : {
+        "type" : "Battle Skill",
+        "name" : "Constructive Sequence",
+        "text" : "A forceful burst of Originium Crystals that attacks enemies within the area of effect. Deals Physical DMG and applies Crush.",
+        "rank" : 9,
+        "spcost" : 100
+    },
+    "combo" : {
+        "type" : "Combo Skill",
+        "name" : "Sealing Sequence",
+        "text" : "COMBO TRIGGER: When another operator in the team deals DMG with combo skills.\nRushes to the enemy's side to deal Physical DMG and attach Originium Crystals that temporarily seal them. Applying Physical Status or Vulnerability to the sealed enemy shatters the Originium Crystals and deals additional Physical DMG.",
+        "rank" : 9,
+        "cooldown" : 0
+    },
+    "ultimate" : {
+        "type" : "Ultimate",
+        "name" : "Bombardment Sequence",
+        "text" : "Bombards the ground with Originium Crystals, dealing massive Physical DMG to all enemies within a fan-shaped area. If the enemy already has Originium Crystals on them, this skill shatters the Originium Crystals and deals 1 more hit of Physical DMG.",
+        "rank" : 9,
+        "cooldown" : 0,
+        "energy": 0
+    },
+
+    "talent 1" : {
+        "type" : "Talent 1",
+        "name" : "Essence Disintegration",
+        "text" : "When the Originium Crystals attached to the enemy are consumed, the Endministrator gains ATK /num(+30%) for 15s. This effect cannot stack.",
+        "rank" : 0
+    },
+    "talent 2" : {
+        "type" : "Talent 2",
+        "name" : "Realspace Stasis",
+        "text" : "Enemies with attached Originium Crystals suffer Physical DMG Taken /num(+20%).",
+        "rank" : 0
+    },
+    "custom keywords" : ["Originium Crystals"]
+}

@@ -5,6 +5,7 @@
         <link rel="stylesheet" href="style/main_style.css">
         <link rel="stylesheet" href="style/stat_style.css">
         <link rel="stylesheet" href="style/text_style.css">
+        <link rel="stylesheet" href="style/basic_info_style.css">
     </head>
     <body>
         <div id="buttons-col-1">
@@ -38,12 +39,19 @@
 
                 </div>
                 <div id="rarity-box">
-                    <div>
-                        <label id="rarity-label">Rarity</label>
-                        <button id="rarity-4-star-button" class="rarity-button" onclick="SelectRarity(this)">4*</button>
-                        <button id="rarity-5-star-button" class="rarity-button" onclick="SelectRarity(this)">5*</button>
-                        <button id="rarity-6-star-button" class="rarity-button" onclick="SelectRarity(this)">6*</button>
-                    </div>
+                    <label id="rarity-label" class="generic-text-invisible">Rarity</label>
+                    <img class="rarity-icon" src="images/op-rarity.png">
+                    <img class="rarity-icon" src="images/op-rarity.png">
+                    <img class="rarity-icon" src="images/op-rarity.png">
+                    <button id="rarity-4-star-button" class="rarity-button" onclick="SelectRarity(this)">
+                        <img class="rarity-icon" src="images/op-rarity.png">
+                    </button>
+                    <button id="rarity-5-star-button" class="rarity-button rarity-inactive" onclick="SelectRarity(this)">
+                        <img class="rarity-icon" src="images/op-rarity.png">
+                    </button>
+                    <button id="rarity-6-star-button" class="rarity-button rarity-inactive" onclick="SelectRarity(this)">
+                        <img class="rarity-icon" src="images/op-rarity.png">
+                    </button>
                 </div>
             </div>
 
@@ -122,7 +130,6 @@
             </div>
         </div>
         <script src="script/button_selector.js"></script>
-        <script src="script/handle_popups.js"></script>
-        <script src="script/stat_selector.js"></script>
+        <script src="script/handle_data.js"></script>
     </body>
 </html>
