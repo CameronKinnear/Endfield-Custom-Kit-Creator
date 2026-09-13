@@ -1,4 +1,6 @@
 let currentlySelectedButton = null;
+let currentlySelectedRarity = null;
+
 let popupLabel = document.getElementById('popup-label');
 let popupName = document.getElementById('popup-name');
 let popupEdit = document.getElementById('popup-edit');
@@ -10,8 +12,44 @@ let aglInp = document.getElementById('agl-val');
 let intInp = document.getElementById('int-val');
 let wilInp = document.getElementById('wil-val');
 
+let rar5 = document.getElementById('rarity-5-star-button');
+let rar6 = document.getElementById('rarity-6-star-button');
+
+
 let localDetails = null;
 let customKeywords = [];
+
+// Selects a rarity 
+function SelectRarity(selectedRarity) {
+    if (selectedRarity.value == 4) {
+        rar5.classList.add('rarity-inactive');
+        rar6.classList.add('rarity-inactive');
+    }
+    else if (selectedRarity.value == 5) {
+        rar5.classList.remove('rarity-inactive');
+        rar6.classList.add('rarity-inactive');
+    }
+    else {
+        rar5.classList.remove('rarity-inactive'); 
+        rar6.classList.remove('rarity-inactive');
+    }
+}
+
+// Selects Rerity on startup
+function LoadRarityFromJSON() {
+    if (localDetails.rarity == 4) {
+        rar5.classList.add('rarity-inactive');
+        rar6.classList.add('rarity-inactive');
+    }
+    else if (localDetails.rarity == 5) {
+        rar5.classList.remove('rarity-inactive');
+        rar6.classList.add('rarity-inactive');
+    }
+    else {
+        rar5.classList.remove('rarity-inactive'); 
+        rar6.classList.remove('rarity-inactive');
+    }
+}
 
 // Loads the default char template on start up
 window.addEventListener('DOMContentLoaded', async () => {
@@ -21,10 +59,10 @@ window.addEventListener('DOMContentLoaded', async () => {
         customKeywords = localDetails["custom keywords"];
         LoadCustomKeywordsFromJSON(customKeywords);
         LoadStatsFromJSON();
+        LoadRarityFromJSON();
     } catch (error) {
     }
 });
-
 // When a button that creates a popup is selected
 async function SelectButton(buttonSelected) {
 
