@@ -1,7 +1,8 @@
 let currentlySelectedWeapon = null;
 let currentlySelectedClass = null;
 let currentlySelectedRarity = null;
-let currentlySelectedSkill = null;
+let currentlyselectedPopup = null;
+
 
 
 function SelectWeapon(selectedWeapon) {
@@ -28,44 +29,54 @@ function SelectRarity(selectedRarity) {
     currentlySelectedRarity = selectedRarity;
 }
 
-function SelectSkill(selectedSkill) {
 
-    if (selectedSkill == currentlySelectedSkill) {
-        SwapSkillVisibility(currentlySelectedSkill);
-        currentlySelectedSkill.classList.remove("selected-skill");
-        currentlySelectedSkill = null;
+// Selector for the skills and talents buttons
+function SelectPopup(selectedPopup) {
+
+    if (selectedPopup == currentlyselectedPopup) {
+        SwapPopupVisbility(currentlyselectedPopup);
+        currentlyselectedPopup.classList.remove("selected-popup");
+        currentlyselectedPopup = null;
         return;
     }
 
-    SwapSkillVisibility(selectedSkill);
-    SwapSkillVisibility(currentlySelectedSkill);
+    SwapPopupVisbility(selectedPopup);
+    SwapPopupVisbility(currentlyselectedPopup);
 
-    MakeAllEditBoxesInvisible();
+    MakeAllSkillEditBoxesInvisible();
 
-    if (currentlySelectedSkill != null) {
-        currentlySelectedSkill.classList.remove('selected-skill')
+    if (currentlyselectedPopup != null) {
+        currentlyselectedPopup.classList.remove('selected-popup')
     }
-    selectedSkill.classList.add("selected-skill");
-    currentlySelectedSkill = selectedSkill;
+    selectedPopup.classList.add("selected-popup");
+    currentlyselectedPopup = selectedPopup;
 }
 
-function SwapSkillVisibility(skillButton) {
-    if (skillButton == null) return;
+function SwapPopupVisbility(button) {
+    if (button == null) return;
 
-    if (skillButton.value == 'basic') {
-        document.getElementById('batk-box').classList.toggle("skill-box-invisible");
+    if (button.value == 'basic') {
+        document.getElementById('batk-box').classList.toggle("popup-box-invisible");
         return;
     }
-    if (skillButton.value == 'battle') {
-        document.getElementById('bskl-box').classList.toggle("skill-box-invisible");
+    if (button.value == 'battle') {
+        document.getElementById('bskl-box').classList.toggle("popup-box-invisible");
         return;
     }
-    if (skillButton.value == 'combo') {
-        document.getElementById('cskl-box').classList.toggle("skill-box-invisible");
+    if (button.value == 'combo') {
+        document.getElementById('cskl-box').classList.toggle("popup-box-invisible");
         return;
     }
-    if (skillButton.value == 'ult') {
-        document.getElementById('uskl-box').classList.toggle("skill-box-invisible");
+    if (button.value == 'ult') {
+        document.getElementById('uskl-box').classList.toggle("popup-box-invisible");
+        return;
+    }
+    if (button.value == 'talent 1') {
+        document.getElementById('talent-1-box').classList.toggle("popup-box-invisible");
+        return;
+    }
+    if (button.value == 'talent 2') {
+        document.getElementById('talent-2-box').classList.toggle("popup-box-invisible");
         return;
     }
 }
@@ -90,13 +101,23 @@ function ToggleEditBox(editButton) {
         document.getElementById('uskl-edit').classList.toggle("edit-box-invisible");
         return;
     }
+    if (editButton.value == 'talent 1') {
+        document.getElementById('talent-1-edit').classList.toggle("edit-box-invisible");
+        return;
+    }
+    if (editButton.value == 'talent 2') {
+        document.getElementById('talent-2-edit').classList.toggle("edit-box-invisible");
+        return;
+    }
 }
 
 // Makes all the boxes for skill editing invisible
 // Used when swapping between skill popups
-function MakeAllEditBoxesInvisible() {
+function MakeAllSkillEditBoxesInvisible() {
     document.getElementById('batk-edit').classList.add("edit-box-invisible");
     document.getElementById('bskl-edit').classList.add("edit-box-invisible");
     document.getElementById('cskl-edit').classList.add("edit-box-invisible");
     document.getElementById('uskl-edit').classList.add("edit-box-invisible");
+    document.getElementById('talent-1-edit').classList.add("edit-box-invisible");
+    document.getElementById('talent-2-edit').classList.add("edit-box-invisible");
 }

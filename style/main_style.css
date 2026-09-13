@@ -1,0 +1,12 @@
+body {
+    display: flex;
+    flex-direction: row;
+}
+
+#buttons-col-1 {
+    width: 33%;
+}
+
+#display-boxes-column {
+    width: 33%;
+}

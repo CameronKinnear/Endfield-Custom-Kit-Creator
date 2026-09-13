@@ -30,7 +30,21 @@ usklEditBox.addEventListener('input', () => {
     usklDisplayBox.innerHTML = formattedText;
 })
 
+let talent1DisplayBox = document.getElementById("talent-1-display");
+const talent1EditBox = document.getElementById("talent-1-edit");
+talent1EditBox.addEventListener('input', () => {
+    let editorText = talent1EditBox.value;
+    let formattedText = DetermineFormatting(editorText);
+    talent1DisplayBox.innerHTML = formattedText;
+})
 
+let talent2DisplayBox = document.getElementById("talent-2-display");
+const talent2EditBox = document.getElementById("talent-2-edit");
+talent2EditBox.addEventListener('input', () => {
+    let editorText = talent2EditBox.value;
+    let formattedText = DetermineFormatting(editorText);
+    talent2DisplayBox.innerHTML = formattedText;
+})
 
 let customKeywords = [];
 // Grabs the inputted custom keywords and applies formatting to them
@@ -51,9 +65,6 @@ function CheckCustomKeywords(text) {
 }
 
 function BoldFormatting(text) {
-    if (text.includes('SKILL DESCRIPTION')) {
-        text = text.replaceAll('SKILL DESCRIPTION', '<span class="format-span body-text-bold">SKILL DESCRIPTION</span>')
-    }
     if (text.includes('COMBO TRIGGER')) {
         text = text.replaceAll('COMBO TRIGGER', '<span class="format-span body-text-bold">COMBO TRIGGER</span>')
     }
