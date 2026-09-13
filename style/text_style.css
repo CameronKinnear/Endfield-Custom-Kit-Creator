@@ -1,0 +1,23 @@
+@font-face {
+    font-family: "Harmony OS Sans Regular";
+    src: url('fonts/harmonyossans/HarmonyOS_Sans_Regular.woff2');
+}
+
+@font-face {
+    font-family: "Harmony OS Sans Bold";
+    src: url('fonts/harmonyossans/Bold.woff2');
+}
+
+@font-face {
+    font-family: "Harmony OS Sans Thin";
+    src: url('fonts/harmonyossans/HarmonyOS_Sans_Light.woff2');
+}
+
+.body-text {
+    font-family: 'Harmony OS Sans Regular';
+}
+
+.sub-text {
+    font-family: 'Harmony OS Sans Regular';
+    font-size: 15px;
+}

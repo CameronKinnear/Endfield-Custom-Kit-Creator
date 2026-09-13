@@ -1,65 +1,14 @@
-@font-face {
-    font-family: "Harmony OS Sans Regular";
-    src: url('fonts/harmonyossans/HarmonyOS_Sans_Regular.woff2');
-}
-
-@font-face {
-    font-family: "Harmony OS Sans Bold";
-    src: url('fonts/harmonyossans/Bold.woff2');
-}
-
-.popup-display {
-    background-color: inherit;
+.popup-box {
+    background-color: #313131;
+    width: 400px;
     color: rgb(204, 204, 204);
-    margin-top: 3px;
-}
-
-.popup-button {
-    width: 40px;
-    height: 40px;
-}
-
-.selected-popup {
-    background-color: gray;
+    padding: 2%;
+    border-radius: 10px;
 }
 
 .popup-box-invisible {
     display: none;
     visibility: hidden;
-}
-
-.edit-box-invisible {
-    display: none;
-    visibility: hidden;
-}
-
-.popup-display {
-    width: auto;
-
-}
-
-.popup-box {
-    background-color: #313131;
-    width: 400px;
-    color: rgb(204, 204, 204);
-    font-family: 'Harmony OS Sans Regular';
-    padding: 0.6%;
-    border-radius: 10px;
-}
-
-.popup-label {
-    display: block;
-    width: auto;
-    margin-left: auto;
-    text-align: right;
-    color: #929292;
-}
-
-.popup-edit-image {
-    width: 20px;
-    height: auto; 
-    margin-bottom: 3px;   
-    filter: brightness(0%) invert(1) sepia(1) saturate(10000%) hue-rotate(8deg);
 }
 
 .popup-top-row {
@@ -70,9 +19,19 @@
     padding-right: auto;
 }
 
-.popup-bot-row {
-    display: flex;
-    flex-direction: column;
+.popup-edit-image {
+    width: 20px;
+    height: auto; 
+    margin-bottom: 3px;   
+    filter: brightness(0%) invert(1) sepia(1) saturate(10000%) hue-rotate(8deg);
+}
+
+.popup-label {
+    display: block;
+    width: auto;
+    margin-left: auto;
+    text-align: right;
+    color: #929292;
 }
 
 .popup-name {
@@ -94,6 +53,34 @@
     margin-top: 2px;
 }
 
+.popup-bot-row {
+    display: flex;
+    flex-direction: column;
+}
+
+.popup-edit {
+    width: 100%;
+    field-sizing: content;
+    resize: none;
+    background-color: #3f3f3f;
+    color: white;
+}
+
+.edit-box-invisible {
+    display: none;
+    visibility: hidden;
+}
+
+.popup-display {
+    background-color: inherit;
+    color: rgb(204, 204, 204);
+    margin-top: 3px;
+}
+
+.selected-button {
+    background-color: gray;
+}
+
 button.strip-style {
   background: transparent;
   border: none;
@@ -105,10 +92,3 @@ button.strip-style {
   outline: none;
 }
 
-.popup-edit {
-    width: 100%;
-    field-sizing: content;
-    resize: none;
-    background-color: #3f3f3f;
-    color: white;
-}

@@ -3,6 +3,8 @@
         <link rel="stylesheet" href="style/popup_style.css">
         <link rel="stylesheet" href="style/kit_style.css">
         <link rel="stylesheet" href="style/main_style.css">
+        <link rel="stylesheet" href="style/stat_style.css">
+        <link rel="stylesheet" href="style/text_style.css">
     </head>
     <body>
         <div id="buttons-col-1">
@@ -46,21 +48,25 @@
             </div>
 
             <div id="char-stats">
-                <div id="str-box">
-                    <label id="str-label">Strength</label>
-                    <input type="number" id="str-val">
+                <div id="str-box" class="stat-box">
+                    <img src="/images/stats/strength.png" class="inactive-stat stat-image">
+                    <label id="str-label" class="stat-label sub-text">Strength</label>
+                    <input type="number" id="str-val" class="stat-input">
                 </div>
-                <div id="agl-box">
-                    <label id="agl-label">Agility</label>
-                    <input type="number" id="agl-val">
+                <div id="agl-box" class="stat-box">
+                    <img src="/images/stats/agility.png" class="inactive-stat stat-image">
+                    <label id="agl-label" class="stat-label sub-text">Agility</label>
+                    <input type="number" id="agl-val" class="stat-input">
                 </div>
-                <div id="int-box">
-                    <label id="int-label">Intelligence</label>
-                    <input type="number" id="int-val">
+                <div id="int-box" class="stat-box">
+                    <img src="/images/stats/intellect.png" class="inactive-stat stat-image">
+                    <label id="int-label" class="stat-label sub-text">Intellect</label>
+                    <input type="number" id="int-val" class="stat-input">
                 </div>
-                <div id="wil-box">
-                    <label id="will-label">Will</label>
-                    <input type="number" id="wil-val">
+                <div id="wil-box" class="stat-box">
+                    <img src="/images/stats/will.png" class="inactive-stat stat-image">
+                    <label id="will-label" class="stat-label sub-text">Will</label>
+                    <input type="number" id="wil-val" class="stat-input">
                 </div>
             </div>
 
@@ -93,7 +99,7 @@
 
                 <div class="popup-top-row">
                     <button class="popup-edit-button strip-style" onclick="ToggleEditBox(this)" value=""><img src="images/edit-icon.png" class="popup-edit-image"></button>
-                    <label id="popup-label" class="popup-label"></label>
+                    <label id="popup-label" class="popup-label sub-text"></label>
                 </div>
 
                 <input id="popup-name" type="text" class="popup-name" value=""><br>
@@ -109,5 +115,6 @@
         </div>
         <script src="script/button_selector.js"></script>
         <script src="script/handle_popups.js"></script>
+        <script src="script/stat_selector.js"></script>
     </body>
 </html>

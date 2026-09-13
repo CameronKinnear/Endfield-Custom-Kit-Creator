@@ -23,7 +23,9 @@ async function SelectButton(buttonSelected) {
     }
     else {
         popupBox.classList.toggle("popup-box-invisible");
-
+        buttonSelected.classList.toggle('selected-button');
+        currentlySelectedButton = null;
+        return;
     }
 
     if (currentlySelectedButton != null) {
@@ -74,6 +76,7 @@ function GetCustomKeywords() {
     const keywordsInput = document.getElementById('custom-keywords').value;
     customKeywords = keywordsInput.replaceAll(/\s*,\s/g, ',').trim();
     customKeywords = customKeywords.split(',');
+    UpdateDisplay();
 }
 
 function CheckCustomKeywords(text) {
