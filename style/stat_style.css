@@ -9,6 +9,14 @@ input::-webkit-inner-spin-button {
     filter: brightness(80%) invert(1) hue-rotate(90deg);
 }
 
+.sub-stat {
+    background-color: gray;
+}
+
+.main-stat {
+    background-color: rgb(211, 211, 49);
+}
+
 .stat-box {
     display: flex;
     flex-direction: column;
@@ -23,25 +31,37 @@ input::-webkit-inner-spin-button {
     flex-direction: row;
 }
 
-.stat-label {
-    margin-bottom: 5px;
+.stat-image {
+    width: 100%;
+    height: 100%;
+    border-radius: 2px;
 }
 
-.stat-image {
-    height: 60%;
-    width: 60%;
-    justify-content: center;
-    align-items: center;
+.stat-label {
+    margin-bottom: 0px;
 }
 
 .stat-input {
     width: 80%;
     text-align: center;
     border: none;
+    padding-top: 2px;
 }
 
 .stat-input:hover {
     outline: 2px solid black;
     outline-offset: -1px;
     border-radius: 2px;
+}
+
+.stat-button {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border: none;
+    margin: 5px;
+}
+
+.stat-button:hover {
+    cursor: pointer;
 }

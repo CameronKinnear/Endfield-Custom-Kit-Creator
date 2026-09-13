@@ -49,24 +49,32 @@
 
             <div id="char-stats">
                 <div id="str-box" class="stat-box">
-                    <img src="/images/stats/strength.png" class="inactive-stat stat-image">
-                    <label id="str-label" class="stat-label sub-text">Strength</label>
-                    <input type="number" id="str-val" class="stat-input">
+                    <button id="str-stat-button" class="stat-button" onclick="PromoteStat(this)" value="1" data-type="str">
+                        <img src="/images/stats/strength.png" id="str-img" class="inactive-stat stat-image">
+                    </button>
+                    <label id="str-label" class="stat-label stat-label-text">Strength</label>
+                    <input type="number" id="str-val" class="stat-input stat-number">
                 </div>
                 <div id="agl-box" class="stat-box">
-                    <img src="/images/stats/agility.png" class="inactive-stat stat-image">
-                    <label id="agl-label" class="stat-label sub-text">Agility</label>
-                    <input type="number" id="agl-val" class="stat-input">
+                    <button id="agl-stat-button" class="stat-button" onclick="PromoteStat(this)" value="1" data-type="agl">
+                        <img src="/images/stats/agility.png" id="agl-img" class="inactive-stat stat-image">
+                    </button>
+                    <label id="agl-label" class="stat-label stat-label-text">Agility</label>
+                    <input type="number" id="agl-val" class="stat-input stat-number">
                 </div>
                 <div id="int-box" class="stat-box">
-                    <img src="/images/stats/intellect.png" class="inactive-stat stat-image">
-                    <label id="int-label" class="stat-label sub-text">Intellect</label>
-                    <input type="number" id="int-val" class="stat-input">
+                    <button id="int-stat-button" class="stat-button" onclick="PromoteStat(this)" value="1" data-type="int">
+                        <img src="/images/stats/intellect.png" id="int-img" class="inactive-stat stat-image">
+                    </button>
+                    <label id="int-label" class="stat-label stat-label-text">Intellect</label>
+                    <input type="number" id="int-val" class="stat-input stat-number">
                 </div>
                 <div id="wil-box" class="stat-box">
-                    <img src="/images/stats/will.png" class="inactive-stat stat-image">
-                    <label id="will-label" class="stat-label sub-text">Will</label>
-                    <input type="number" id="wil-val" class="stat-input">
+                    <button id="wil-stat-button" class="stat-button" onclick="PromoteStat(this)" value="1" data-type="wil">
+                        <img src="/images/stats/will.png" id="wil-img" class="inactive-stat stat-image">
+                    </button>
+                    <label id="will-label" class="stat-label stat-label-text">Will</label>
+                    <input type="number" id="wil-val" class="stat-input stat-number">
                 </div>
             </div>
 

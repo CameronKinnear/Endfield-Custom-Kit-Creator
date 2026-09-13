@@ -5,7 +5,7 @@
 
 @font-face {
     font-family: "Harmony OS Sans Bold";
-    src: url('fonts/harmonyossans/Bold.woff2');
+    src: url('fonts/harmonyossans/HarmonyOS_Sans_Bold.woff2');
 }
 
 @font-face {
@@ -19,5 +19,17 @@
 
 .sub-text {
     font-family: 'Harmony OS Sans Regular';
+    font-size: 15px;
+}
+
+.stat-label-text {
+    font-family: 'Harmony OS Sans Regular';
+    font-size: 13px;
+    letter-spacing: 0px;
+    color: #727272;
+}
+
+.stat-number {
+    font-family: "Harmony OS Sans Bold";
     font-size: 15px;
 }
