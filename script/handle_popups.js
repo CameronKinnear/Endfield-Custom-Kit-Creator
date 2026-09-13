@@ -1,58 +1,79 @@
-let batkDisplayBox = document.getElementById("batk-display");
-const batkEditBox = document.getElementById("batk-edit");
-batkEditBox.addEventListener('input', () => {
-    let editorText = batkEditBox.value;
-    let formattedText = DetermineFormatting(editorText);
-    batkDisplayBox.innerHTML = formattedText;
+let currentlySelectedButton = null;
+let popupLabel = document.getElementById('popup-label');
+let popupName = document.getElementById('popup-name');
+let popupEdit = document.getElementById('popup-edit');
+let popupDisplay = document.getElementById('popup-display');
+let popupBox = document.getElementById('popup-box');
+let localDetails = null;
+
+// Loads the char details json on startup
+window.addEventListener('DOMContentLoaded', async () => {
+    try {
+        const dater = await fetch('../data/char_details.json');
+        localDetails = await dater.json();
+    } catch (error) {
+    }
+});
+
+// When a button that creates a popup is selected
+async function SelectButton(buttonSelected) {
+
+    if (currentlySelectedButton != buttonSelected) {
+        popupBox.classList.remove("popup-box-invisible");
+    }
+    else {
+        popupBox.classList.toggle("popup-box-invisible");
+
+    }
+
+    if (currentlySelectedButton != null) {
+        SavePopupDetails(currentlySelectedButton.value);
+        currentlySelectedButton.classList.remove('selected-button')
+    }
+
+    buttonSelected.classList.add("selected-button");
+    currentlySelectedButton = buttonSelected;
+
+    PopulateBox(localDetails[buttonSelected.value]);
+    UpdateDisplay();
+}
+
+// Toggles the visibility of the edit box
+function ToggleEditBox() {
+    popupEdit.classList.toggle('edit-box-invisible')
+}
+
+// Populates the popup box with relevant data
+function PopulateBox(data) {
+    popupLabel.innerHTML = data.type;
+    popupName.value = data.name;
+    popupEdit.value = data.text;
+}
+
+// Saves relevant data to json file
+function SavePopupDetails(popupType) {
+    localDetails[popupType].name = popupName.value;
+    localDetails[popupType].text = popupEdit.value;
+}
+
+// Event listener for edit box inputs
+popupEdit.addEventListener('input', () => {
+    UpdateDisplay();
 })
 
-let bsklDisplayBox = document.getElementById("bskl-display");
-const bsklEditBox = document.getElementById("bskl-edit");
-bsklEditBox.addEventListener('input', () => {
-    let editorText = bsklEditBox.value;
+// Updates the display to refelct selected popup and formatting
+function UpdateDisplay() {
+    let editorText = popupEdit.value;
     let formattedText = DetermineFormatting(editorText);
-    bsklDisplayBox.innerHTML = formattedText;
-})
-
-let csklDisplayBox = document.getElementById("cskl-display");
-const csklEditBox = document.getElementById("cskl-edit");
-csklEditBox.addEventListener('input', () => {
-    let editorText = csklEditBox.value;
-    let formattedText = DetermineFormatting(editorText);
-    csklDisplayBox.innerHTML = formattedText;
-})
-
-let usklDisplayBox = document.getElementById("uskl-display");
-const usklEditBox = document.getElementById("uskl-edit");
-usklEditBox.addEventListener('input', () => {
-    let editorText = usklEditBox.value;
-    let formattedText = DetermineFormatting(editorText);
-    usklDisplayBox.innerHTML = formattedText;
-})
-
-let talent1DisplayBox = document.getElementById("talent-1-display");
-const talent1EditBox = document.getElementById("talent-1-edit");
-talent1EditBox.addEventListener('input', () => {
-    let editorText = talent1EditBox.value;
-    let formattedText = DetermineFormatting(editorText);
-    talent1DisplayBox.innerHTML = formattedText;
-})
-
-let talent2DisplayBox = document.getElementById("talent-2-display");
-const talent2EditBox = document.getElementById("talent-2-edit");
-talent2EditBox.addEventListener('input', () => {
-    let editorText = talent2EditBox.value;
-    let formattedText = DetermineFormatting(editorText);
-    talent2DisplayBox.innerHTML = formattedText;
-})
+    popupDisplay.innerHTML = formattedText;
+}
 
 let customKeywords = [];
 // Grabs the inputted custom keywords and applies formatting to them
 function GetCustomKeywords() {
     const keywordsInput = document.getElementById('custom-keywords').value;
-    customKeywords = keywordsInput.replaceAll(/\s*,\s*/g, ',').trim();
+    customKeywords = keywordsInput.replaceAll(/\s*,\s/g, ',').trim();
     customKeywords = customKeywords.split(',');
-    console.log("Current Keywords: " + customKeywords);
 }
 
 function CheckCustomKeywords(text) {

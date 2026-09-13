@@ -1,0 +1,42 @@
+{
+    "basic" : {
+        "type" : "Basic Attack",
+        "name" : "BATK",
+        "text" : "Does your mom",
+        "rank" : 9
+    },
+    "battle" : {
+        "type" : "Battle Skill",
+        "name" : "",
+        "text" : "",
+        "rank" : 9,
+        "spcost" : 100
+    },
+    "combo" : {
+        "type" : "Combo Skill",
+        "name" : "",
+        "text" : "",
+        "rank" : 9,
+        "cooldown" : 0
+    },
+    "ultimate" : {
+        "type" : "Ultimate",
+        "name" : "",
+        "text" : "",
+        "rank" : 9,
+        "cooldown" : 0,
+        "energy": 0
+    },
+    "talent 1" : {
+        "type" : "Talent 1",
+        "name" : "",
+        "text" : "",
+        "rank" : 0
+    },
+    "talent 2" : {
+        "type" : "Talent 2",
+        "name" : "",
+        "text" : "",
+        "rank" : 0
+    }
+}
