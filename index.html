@@ -1,8 +1,7 @@
 <html>
     <head>
-        <link rel="stylesheet" href="style/skill_style.css">
+        <link rel="stylesheet" href="style/popup_style.css">
         <link rel="stylesheet" href="style/kit_style.css">
-        <link rel="stylesheet" href="style/talent_style.css">
         <link rel="stylesheet" href="style/main_style.css">
     </head>
     <body>
@@ -68,32 +67,17 @@
             <label id="skills-box-label">Skills</label>
             <div id="skills-boxes">
                 <div id="skills-buttons">
-                    <button id="batk-button" class="skill-button" onclick="SelectPopup(this)" value="basic">BA</button>
-                    <button id="bskl-button" class="skill-button" onclick="SelectPopup(this)" value="battle">BS</button>
-                    <button id="cskl-button" class="skill-button" onclick="SelectPopup(this)" value="combo">CS</button>
-                    <button id="uskl-button" class="skill-button" onclick="SelectPopup(this)" value="ult">Ult</button>
+                    <button id="batk-button" class="skill-button" onclick="SelectButton(this)" value="basic">BA</button>
+                    <button id="bskl-button" class="skill-button" onclick="SelectButton(this)" value="battle">BS</button>
+                    <button id="cskl-button" class="skill-button" onclick="SelectButton(this)" value="combo">CS</button>
+                    <button id="uskl-button" class="skill-button" onclick="SelectButton(this)" value="ultimate">Ult</button>
                 </div>
-                
             </div>
 
             <div id="talents-boxes">
                 <div id="talent-buttons">
-                    <button id="talent-1-button" class="talent-button" onclick="SelectPopup(this)" value="talent 1">Talent 1</button>
-                    <button id="talent-2-button" class="talent-button" onclick="SelectPopup(this)" value="talent 2">Talent 2</button>
-                </div>
-            </div>
-
-
-            <div id="base-skills-box">
-                <div id="base-skill-1">
-                    <label id="base-skill-1-name">Base Skill 1</label>
-                    <input type="text" id="base-skill-1-name">
-                    <textarea id="base-skill-1-edit" class="base-skill-edit"></textarea>
-                </div>
-                <div id="base-skill-2">
-                    <label id="base-skill-2-name">Base Skill 2</label>
-                    <input type="text" id="base-skill-2-name">
-                    <textarea id="base-skill-2-edit" class="base-skill-edit"></textarea>
+                    <button id="talent-1-button" class="talent-button" onclick="SelectButton(this)" value="talent 1">Talent 1</button>
+                    <button id="talent-2-button" class="talent-button" onclick="SelectButton(this)" value="talent 2">Talent 2</button>
                 </div>
             </div>
 
@@ -104,91 +88,26 @@
             </div>
         </div>
 
-        <div id="display-boxes-column">
-            <div id="skill-popups">
-                <div id="batk-box" class="skill-box popup-box-invisible">
-                    <div id="batk-top-row" class="skill-top-row">
-                        <button id="batk-edit-button" class="skill-edit-button strip-style" onclick="ToggleEditBox(this)" value="basic"><img src="images/edit-icon.png" class="skill-edit-image"></button>
-                        <label id="batk-label" class="skill-label">Basic Attack</label>
-                    </div>
-                    <input type="text" id="batk-name" class="skill-name" value="Basic Attack"><br>
-                    <label id="batk-rank-label" class="skill-rank-label">Rank 12</label>
-                    <div id="batk-seperator-line" class="skill-seperator-line"></div>
-                    <div id="batk-bot-row" class="skill-bot-row">
-                        <textarea id="batk-edit" class="skill-edit edit-box-invisible"></textarea>
-                        <div id="batk-display" class="skill-display body-text"></div>
-                    </div>
+        <div id="display-box-column">
+            <div class="popup-box">
+
+                <div class="popup-top-row">
+                    <button class="popup-edit-button strip-style" onclick="ToggleEditBox(this)" value=""><img src="images/edit-icon.png" class="popup-edit-image"></button>
+                    <label id="popup-label" class="popup-label"></label>
                 </div>
-                <div id="bskl-box" class="skill-box popup-box-invisible">
-                    <div id="bskl-top-row" class="skill-top-row">
-                        <button id="bskl-edit-button" class="skill-edit-button strip-style" onclick="ToggleEditBox(this)" value="battle"><img src="images/edit-icon.png" class="skill-edit-image"></button>
-                        <label id="bskl-label" class="skill-label">Battle Skill</label>
-                    </div>
-                    <input type="text" id="bskl-name" class="skill-name" value="Battle Skill"><br>
-                    <label id="bskl-rank-label" class="skill-rank-label">Rank 12</label>
-                    <div id="bskl-seperator-line" class="skill-seperator-line"></div>
-                    <div id="bskl-bot-row" class="skill-bot-row">
-                        <textarea id="bskl-edit" class="skill-edit edit-box-invisible"></textarea>
-                        <div id="bskl-display" class="skill-display body-text"></div>
-                    </div>
+
+                <input id="popup-name" type="text" class="popup-name" value="Placeholder"><br>
+                <label class="popup-rank-label"></label>
+                <div class="popup-seperator-line"></div>
+
+                <div class="popup-bot-row">
+                    <textarea id="popup-edit" class="popup-edit edit-box-invisible"></textarea>
+                    <div id="popup-display" class="popup-display body-text"></div>
                 </div>
-                <div id="cskl-box" class="skill-box popup-box-invisible">
-                    <div id="cskl-top-row" class="skill-top-row">
-                        <button id="cskl-edit-button" class="skill-edit-button strip-style" onclick="ToggleEditBox(this)" value="combo"><img src="images/edit-icon.png" class="skill-edit-image"></button>
-                        <label id="cskl-label" class="skill-label">Combo Skill</label>
-                    </div>
-                    <input type="text" id="cskl-name" class="skill-name" value="Combo Skill"><br>
-                    <label id="cskl-rank-label" class="skill-rank-label">Rank 12</label>
-                    <div id="cskl-seperator-line" class="skill-seperator-line"></div>
-                    <div id="cskl-bot-row" class="skill-bot-row">
-                        <textarea id="cskl-edit" class="skill-edit edit-box-invisible"></textarea>
-                        <div id="cskl-display" class="skill-display body-text"></div>
-                    </div>
-                </div>
-                <div id="uskl-box" class="skill-box popup-box-invisible">
-                    <div id="uskl-top-row" class="skill-top-row">
-                        <button id="uskl-edit-button" class="skill-edit-button strip-style" onclick="ToggleEditBox(this)" value="ultimate"><img src="images/edit-icon.png" class="skill-edit-image"></button>
-                        <label id="uskl-label" class="skill-label">Ultimate</label>
-                    </div>
-                    <input type="text" id="uskl-name" class="skill-name" value="Ultimate"><br>
-                    <label id="uskl-rank-label" class="skill-rank-label">Rank 12</label>
-                    <div id="uskl-seperator-line" class="skill-seperator-line"></div>
-                    <div id="uskl-bot-row" class="skill-bot-row">
-                        <textarea id="uskl-edit" class="skill-edit edit-box-invisible"></textarea>
-                        <div id="uskl-display" class="skill-display body-text"></div>
-                    </div>
-                </div>
-            </div>
-            <div id="talent-popups">
-                <div id="talent-1-box" class="talent-box popup-box-invisible">
-                    <div id="talent-1-top-row" class="skill-top-row">
-                        <button id="talent-1-edit-button" class="skill-edit-button strip-style" onclick="ToggleEditBox(this)" value="talent 1"><img src="images/edit-icon.png" class="skill-edit-image"></button>
-                        <label id="talent-1-label" class="skill-label">Talent 1</label>
-                    </div>
-                    <input type="text" id="talent-1-name" class="skill-name" value="Talent 1"><br>
-                    <label id="talent-1-rank-label" class="skill-rank-label">Rank 12</label>
-                    <div id="talent-1-seperator-line" class="skill-seperator-line"></div>
-                    <div id="talent-1-bot-row" class="skill-bot-row">
-                        <textarea id="talent-1-edit" class="skill-edit edit-box-invisible"></textarea>
-                        <div id="talent-1-display" class="skill-display body-text"></div>
-                    </div>
-                </div>
-                <div id="talent-2-box" class="talent-box popup-box-invisible">
-                    <div id="talent-2-top-row" class="skill-top-row">
-                        <button id="talent-2-edit-button" class="skill-edit-button strip-style" onclick="ToggleEditBox(this)" value="talent 2"><img src="images/edit-icon.png" class="skill-edit-image"></button>
-                        <label id="talent-2-label" class="skill-label">Talent 2</label>
-                    </div>
-                    <input type="text" id="talent-2-name" class="skill-name" value="Talent 2"><br>
-                    <label id="talent-2-rank-label" class="skill-rank-label">Rank 12</label>
-                    <div id="talent-2-seperator-line" class="skill-seperator-line"></div>
-                    <div id="talent-2-bot-row" class="skill-bot-row">
-                        <textarea id="talent-2-edit" class="skill-edit edit-box-invisible"></textarea>
-                        <div id="talent-2-display" class="skill-display body-text"></div>
-                    </div>
-                </div>
+
             </div>
         </div>
         <script src="script/button_selector.js"></script>
-        <script src="script/live_formatting.js"></script>
+        <script src="script/handle_popups.js"></script>
     </body>
 </html>

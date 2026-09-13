@@ -8,18 +8,18 @@
     src: url('fonts/harmonyossans/Bold.woff2');
 }
 
-.skill-display {
+.popup-display {
     background-color: inherit;
     color: rgb(204, 204, 204);
     margin-top: 3px;
 }
 
-.skill-button {
+.popup-button {
     width: 40px;
     height: 40px;
 }
 
-.selected-skill {
+.selected-popup {
     background-color: gray;
 }
 
@@ -33,22 +33,12 @@
     visibility: hidden;
 }
 
-#skills-boxes {
-    display: flex;
-    align-items: flex-start;
-    height: auto;
-}
-
-#skills-buttons {
-    display: flex;
-}
-
-.skill-display {
+.popup-display {
     width: auto;
 
 }
 
-.skill-box {
+.popup-box {
     background-color: #313131;
     width: 400px;
     color: rgb(204, 204, 204);
@@ -57,12 +47,7 @@
     border-radius: 10px;
 }
 
-#skill-popups {
-    position: relative;
-    flex: 1;
-}
-
-.skill-label {
+.popup-label {
     display: block;
     width: auto;
     margin-left: auto;
@@ -70,27 +55,27 @@
     color: #929292;
 }
 
-.skill-edit-image {
+.popup-edit-image {
     width: 20px;
     height: auto; 
     margin-bottom: 3px;   
     filter: brightness(0%) invert(1) sepia(1) saturate(10000%) hue-rotate(8deg);
 }
 
-.skill-top-row {
+.popup-top-row {
     display: flex;
 }
 
-.skill-edit-button {
+.popup-edit-button {
     padding-right: auto;
 }
 
-.skill-bot-row {
+.popup-bot-row {
     display: flex;
     flex-direction: column;
 }
 
-.skill-name {
+.popup-name {
     background-color: inherit;
     border: none;
     color: rgb(204, 204, 204);
@@ -98,11 +83,11 @@
     padding: 0;
 }
 
-.skill-rank-label {
+.popup-rank-label {
     color: #919090;
 }
 
-.skill-seperator-line {
+.popup-seperator-line {
     width: 100%;
     height: 1px;
     background-color: #919090;
@@ -120,7 +105,7 @@ button.strip-style {
   outline: none;
 }
 
-.skill-edit {
+.popup-edit {
     width: 100%;
     field-sizing: content;
     resize: none;

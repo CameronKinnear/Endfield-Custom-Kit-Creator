@@ -1,56 +1,63 @@
-let batkDisplayBox = document.getElementById("batk-display");
-const batkEditBox = document.getElementById("batk-edit");
-batkEditBox.addEventListener('input', () => {
-    let editorText = batkEditBox.value;
-    let formattedText = DetermineFormatting(editorText);
-    batkDisplayBox.innerHTML = formattedText;
+let currentlySelectedButton = null;
+let popupLabel = document.getElementById('popup-label');
+let popupName = document.getElementById('popup-name');
+let popupEdit = document.getElementById('popup-edit');
+let popupDisplay = document.getElementById('popup-display');
+
+// When a button that creates a popup is selected
+async function SelectButton(buttonSelected) {
+    const data = await GetPopupDetails(buttonSelected.value);
+    console.log(data);
+    PopulateBox(data);
+}
+
+// Toggles the visibility of the edit box
+function ToggleEditBox() {
+    popupEdit.classList.toggle('edit-box-invisible')
+}
+
+// Gets the details for the popup box from json file
+async function GetPopupDetails(popupName) {
+    try {
+        console.log(popupName);
+        const jsonResponse = await fetch('../data/char_details.json');
+        const data = await jsonResponse.json();
+        return data[popupName];
+    }
+    catch {
+        console.log("Error loading file");
+    }
+}
+
+// Populates the popup box with relevant data
+function PopulateBox(data) {
+    console.log(data.type);
+    popupLabel.innerHTML = data.type;
+    popupName.value = data.name;
+    popupEdit.value = data.text;
+    
+}
+
+// Saves relevant data to json file
+function SavePopupDetails(popup) {
+
+}
+
+popupEdit.addEventListener('input', () => {
+    UpdateDisplay();
 })
 
-let bsklDisplayBox = document.getElementById("bskl-display");
-const bsklEditBox = document.getElementById("bskl-edit");
-bsklEditBox.addEventListener('input', () => {
-    let editorText = bsklEditBox.value;
+function UpdateDisplay() {
+    let editorText = popupEdit.value;
     let formattedText = DetermineFormatting(editorText);
-    bsklDisplayBox.innerHTML = formattedText;
-})
-
-let csklDisplayBox = document.getElementById("cskl-display");
-const csklEditBox = document.getElementById("cskl-edit");
-csklEditBox.addEventListener('input', () => {
-    let editorText = csklEditBox.value;
-    let formattedText = DetermineFormatting(editorText);
-    csklDisplayBox.innerHTML = formattedText;
-})
-
-let usklDisplayBox = document.getElementById("uskl-display");
-const usklEditBox = document.getElementById("uskl-edit");
-usklEditBox.addEventListener('input', () => {
-    let editorText = usklEditBox.value;
-    let formattedText = DetermineFormatting(editorText);
-    usklDisplayBox.innerHTML = formattedText;
-})
-
-let talent1DisplayBox = document.getElementById("talent-1-display");
-const talent1EditBox = document.getElementById("talent-1-edit");
-talent1EditBox.addEventListener('input', () => {
-    let editorText = talent1EditBox.value;
-    let formattedText = DetermineFormatting(editorText);
-    talent1DisplayBox.innerHTML = formattedText;
-})
-
-let talent2DisplayBox = document.getElementById("talent-2-display");
-const talent2EditBox = document.getElementById("talent-2-edit");
-talent2EditBox.addEventListener('input', () => {
-    let editorText = talent2EditBox.value;
-    let formattedText = DetermineFormatting(editorText);
-    talent2DisplayBox.innerHTML = formattedText;
-})
+    popupDisplay.innerHTML = formattedText;
+}
 
 let customKeywords = [];
 // Grabs the inputted custom keywords and applies formatting to them
 function GetCustomKeywords() {
     const keywordsInput = document.getElementById('custom-keywords').value;
-    customKeywords = keywordsInput.replaceAll(/\s*,\s*/g, ',').trim();
+    customKeywords = keywordsInput.replaceAll(/\s*,\s/g, ',').trim();
     customKeywords = customKeywords.split(',');
     console.log("Current Keywords: " + customKeywords);
 }
