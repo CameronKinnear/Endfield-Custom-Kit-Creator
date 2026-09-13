@@ -3,6 +3,7 @@ let popupLabel = document.getElementById('popup-label');
 let popupName = document.getElementById('popup-name');
 let popupEdit = document.getElementById('popup-edit');
 let popupDisplay = document.getElementById('popup-display');
+let popupBox = document.getElementById('popup-box');
 let localDetails = null;
 
 // Loads the char details json on startup
@@ -17,8 +18,15 @@ window.addEventListener('DOMContentLoaded', async () => {
 // When a button that creates a popup is selected
 async function SelectButton(buttonSelected) {
 
+    if (currentlySelectedButton != buttonSelected) {
+        popupBox.classList.remove("popup-box-invisible");
+    }
+    else {
+        popupBox.classList.add("popup-box-invisible");
+
+    }
+
     if (currentlySelectedButton != null) {
-        console.log("raning");
         SavePopupDetails(currentlySelectedButton.value);
         currentlySelectedButton.classList.remove('selected-button')
     }
@@ -26,9 +34,7 @@ async function SelectButton(buttonSelected) {
     buttonSelected.classList.add("selected-button");
     currentlySelectedButton = buttonSelected;
 
-    //const data = await GetPopupDetails(buttonSelected.value);
     PopulateBox(localDetails[buttonSelected.value]);
-    console.log(localDetails);
     UpdateDisplay();
 }
 
@@ -37,24 +43,8 @@ function ToggleEditBox() {
     popupEdit.classList.toggle('edit-box-invisible')
 }
 
-// Gets the details for the popup box from json file
-async function GetPopupDetails(popupType) {
-    try {
-        const jsonResponse = await fetch('../data/char_details.json');
-        const data = await jsonResponse.json();
-        if (localDetails == null) {
-            localDetails = data;
-        }
-        return data[popupType];
-    }
-    catch {
-        console.log("Error loading file");
-    }
-}
-
 // Populates the popup box with relevant data
 function PopulateBox(data) {
-    console.log(data.type);
     popupLabel.innerHTML = data.type;
     popupName.value = data.name;
     popupEdit.value = data.text;
@@ -62,15 +52,16 @@ function PopulateBox(data) {
 
 // Saves relevant data to json file
 function SavePopupDetails(popupType) {
-    console.log("Saving for: " + popupType);
     localDetails[popupType].name = popupName.value;
     localDetails[popupType].text = popupEdit.value;
 }
 
+// Event listener for edit box inputs
 popupEdit.addEventListener('input', () => {
     UpdateDisplay();
 })
 
+// Updates the display to refelct selected popup and formatting
 function UpdateDisplay() {
     let editorText = popupEdit.value;
     let formattedText = DetermineFormatting(editorText);
@@ -83,7 +74,6 @@ function GetCustomKeywords() {
     const keywordsInput = document.getElementById('custom-keywords').value;
     customKeywords = keywordsInput.replaceAll(/\s*,\s/g, ',').trim();
     customKeywords = customKeywords.split(',');
-    console.log("Current Keywords: " + customKeywords);
 }
 
 function CheckCustomKeywords(text) {
