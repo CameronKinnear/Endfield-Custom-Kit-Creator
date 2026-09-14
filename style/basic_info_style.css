@@ -16,3 +16,48 @@
 .rarity-inactive {
     opacity: 0.4;
 }
+
+.class-invisible {
+    display: none;
+    visibility: hidden;
+}
+
+.weapon-invisible {
+    display: none;
+    visibility: hidden;
+}
+
+.class-button {
+    border: none;
+    background-color: transparent;
+    width: 60px;
+    height: 60px;
+}
+
+.image-class {
+    width: inherit;
+    height: inherit;
+    display: block;
+    position: relative;
+    outline-offset: -8px;
+    z-index: 2;
+}
+
+.class-outline {
+    width: inherit;
+    height: inherit;
+    position: absolute;
+    z-index: 1;
+    outline: 6px solid rgba(128, 128, 128, 0.7);
+    outline-offset: -8px;
+}
+
+.image-weapon {
+    width: 40px;
+    height: 40px;
+}
+
+.selected-rarity {
+    background-color: gray;
+    color: white;
+}
