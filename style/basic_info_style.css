@@ -3,6 +3,10 @@
     height: auto;
 }
 
+.rarity-button:hover {
+    cursor: pointer;
+}
+
 .rarity-button {
     padding: 0;
     border: none;

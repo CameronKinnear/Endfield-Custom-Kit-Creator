@@ -1,8 +1,8 @@
 {
-    "class" : "",
-    "weapon" : "",
-    "rarity" : 6,
-    "charname" : "",
+    "class" : "guard",
+    "weapon" : "sword",
+    "rarity" : 5,
+    "charname" : "Endministrator",
     
     "str" : {
         "val" : 123,

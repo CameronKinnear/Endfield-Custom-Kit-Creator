@@ -13,22 +13,44 @@
                 <div id="class-box">
                     <label id="class-label">Class</label>
                     <div id="class-selector">
-                        <button id="button-guard" class="class-button" onclick="SelectClass(this)"><img class="image-class" src="images/classes/guard.png"></button>
-                        <button id="button-caster" class="class-button" onclick="SelectClass(this)"><img class="image-class" src="images/classes/caster.png"></button>
-                        <button id="button-striker" class="class-button" onclick="SelectClass(this)"><img class="image-class" src="images/classes/striker.png"></button>
-                        <button id="button-vanguard" class="class-button" onclick="SelectClass(this)"><img class="image-class" src="images/classes/vanguard.png"></button>
-                        <button id="button-defender" class="class-button" onclick="SelectClass(this)"><img class="image-class" src="images/classes/defender.png"></button>
-                        <button id="button-supporter" class="class-button" onclick="SelectClass(this)"><img class="image-class" src="images/classes/supporter.png"></button>                    
+                        <button id="button-guard" class="class-button" onclick="SelectClass(this.value)" value="guard">
+                            <img class="image-class" src="images/classes/guard.png">
+                        </button>
+                        <button id="button-caster" class="class-button" onclick="SelectClass(this.value)" value="caster">
+                            <img class="image-class" src="images/classes/caster.png">
+                        </button>
+                        <button id="button-striker" class="class-button" onclick="SelectClass(this.value)" value="striker">
+                            <img class="image-class" src="images/classes/striker.png">
+                        </button>
+                        <button id="button-vanguard" class="class-button" onclick="SelectClass(this.value)" value="vanguard">
+                            <img class="image-class" src="images/classes/vanguard.png">
+                        </button>
+                        <button id="button-defender" class="class-button" onclick="SelectClass(this.value)" value="defender">
+                            <img class="image-class" src="images/classes/defender.png">
+                        </button>
+                        <button id="button-supporter" class="class-button" onclick="SelectClass(this.value)" value="supporter">
+                            <img class="image-class" src="images/classes/supporter.png">
+                        </button>                    
                     </div>
                 </div>
                 <div id="weapon-type-box">
                     <label>Weapon Type</label>
                     <div id="weapon-type-selector">
-                        <button id="button-arts-unit" class="weapon-button" onclick="SelectWeapon(this)"><img class="image-weapon" src="images/weapons/arts-unit.png"></button>
-                        <button id="button-great-sword" class="weapon-button" onclick="SelectWeapon(this)"><img class="image-weapon" src="images/weapons/great-sword.png"></button>
-                        <button id="button-hand-cannon" class="weapon-button" onclick="SelectWeapon(this)"><img class="image-weapon" src="images/weapons/hand-cannon.png"></button>
-                        <button id="button-polearm" class="weapon-button" onclick="SelectWeapon(this)"><img class="image-weapon" src="images/weapons/polearm.png"></button>
-                        <button id="button-sword" class="weapon-button" onclick="SelectWeapon(this)"><img class="image-weapon" src="images/weapons/sword.png"></button>
+                        <button id="button-arts-unit" class="weapon-button" onclick="SelectWeapon(this.value)" value="artsunit">
+                            <img class="image-weapon" src="images/weapons/arts-unit.png">
+                        </button>
+                        <button id="button-great-sword" class="weapon-button" onclick="SelectWeapon(this.value)" value="greatsword">
+                            <img class="image-weapon" src="images/weapons/great-sword.png">
+                        </button>
+                        <button id="button-hand-cannon" class="weapon-button" onclick="SelectWeapon(this.value)" value="handcannon">
+                            <img class="image-weapon" src="images/weapons/hand-cannon.png">
+                        </button>
+                        <button id="button-polearm" class="weapon-button" onclick="SelectWeapon(this.value)" value="polearm">
+                            <img class="image-weapon" src="images/weapons/polearm.png">
+                        </button>
+                        <button id="button-sword" class="weapon-button" onclick="SelectWeapon(this.value)" value="sword">
+                            <img class="image-weapon" src="images/weapons/sword.png">
+                        </button>
                     </div>
                 </div>
                 <div id="name-box">
@@ -43,13 +65,13 @@
                     <img class="rarity-icon" src="images/op-rarity.png">
                     <img class="rarity-icon" src="images/op-rarity.png">
                     <img class="rarity-icon" src="images/op-rarity.png">
-                    <button id="rarity-4-star-button" class="rarity-button" onclick="SelectRarity(this)" value="4">
+                    <button id="rarity-4-star-button" class="rarity-button" onclick="SelectRarity(4)">
                         <img class="rarity-icon" src="images/op-rarity.png">
                     </button>
-                    <button id="rarity-5-star-button" class="rarity-button rarity-inactive" onclick="SelectRarity(this)" value="5">
+                    <button id="rarity-5-star-button" class="rarity-button" onclick="SelectRarity(5)">
                         <img id="rarity-5-img" class="rarity-icon" src="images/op-rarity.png">
                     </button>
-                    <button id="rarity-6-star-button" class="rarity-button rarity-inactive" onclick="SelectRarity(this)" value="6">
+                    <button id="rarity-6-star-button" class="rarity-button" onclick="SelectRarity(6)">
                         <img id="rarity-6-img" class="rarity-icon" src="images/op-rarity.png">
                     </button>
                 </div>
@@ -57,29 +79,29 @@
 
             <div id="char-stats">
                 <div id="str-box" class="stat-box">
-                    <button id="str-stat-button" class="stat-button" onclick="PromoteStat(this)" value="1" data-type="str">
-                        <img src="/images/stats/strength.png" id="str-img" class="inactive-stat stat-image">
+                    <button id="str-stat-button" class="stat-button inactive-stat" onclick="ChangeStatLevel(this, (value == 3 ? 1 : parseInt(this.value) + 1))" value=1 data-type="str">
+                        <img src="/images/stats/strength.png" id="str-img" class="stat-image">
                     </button>
                     <label id="str-label" class="stat-label stat-label-text">Strength</label>
                     <input type="number" id="str-val" class="stat-input stat-number">
                 </div>
                 <div id="agl-box" class="stat-box">
-                    <button id="agl-stat-button" class="stat-button" onclick="PromoteStat(this)" value="1" data-type="agl">
-                        <img src="/images/stats/agility.png" id="agl-img" class="inactive-stat stat-image">
+                    <button id="agl-stat-button" class="stat-button inactive-stat" onclick="ChangeStatLevel(this, (value == 3 ? 1 : parseInt(this.value) + 1))" value=1 data-type="agl">
+                        <img src="/images/stats/agility.png" id="agl-img" class="stat-image">
                     </button>
                     <label id="agl-label" class="stat-label stat-label-text">Agility</label>
                     <input type="number" id="agl-val" class="stat-input stat-number">
                 </div>
                 <div id="int-box" class="stat-box">
-                    <button id="int-stat-button" class="stat-button" onclick="PromoteStat(this)" value="1" data-type="int">
-                        <img src="/images/stats/intellect.png" id="int-img" class="inactive-stat stat-image">
+                    <button id="int-stat-button" class="stat-button inactive-stat" onclick="ChangeStatLevel(this, (value == 3 ? 1 : parseInt(this.value) + 1))" value=1 data-type="int">
+                        <img src="/images/stats/intellect.png" id="int-img" class="stat-image">
                     </button>
                     <label id="int-label" class="stat-label stat-label-text">Intellect</label>
                     <input type="number" id="int-val" class="stat-input stat-number">
                 </div>
                 <div id="wil-box" class="stat-box">
-                    <button id="wil-stat-button" class="stat-button" onclick="PromoteStat(this)" value="1" data-type="wil">
-                        <img src="/images/stats/will.png" id="wil-img" class="inactive-stat stat-image">
+                    <button id="wil-stat-button" class="stat-button inactive-stat" onclick="ChangeStatLevel(this, (value == 3 ? 1 : parseInt(this.value) + 1))" value=1 data-type="wil">
+                        <img src="/images/stats/will.png" id="wil-img" class="stat-image">
                     </button>
                     <label id="will-label" class="stat-label stat-label-text">Will</label>
                     <input type="number" id="wil-val" class="stat-input stat-number">
@@ -106,7 +128,7 @@
             <div id="custom-keywords-box">
                 <label id="custom=keyword-label">Custom Keywords</label>
                 <input type="text" id="custom-keywords">
-                <button id="custom-keywords-update-button" onclick="GetCustomKeywords()">Apply</button>
+                <button id="custom-keywords-update-button" onclick="SaveCustomKeywordDetails()">Apply</button>
             </div>
         </div>
 
@@ -129,7 +151,6 @@
 
             </div>
         </div>
-        <script src="script/button_selector.js"></script>
         <script src="script/handle_data.js"></script>
     </body>
 </html>

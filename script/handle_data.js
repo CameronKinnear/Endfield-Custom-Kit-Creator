@@ -1,5 +1,8 @@
 let currentlySelectedButton = null;
 let currentlySelectedRarity = null;
+let currentlySelectedWeapon = null;
+let currentlySelectedClass = null;
+let currentlyselectedPopup = null;
 
 let popupLabel = document.getElementById('popup-label');
 let popupName = document.getElementById('popup-name');
@@ -15,57 +18,112 @@ let wilInp = document.getElementById('wil-val');
 let rar5 = document.getElementById('rarity-5-star-button');
 let rar6 = document.getElementById('rarity-6-star-button');
 
-
 let localDetails = null;
 let customKeywords = [];
 
-// Selects a rarity 
-function SelectRarity(selectedRarity) {
-    if (selectedRarity.value == 4) {
-        rar5.classList.add('rarity-inactive');
-        rar6.classList.add('rarity-inactive');
-    }
-    else if (selectedRarity.value == 5) {
-        rar5.classList.remove('rarity-inactive');
-        rar6.classList.add('rarity-inactive');
-    }
-    else {
-        rar5.classList.remove('rarity-inactive'); 
-        rar6.classList.remove('rarity-inactive');
-    }
+function LoadBasicDetails() {
+    document.getElementById('');
 }
 
-// Selects Rerity on startup
-function LoadRarityFromJSON() {
-    if (localDetails.rarity == 4) {
-        rar5.classList.add('rarity-inactive');
-        rar6.classList.add('rarity-inactive');
-    }
-    else if (localDetails.rarity == 5) {
-        rar5.classList.remove('rarity-inactive');
-        rar6.classList.add('rarity-inactive');
-    }
-    else {
-        rar5.classList.remove('rarity-inactive'); 
-        rar6.classList.remove('rarity-inactive');
-    }
-}
 
-// Loads the default char template on start up
+
+
+
+
+
+
+
+
+
+
+// Function is run when page is first loaded
+// Mainly used to fetch JSON and apply it to the web page
+// !! This function is still being worked on
+//
 window.addEventListener('DOMContentLoaded', async () => {
     try {
         const dater = await fetch('../data/char_template.json');
         localDetails = await dater.json();
         customKeywords = localDetails["custom keywords"];
-        LoadCustomKeywordsFromJSON(customKeywords);
-        LoadStatsFromJSON();
-        LoadRarityFromJSON();
+        LoadCustomKeywords(customKeywords);
+        LoadStatDetails();
+        SelectRarity(localDetails.rarity);
+        SelectClass(localDetails.class);
+        SelectWeapon(localDetails.weapon);
+        LoadCharName(localDetails.charname);
     } catch (error) {
     }
 });
-// When a button that creates a popup is selected
+
+
+//
+// Save Data Functions \/
+//
+
+// Saves all details to local details
+//
+//
+function SaveAllDetails() {
+    SaveBasicInfoDetails();
+    SaveStatDetails();
+    SavePopupDetails('basic');
+    SavePopupDetails('battle');
+    SavePopupDetails('combo');
+    SavePopupDetails('ultimate');
+    SavePopupDetails('talent 1');
+    SavePopupDetails('talent 2');
+}
+
+// Saves the details of the passed popup object into local details
+// type (popup box value, string)
+//
+function SavePopupDetails(type) {
+    localDetails[type].name = popupName.value;
+    localDetails[type].text = popupEdit.value;
+}
+
+// Saves basic char info to local details
+//
+//
+function SaveBasicInfoDetails() {
+    localDetails.class = currentlySelectedClass.value;
+    localDetails.weapon = currentlySelectedClass.value;
+    localDetails.charname = document.getElementById('name-input').value;
+    localDetails.rarity = currentlySelectedButton.value;
+}
+
+// Save details to local details
+//
+//
+function SaveStatDetails() {
+    localDetails.str.val = strInp.value;
+    localDetails.str.level = document.getElementById('str-stat-button').value;
+    localDetails.agl.val = aglInp.value;
+    localDetails.agl.level = document.getElementById('agl-stat-button').value;
+    localDetails.int.val = intInp.value;
+    localDetails.int.level = document.getElementById('str-int-button').value;
+    localDetails.wil.val = wilInp.value;
+    localDetails.wil.level = document.getElementById('wil-stat-button').value;
+}
+
+function SaveCustomKeywordDetails() {
+    let keywordsInput = document.getElementById('custom-keywords').value;
+    let customKeywords = keywordsInput.replaceAll(/\s*,\s/g, ',').trim();
+    customKeywords = customKeywords.split(',');
+    localDetails['custom keywords'] = customKeywords;
+    UpdateDisplay();
+}
+
+//
+// Select Buttons Functions \/
+//
+
+// Applies formatting and runs functionaility of buttons when pressed
+// Works for skills and talents / any buttons that display a popup box 
+//
 async function SelectButton(buttonSelected) {
 
+    // Checks if selected and current buttons are the same
     if (currentlySelectedButton != buttonSelected) {
         popupBox.classList.remove("popup-box-invisible");
     }
@@ -76,121 +134,171 @@ async function SelectButton(buttonSelected) {
         return;
     }
 
+    // If this if the first button selected
     if (currentlySelectedButton != null) {
-        SavePopupDetailsToLocal(currentlySelectedButton.value);
+        SavePopupDetails(currentlySelectedButton.value);
         currentlySelectedButton.classList.remove('selected-button')
     }
 
     buttonSelected.classList.add("selected-button");
     currentlySelectedButton = buttonSelected;
 
-    PopulateBox(localDetails[buttonSelected.value]);
+    ApplyDataToPopupBox(localDetails[buttonSelected.value]);
     UpdateDisplay();
 }
 
+// Selects weapon button
+// weaponType (string)
+//
+function SelectWeapon(weaponType) {
+    let selectedWeapon = null;
+    if (weaponType == 'artsunit') {
+        selectedWeapon = document.getElementById('button-arts-unit');
+    }
+    else if (weaponType == 'greatsword') {
+        selectedWeapon = document.getElementById('button-great-sword');
+    }
+    else if (weaponType == 'handcannon') {
+        selectedWeapon = document.getElementById('button-hand-cannon');
+    }
+    else if (weaponType == 'polearm') {
+        selectedWeapon = document.getElementById('button-polearm');
+    }
+    else if (weaponType == 'sword') {
+        selectedWeapon = document.getElementById('button-sword');
+    }
+    
+    selectedWeapon.classList.add('selected-weapon');
+
+    localDetails.weapon = weaponType;
+}
+
+// Selects class button and saves to local details
+// classType (string)
+//
+function SelectClass(classType) {
+    let selectedClass = null;
+    if (classType == 'guard') {
+        selectedClass = document.getElementById('button-guard');
+    }
+    else if (classType == 'caster') {
+        selectedClass = document.getElementById('button-caster');
+    }
+    else if (classType == 'striker') {
+        selectedClass = document.getElementById('button-striker');
+    }
+    else if (classType == 'vanguard') {
+        selectedClass = document.getElementById('button-vanguard');
+    }
+    else if (classType == 'defender') {
+        selectedClass = document.getElementById('button-defender');
+    }
+    else if (classType == 'supporter') {
+        selectedClass = document.getElementById('button-supporter');
+    }
+
+    selectedClass.classList.add('selected-class');
+
+    localDetails.class = classType;
+}
+
+function LoadCharName(charName) {
+    document.getElementById('name-input').value = charName;
+}
+
+// Updates HTML to display the rarity passed into this function
+// rarityValue (int)
+// 
+function SelectRarity(rarityValue) {
+    if (rarityValue == 4) {
+        rar5.classList.add('rarity-inactive');
+        rar6.classList.add('rarity-inactive');
+    }
+    else if (rarityValue == 5) {
+        rar5.classList.remove('rarity-inactive');
+        rar6.classList.add('rarity-inactive');
+    }
+    else {
+        rar5.classList.remove('rarity-inactive'); 
+        rar6.classList.remove('rarity-inactive');
+    }
+}
+
+
 // Toggles the visibility of the edit box
+// Uses a class to change formatting
+//
 function ToggleEditBox() {
     popupEdit.classList.toggle('edit-box-invisible')
 }
 
-// Populates the popup box with relevant data
-function PopulateBox(data) {
+// Applies the data passed into the function to the web page
+// data (json object)
+// !! More fields need to be processed depending on the skill
+function ApplyDataToPopupBox(data) {
     popupLabel.innerHTML = data.type;
     popupName.value = data.name;
     popupEdit.value = data.text;
 }
 
 // Loads the values and levels for stats from local details
-function LoadStatsFromJSON() {
+// 
+//
+function LoadStatDetails() {
     strInp.value = localDetails.str.val;
-    LoadStatLevelOnStartup(document.getElementById('str-stat-button'), localDetails.str.level);
+    ChangeStatLevel(document.getElementById('str-stat-button'), localDetails.str.level);
     aglInp.value = localDetails.agl.val;
-    LoadStatLevelOnStartup(document.getElementById('agl-stat-button'), localDetails.agl.level);
+    ChangeStatLevel(document.getElementById('agl-stat-button'), localDetails.agl.level);
     intInp.value = localDetails.int.val;
-    LoadStatLevelOnStartup(document.getElementById('int-stat-button'), localDetails.int.level);
+    ChangeStatLevel(document.getElementById('int-stat-button'), localDetails.int.level);
     wilInp.value = localDetails.wil.val;
-    LoadStatLevelOnStartup(document.getElementById('wil-stat-button'), localDetails.wil.level);
+    ChangeStatLevel(document.getElementById('wil-stat-button'), localDetails.wil.level);
 }
 
-// Raises stat to next level or back to 1
-function PromoteStat(selectedStat) {
-    if (selectedStat.value == 1) {
-        MakeSubStat(selectedStat);
-    }
-    else if (selectedStat.value == 2) {
-        MakeMainStat(selectedStat);
-    }
-    else {
+// Changes the stat passed into the function to the level indicated
+// selectedStat (button element), newLevel (int)
+//
+function ChangeStatLevel(selectedStat, newLevel) {
+    console.log(newLevel);
+    if (newLevel == 1) {
         MakeInactiveStat(selectedStat);
     }
-}
-
-// Loads the stats level on page load
-function LoadStatLevelOnStartup(statButton, statLevel) {
-    if (statLevel == 1) {
-        MakeInactiveStat(statButton);
-    }
-    else if (statLevel == 2) {
-        MakeSubStat(statButton);
+    else if (newLevel == 2) {
+        MakeSubStat(selectedStat);
     }
     else {
-        MakeMainStat(statButton);
+        MakeMainStat(selectedStat);
     }
 }
 
 // Formats a stat as a regular stat
+// stat (button element)
+//
 function MakeInactiveStat(stat) {
-    let statImg = GetStatImage(stat);
-    statImg.classList.remove('main-stat');
-    statImg.classList.add('inactive-stat');
+    stat.classList.add('inactive-stat');
+    stat.classList.remove('sub-stat');
+    stat.classList.remove('main-stat');
     stat.value = 1;
 }
 
 // Formats a stat as a sub stat
+// stat (button element)
+//
 function MakeSubStat(stat) {
-    let statImg = GetStatImage(stat);
-    statImg.classList.remove('inactive-stat');
-    statImg.classList.add('sub-stat');
+    stat.classList.add('sub-stat');
+    stat.classList.remove('inactive-stat');
+    stat.classList.remove('main-stat');
     stat.value = 2;
 }
 
 // Formats a stat as a main stat
+// stat (button element)
+//
 function MakeMainStat(stat) {
-    let statImg = GetStatImage(stat);
-    statImg.classList.remove('inactive-stat');
-    statImg.classList.remove('sub-stat');
-    statImg.classList.add('main-stat');
+    stat.classList.add('main-stat');
+    stat.classList.remove('inactive-stat');
+    stat.classList.remove('sub-stat');
     stat.value = 3;
-}
-
-// Returns the image associated with the button
-function GetStatImage(stat) {
-    if (stat.dataset.type == 'str') {
-        return document.getElementById('str-img');
-    }
-    if (stat.dataset.type == 'agl') {
-        return document.getElementById('agl-img');
-    }
-    if (stat.dataset.type == 'int') {
-        return document.getElementById('int-img');
-    }
-    if (stat.dataset.type == 'wil') {
-        return document.getElementById('wil-img');
-    }
-}
-
-// Saves all the stat details to the local details JSON variable
-function SaveAllStatDetailsToLocal() {
-    localDetails.str.val = strInp.value;
-    localDetails.agl.val = aglInp.value;
-    localDetails.int.val = intInp.value;
-    localDetails.wil.val = wilInp.value;
-}
-
-// Saves details of one specific popup to local details
-function SavePopupDetailsToLocal(popupType) {
-    localDetails[popupType].name = popupName.value;
-    localDetails[popupType].text = popupEdit.value;
 }
 
 // Event listener for edit box inputs
@@ -198,7 +306,9 @@ popupEdit.addEventListener('input', () => {
     UpdateDisplay();
 })
 
-// Updates the display to refelct selected popup and formatting
+// Updates the popup display to reflect live formatting
+//
+//
 function UpdateDisplay() {
     let editorText = popupEdit.value;
     let formattedText = DetermineFormatting(editorText);
@@ -206,7 +316,9 @@ function UpdateDisplay() {
 }
 
 // Takes custom keywords from input and adds them to the input box
-function LoadCustomKeywordsFromJSON(keywords) {
+//
+// !! Needs Review
+function LoadCustomKeywords(keywords) {
     let keywordsBox = document.getElementById('custom-keywords');
     let finalString = "";
     let kwlen = keywords.length;
@@ -219,25 +331,30 @@ function LoadCustomKeywordsFromJSON(keywords) {
     keywordsBox.value = finalString;
 }
 
-// Grabs the inputted custom keywords and applies formatting to them
-function GetCustomKeywords() {
-    const keywordsInput = document.getElementById('custom-keywords').value;
-    customKeywords = keywordsInput.replaceAll(/\s*,\s/g, ',').trim();
-    customKeywords = customKeywords.split(',');
-    UpdateDisplay();
-}
+
+
+//
+// Live Formatting Functions \/
+//
 
 // Checks edit box for custom keywords and applies formatting
-function CheckCustomKeywords(text) {
-    for (let i = 0; i < customKeywords.length; i++) {
-        if (text.includes(customKeywords[i])) {
-            text = text.replaceAll(customKeywords[i], '<span class="format-span color-keyword">' + customKeywords[i] + '</span>')
+// text (string)
+//
+function ApplyCustomKeywordsFormatting(text) {
+    const keywordsArray = localDetails['custom keywords'];
+    console.log(keywordsArray);
+    const keywordslen = keywordsArray.length;
+    for (let i = 0; i < keywordslen; i++) {
+        if (text.includes(keywordsArray[i])) {
+            text = text.replaceAll(keywordsArray[i], '<span class="format-span color-keyword">' + keywordsArray[i] + '</span>')
         }
     }
     return text;
 }
 
 // Checks for words that should be automatcially bolded
+// text (string)
+// 
 function BoldFormatting(text) {
     if (text.includes('COMBO TRIGGER')) {
         text = text.replaceAll('COMBO TRIGGER', '<span class="format-span body-text-bold">COMBO TRIGGER</span>')
@@ -255,7 +372,9 @@ function BoldFormatting(text) {
     return text;
 }
 
-// Formats text
+// Formats text based on content
+// text (string)
+//
 function DetermineFormatting(text) {
 
     // ' {element} DMG '
@@ -388,7 +507,7 @@ function DetermineFormatting(text) {
         text = text.replaceAll('Protected', '<span class="format-span color-keyword underline"><img class="image-icon" src="images/icons/protected-icon.png">Protected</span>')
     }
 
-    text = CheckCustomKeywords(text);
+    text = ApplyCustomKeywordsFormatting(text);
     text = BoldFormatting(text);
 
     // Formats newline to work with div element
