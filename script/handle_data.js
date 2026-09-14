@@ -1,5 +1,8 @@
 let currentlySelectedButton = null;
 let currentlySelectedRarity = null;
+let currentlySelectedWeapon = null;
+let currentlySelectedClass = null;
+let currentlyselectedPopup = null;
 
 let popupLabel = document.getElementById('popup-label');
 let popupName = document.getElementById('popup-name');
@@ -19,6 +22,50 @@ let rar6 = document.getElementById('rarity-6-star-button');
 let localDetails = null;
 let customKeywords = [];
 
+function SavePopupDetails(type) {
+    localDetails[type].name = popupName.value;
+    localDetails[type].text = popupEdit.value;
+}
+
+function SaveBasicInfoDetails() {
+    localDetails.class = currentlySelectedClass.value;
+    localDetails.weapon = currentlySelectedClass.value;
+    localDetails.charname = document.getElementById('name-input').value;
+    localDetails.rarity = currentlySelectedButton.value;
+}
+
+function SaveStatDetails() {
+    localDetails.str.val = strInp.value;
+    localDetails.str.level = document.getElementById('str-stat-button').value;
+    localDetails.agl.val = aglInp.value;
+    localDetails.agl.level = document.getElementById('agl-stat-button').value;
+    localDetails.int.val = intInp.value;
+    localDetails.int.level = document.getElementById('str-int-button').value;
+    localDetails.wil.val = wilInp.value;
+    localDetails.wil.level = document.getElementById('wil-stat-button').value;
+}
+
+
+
+
+function SelectWeapon(selectedWeapon) {
+    if (currentlySelectedWeapon != null) {
+        currentlySelectedWeapon.classList.remove('selected-weapon')
+    }
+    selectedWeapon.classList.add("selected-weapon");
+    currentlySelectedWeapon = selectedWeapon;
+}
+
+function SelectClass(selectedClass) {
+    if (currentlySelectedClass != null) {
+        currentlySelectedClass.classList.remove('selected-class')
+    }
+    selectedClass.classList.add("selected-class");
+    currentlySelectedClass = selectedClass;
+}
+
+
+
 // Updates HTML to display the rarity passed into this function
 // rarityValue (int)
 // 
@@ -37,7 +84,6 @@ function SelectRarity(rarityValue) {
     }
 }
 
-
 // Function is run when page is first loaded
 // Mainly used to fetch JSON and apply it to the web page
 // !! This function is still being worked on
@@ -53,13 +99,6 @@ window.addEventListener('DOMContentLoaded', async () => {
     } catch (error) {
     }
 });
-
-// Takes a JSON input and applies its data to the web page
-// jsonInput (javascript object)
-// !! This function is still being worked on
-function ApplyJSONToWebpage(jsonInput) {
-
-}
 
 // Applies formatting and runs functionaility of buttons when pressed
 // Works for skills and talents / any buttons that display a popup box 
@@ -79,7 +118,7 @@ async function SelectButton(buttonSelected) {
 
     // If this if the first button selected
     if (currentlySelectedButton != null) {
-        SavePopupDetailsToLocal(currentlySelectedButton.value);
+        SavePopupDetails(currentlySelectedButton.value);
         currentlySelectedButton.classList.remove('selected-button')
     }
 
@@ -196,15 +235,19 @@ function LoadCustomKeywordsFromJSON(keywords) {
     keywordsBox.value = finalString;
 }
 
-// Grabs the inputted custom keywords and applies formatting to them
+// Grabs the inputted custom keywords and writes them to the custom keywords
+// 
+//
 function GetCustomKeywords() {
-    const keywordsInput = document.getElementById('custom-keywords').value;
+    const keywordsInput = localDetails['custom keywords'];
     customKeywords = keywordsInput.replaceAll(/\s*,\s/g, ',').trim();
     customKeywords = customKeywords.split(',');
     UpdateDisplay();
 }
 
 // Checks edit box for custom keywords and applies formatting
+// text (string)
+//
 function CheckCustomKeywords(text) {
     for (let i = 0; i < customKeywords.length; i++) {
         if (text.includes(customKeywords[i])) {
@@ -215,6 +258,8 @@ function CheckCustomKeywords(text) {
 }
 
 // Checks for words that should be automatcially bolded
+// text (string)
+// 
 function BoldFormatting(text) {
     if (text.includes('COMBO TRIGGER')) {
         text = text.replaceAll('COMBO TRIGGER', '<span class="format-span body-text-bold">COMBO TRIGGER</span>')
@@ -232,7 +277,9 @@ function BoldFormatting(text) {
     return text;
 }
 
-// Formats text
+// Formats text based on content
+// text (string)
+//
 function DetermineFormatting(text) {
 
     // ' {element} DMG '
