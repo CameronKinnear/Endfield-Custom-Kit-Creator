@@ -18,71 +18,8 @@ let wilInp = document.getElementById('wil-val');
 let rar5 = document.getElementById('rarity-5-star-button');
 let rar6 = document.getElementById('rarity-6-star-button');
 
-
 let localDetails = null;
 let customKeywords = [];
-
-function SavePopupDetails(type) {
-    localDetails[type].name = popupName.value;
-    localDetails[type].text = popupEdit.value;
-}
-
-function SaveBasicInfoDetails() {
-    localDetails.class = currentlySelectedClass.value;
-    localDetails.weapon = currentlySelectedClass.value;
-    localDetails.charname = document.getElementById('name-input').value;
-    localDetails.rarity = currentlySelectedButton.value;
-}
-
-function SaveStatDetails() {
-    localDetails.str.val = strInp.value;
-    localDetails.str.level = document.getElementById('str-stat-button').value;
-    localDetails.agl.val = aglInp.value;
-    localDetails.agl.level = document.getElementById('agl-stat-button').value;
-    localDetails.int.val = intInp.value;
-    localDetails.int.level = document.getElementById('str-int-button').value;
-    localDetails.wil.val = wilInp.value;
-    localDetails.wil.level = document.getElementById('wil-stat-button').value;
-}
-
-
-
-
-function SelectWeapon(selectedWeapon) {
-    if (currentlySelectedWeapon != null) {
-        currentlySelectedWeapon.classList.remove('selected-weapon')
-    }
-    selectedWeapon.classList.add("selected-weapon");
-    currentlySelectedWeapon = selectedWeapon;
-}
-
-function SelectClass(selectedClass) {
-    if (currentlySelectedClass != null) {
-        currentlySelectedClass.classList.remove('selected-class')
-    }
-    selectedClass.classList.add("selected-class");
-    currentlySelectedClass = selectedClass;
-}
-
-
-
-// Updates HTML to display the rarity passed into this function
-// rarityValue (int)
-// 
-function SelectRarity(rarityValue) {
-    if (rarityValue == 4) {
-        rar5.classList.add('rarity-inactive');
-        rar6.classList.add('rarity-inactive');
-    }
-    else if (rarityValue == 5) {
-        rar5.classList.remove('rarity-inactive');
-        rar6.classList.add('rarity-inactive');
-    }
-    else {
-        rar5.classList.remove('rarity-inactive'); 
-        rar6.classList.remove('rarity-inactive');
-    }
-}
 
 // Function is run when page is first loaded
 // Mainly used to fetch JSON and apply it to the web page
@@ -99,6 +36,61 @@ window.addEventListener('DOMContentLoaded', async () => {
     } catch (error) {
     }
 });
+
+
+//
+// Save Data Functions \/
+//
+
+// Saves all details to local details
+//
+//
+function SaveAllDetails() {
+    SaveBasicInfoDetails();
+    SaveStatDetails();
+    SavePopupDetails('basic');
+    SavePopupDetails('battle');
+    SavePopupDetails('combo');
+    SavePopupDetails('ultimate');
+    SavePopupDetails('talent 1');
+    SavePopupDetails('talent 2');
+}
+
+// Saves the details of the passed popup object into local details
+// type (popup box value, string)
+//
+function SavePopupDetails(type) {
+    localDetails[type].name = popupName.value;
+    localDetails[type].text = popupEdit.value;
+}
+
+// Saves basic char info to local details
+//
+//
+function SaveBasicInfoDetails() {
+    localDetails.class = currentlySelectedClass.value;
+    localDetails.weapon = currentlySelectedClass.value;
+    localDetails.charname = document.getElementById('name-input').value;
+    localDetails.rarity = currentlySelectedButton.value;
+}
+
+// Save details to local details
+//
+//
+function SaveStatDetails() {
+    localDetails.str.val = strInp.value;
+    localDetails.str.level = document.getElementById('str-stat-button').value;
+    localDetails.agl.val = aglInp.value;
+    localDetails.agl.level = document.getElementById('agl-stat-button').value;
+    localDetails.int.val = intInp.value;
+    localDetails.int.level = document.getElementById('str-int-button').value;
+    localDetails.wil.val = wilInp.value;
+    localDetails.wil.level = document.getElementById('wil-stat-button').value;
+}
+
+//
+// Select Buttons Functions \/
+//
 
 // Applies formatting and runs functionaility of buttons when pressed
 // Works for skills and talents / any buttons that display a popup box 
@@ -128,6 +120,49 @@ async function SelectButton(buttonSelected) {
     ApplyDataToPopupBox(localDetails[buttonSelected.value]);
     UpdateDisplay();
 }
+
+// Selects weapon button
+//
+//
+function SelectWeapon(selectedWeapon) {
+    if (currentlySelectedWeapon != null) {
+        currentlySelectedWeapon.classList.remove('selected-weapon')
+    }
+    selectedWeapon.classList.add("selected-weapon");
+    currentlySelectedWeapon = selectedWeapon;
+}
+
+// Selects class button
+//
+//
+function SelectClass(selectedClass) {
+    if (currentlySelectedClass != null) {
+        currentlySelectedClass.classList.remove('selected-class')
+    }
+    selectedClass.classList.add("selected-class");
+    currentlySelectedClass = selectedClass;
+}
+
+
+
+// Updates HTML to display the rarity passed into this function
+// rarityValue (int)
+// 
+function SelectRarity(rarityValue) {
+    if (rarityValue == 4) {
+        rar5.classList.add('rarity-inactive');
+        rar6.classList.add('rarity-inactive');
+    }
+    else if (rarityValue == 5) {
+        rar5.classList.remove('rarity-inactive');
+        rar6.classList.add('rarity-inactive');
+    }
+    else {
+        rar5.classList.remove('rarity-inactive'); 
+        rar6.classList.remove('rarity-inactive');
+    }
+}
+
 
 // Toggles the visibility of the edit box
 // Uses a class to change formatting
@@ -238,20 +273,33 @@ function LoadCustomKeywordsFromJSON(keywords) {
 // Grabs the inputted custom keywords and writes them to the custom keywords
 // 
 //
-function GetCustomKeywords() {
+function LoadCustomKeywords() {
     const keywordsInput = localDetails['custom keywords'];
-    customKeywords = keywordsInput.replaceAll(/\s*,\s/g, ',').trim();
-    customKeywords = customKeywords.split(',');
     UpdateDisplay();
 }
+
+function SaveCustomKeywordDetails() {
+    let keywordsInput = document.getElementById('custom-keywords').value;
+    let customKeywords = keywordsInput.replaceAll(/\s*,\s/g, ',').trim();
+    customKeywords = customKeywords.split(',');
+    localDetails['custom keywords'] = customKeywords;
+    UpdateDisplay();
+}
+
+//
+// Live Formatting Functions \/
+//
 
 // Checks edit box for custom keywords and applies formatting
 // text (string)
 //
-function CheckCustomKeywords(text) {
-    for (let i = 0; i < customKeywords.length; i++) {
-        if (text.includes(customKeywords[i])) {
-            text = text.replaceAll(customKeywords[i], '<span class="format-span color-keyword">' + customKeywords[i] + '</span>')
+function ApplyCustomKeywordsFormatting(text) {
+    const keywordsArray = localDetails['custom keywords'];
+    console.log(keywordsArray);
+    const keywordslen = keywordsArray.length;
+    for (let i = 0; i < keywordslen; i++) {
+        if (text.includes(keywordsArray[i])) {
+            text = text.replaceAll(keywordsArray[i], '<span class="format-span color-keyword">' + keywordsArray[i] + '</span>')
         }
     }
     return text;
@@ -412,7 +460,7 @@ function DetermineFormatting(text) {
         text = text.replaceAll('Protected', '<span class="format-span color-keyword underline"><img class="image-icon" src="images/icons/protected-icon.png">Protected</span>')
     }
 
-    text = CheckCustomKeywords(text);
+    text = ApplyCustomKeywordsFormatting(text);
     text = BoldFormatting(text);
 
     // Formats newline to work with div element
