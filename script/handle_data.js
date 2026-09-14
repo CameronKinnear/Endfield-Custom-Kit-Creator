@@ -25,17 +25,6 @@ function LoadBasicDetails() {
     document.getElementById('');
 }
 
-
-
-
-
-
-
-
-
-
-
-
 // Function is run when page is first loaded
 // Mainly used to fetch JSON and apply it to the web page
 // !! This function is still being worked on
@@ -168,7 +157,16 @@ function SelectWeapon(weaponType) {
         selectedWeapon = document.getElementById('button-sword');
     }
     
+    if (currentlySelectedWeapon != null && currentlySelectedWeapon == selectedWeapon) {
+        return;
+    }
+    
     selectedWeapon.classList.add('selected-weapon');
+    if (currentlySelectedWeapon != null) {
+        currentlySelectedWeapon.classList.remove('selected-weapon');
+    }
+
+    currentlySelectedWeapon = selectedWeapon
 
     localDetails.weapon = weaponType;
 }
@@ -178,6 +176,7 @@ function SelectWeapon(weaponType) {
 //
 function SelectClass(classType) {
     let selectedClass = null;
+
     if (classType == 'guard') {
         selectedClass = document.getElementById('button-guard');
     }
@@ -197,7 +196,16 @@ function SelectClass(classType) {
         selectedClass = document.getElementById('button-supporter');
     }
 
+    if (currentlySelectedClass != null && currentlySelectedClass == selectedClass) {
+        return;
+    }
+    
     selectedClass.classList.add('selected-class');
+    if (currentlySelectedClass != null) {
+        currentlySelectedClass.classList.remove('selected-class');
+    }
+
+    currentlySelectedClass = selectedClass
 
     localDetails.class = classType;
 }
