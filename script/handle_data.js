@@ -21,6 +21,21 @@ let rar6 = document.getElementById('rarity-6-star-button');
 let localDetails = null;
 let customKeywords = [];
 
+function LoadBasicDetails() {
+    document.getElementById('');
+}
+
+
+
+
+
+
+
+
+
+
+
+
 // Function is run when page is first loaded
 // Mainly used to fetch JSON and apply it to the web page
 // !! This function is still being worked on
@@ -33,6 +48,9 @@ window.addEventListener('DOMContentLoaded', async () => {
         LoadCustomKeywords(customKeywords);
         LoadStatDetails();
         SelectRarity(localDetails.rarity);
+        SelectClass(localDetails.class);
+        SelectWeapon(localDetails.weapon);
+        LoadCharName(localDetails.charname);
     } catch (error) {
     }
 });
@@ -130,28 +148,63 @@ async function SelectButton(buttonSelected) {
 }
 
 // Selects weapon button
+// weaponType (string)
 //
-//
-function SelectWeapon(selectedWeapon) {
-    if (currentlySelectedWeapon != null) {
-        currentlySelectedWeapon.classList.remove('selected-weapon')
+function SelectWeapon(weaponType) {
+    let selectedWeapon = null;
+    if (weaponType == 'artsunit') {
+        selectedWeapon = document.getElementById('button-arts-unit');
     }
-    selectedWeapon.classList.add("selected-weapon");
-    currentlySelectedWeapon = selectedWeapon;
+    else if (weaponType == 'greatsword') {
+        selectedWeapon = document.getElementById('button-great-sword');
+    }
+    else if (weaponType == 'handcannon') {
+        selectedWeapon = document.getElementById('button-hand-cannon');
+    }
+    else if (weaponType == 'polearm') {
+        selectedWeapon = document.getElementById('button-polearm');
+    }
+    else if (weaponType == 'sword') {
+        selectedWeapon = document.getElementById('button-sword');
+    }
+    
+    selectedWeapon.classList.add('selected-weapon');
+
+    localDetails.weapon = weaponType;
 }
 
-// Selects class button
+// Selects class button and saves to local details
+// classType (string)
 //
-//
-function SelectClass(selectedClass) {
-    if (currentlySelectedClass != null) {
-        currentlySelectedClass.classList.remove('selected-class')
+function SelectClass(classType) {
+    let selectedClass = null;
+    if (classType == 'guard') {
+        selectedClass = document.getElementById('button-guard');
     }
-    selectedClass.classList.add("selected-class");
-    currentlySelectedClass = selectedClass;
+    else if (classType == 'caster') {
+        selectedClass = document.getElementById('button-caster');
+    }
+    else if (classType == 'striker') {
+        selectedClass = document.getElementById('button-striker');
+    }
+    else if (classType == 'vanguard') {
+        selectedClass = document.getElementById('button-vanguard');
+    }
+    else if (classType == 'defender') {
+        selectedClass = document.getElementById('button-defender');
+    }
+    else if (classType == 'supporter') {
+        selectedClass = document.getElementById('button-supporter');
+    }
+
+    selectedClass.classList.add('selected-class');
+
+    localDetails.class = classType;
 }
 
-
+function LoadCharName(charName) {
+    document.getElementById('name-input').value = charName;
+}
 
 // Updates HTML to display the rarity passed into this function
 // rarityValue (int)
