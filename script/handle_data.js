@@ -196,14 +196,27 @@ function SelectClass(classType) {
         selectedClass = document.getElementById('button-supporter');
     }
 
+    // Displays all classes for new selection
     if (currentlySelectedClass != null && currentlySelectedClass == selectedClass) {
+        document.getElementById('button-guard').classList.remove('class-invisible');
+        document.getElementById('button-caster').classList.remove('class-invisible');
+        document.getElementById('button-striker').classList.remove('class-invisible');
+        document.getElementById('button-vanguard').classList.remove('class-invisible');
+        document.getElementById('button-defender').classList.remove('class-invisible');
+        document.getElementById('button-supporter').classList.remove('class-invisible');
+        currentlySelectedClass = null;
         return;
     }
+
+    document.getElementById('button-guard').classList.add('class-invisible');
+     document.getElementById('button-caster').classList.add('class-invisible');
+    document.getElementById('button-striker').classList.add('class-invisible');
+    document.getElementById('button-vanguard').classList.add('class-invisible');
+    document.getElementById('button-defender').classList.add('class-invisible');
+    document.getElementById('button-supporter').classList.add('class-invisible');
     
     selectedClass.classList.add('selected-class');
-    if (currentlySelectedClass != null) {
-        currentlySelectedClass.classList.remove('selected-class');
-    }
+    selectedClass.classList.remove('class-invisible');
 
     currentlySelectedClass = selectedClass
 

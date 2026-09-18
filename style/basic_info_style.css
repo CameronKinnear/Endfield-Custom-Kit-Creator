@@ -34,6 +34,17 @@
     height: 60px;
 }
 
+.weapon-button {
+    width: 30px;
+    height: 30px;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    border: none;
+    background-color: gray;
+    border-radius: 2px;
+}
+
 .image-class {
     width: inherit;
     height: inherit;
@@ -41,6 +52,15 @@
     position: relative;
     outline-offset: -8px;
     z-index: 2;
+}
+
+.image-weapon:hover {
+    cursor: pointer;
+}
+
+.image-class:hover {
+    cursor: pointer;
+    filter: brightness(80%) invert(0) sepia(0) saturate(1000%) hue-rotate(90deg);
 }
 
 .class-outline {
@@ -53,11 +73,17 @@
 }
 
 .image-weapon {
-    width: 40px;
-    height: 40px;
+    width: inherit;
+    margin: 0;
+    height: inherit;
 }
 
 .selected-rarity {
     background-color: gray;
     color: white;
+}
+
+.class-invisible {
+    display: none;
+    visibility: none;
 }
