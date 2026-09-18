@@ -157,14 +157,25 @@ function SelectWeapon(weaponType) {
         selectedWeapon = document.getElementById('button-sword');
     }
     
+     // Displays all classes for new selection
     if (currentlySelectedWeapon != null && currentlySelectedWeapon == selectedWeapon) {
+        document.getElementById('button-arts-unit').classList.remove('weapon-invisible');
+        document.getElementById('button-great-sword').classList.remove('weapon-invisible');
+        document.getElementById('button-hand-cannon').classList.remove('weapon-invisible');
+        document.getElementById('button-polearm').classList.remove('weapon-invisible');
+        document.getElementById('button-sword').classList.remove('weapon-invisible');
+        currentlySelectedWeapon = null;
         return;
     }
+
+    document.getElementById('button-arts-unit').classList.add('weapon-invisible');
+    document.getElementById('button-great-sword').classList.add('weapon-invisible');
+    document.getElementById('button-hand-cannon').classList.add('weapon-invisible');
+    document.getElementById('button-polearm').classList.add('weapon-invisible');
+    document.getElementById('button-sword').classList.add('weapon-invisible');
     
     selectedWeapon.classList.add('selected-weapon');
-    if (currentlySelectedWeapon != null) {
-        currentlySelectedWeapon.classList.remove('selected-weapon');
-    }
+    selectedWeapon.classList.remove('weapon-invisible');
 
     currentlySelectedWeapon = selectedWeapon
 
@@ -209,7 +220,7 @@ function SelectClass(classType) {
     }
 
     document.getElementById('button-guard').classList.add('class-invisible');
-     document.getElementById('button-caster').classList.add('class-invisible');
+    document.getElementById('button-caster').classList.add('class-invisible');
     document.getElementById('button-striker').classList.add('class-invisible');
     document.getElementById('button-vanguard').classList.add('class-invisible');
     document.getElementById('button-defender').classList.add('class-invisible');
