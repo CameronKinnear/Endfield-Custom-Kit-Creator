@@ -11,7 +11,7 @@
         <div id="buttons-col-1">
             <div id="char-info">
                 <div id="class-box">
-                    <label id="class-label">Class</label>
+                    <label id="class-label" class="invisible">Class</label>
                     <div id="class-selector">
                         <button id="button-guard" class="class-button" onclick="SelectClass(this.value)" value="guard">
                             <div class="class-outline"></div>
@@ -39,48 +39,55 @@
                         </button>                    
                     </div>
                 </div>
-                <div id="weapon-type-box">
-                    <label>Weapon Type</label>
-                    <div id="weapon-type-selector">
-                        <button id="button-arts-unit" class="weapon-button" onclick="SelectWeapon(this.value)" value="artsunit">
-                            <img class="image-weapon" src="images/weapons/arts-unit.png">
-                        </button>
-                        <button id="button-great-sword" class="weapon-button" onclick="SelectWeapon(this.value)" value="greatsword">
-                            <img class="image-weapon" src="images/weapons/great-sword.png">
-                        </button>
-                        <button id="button-hand-cannon" class="weapon-button" onclick="SelectWeapon(this.value)" value="handcannon">
-                            <img class="image-weapon" src="images/weapons/hand-cannon.png">
-                        </button>
-                        <button id="button-polearm" class="weapon-button" onclick="SelectWeapon(this.value)" value="polearm">
-                            <img class="image-weapon" src="images/weapons/polearm.png">
-                        </button>
-                        <button id="button-sword" class="weapon-button" onclick="SelectWeapon(this.value)" value="sword">
-                            <img class="image-weapon" src="images/weapons/sword.png">
-                        </button>
+                <div id="char-info-right">
+                    <div id="char-info-top">
+                        <div id="name-box">
+                            <label id="name-label" class="invisible">Name</label>
+                            <input type="text" id="name-input">
+                        </div>
                     </div>
-                </div>
-                <div id="name-box">
-                    <label id="name-label">Name</label>
-                    <input type="text" id="name-input">
+                    <div id="char-info-bot">
+                        <div id="weapon-type-box">
+                            <label class="invisible">Weapon Type</label>
+                            <div id="weapon-type-selector">
+                                <button id="button-arts-unit" class="weapon-button" onclick="SelectWeapon(this.value)" value="artsunit">
+                                    <img class="image-weapon" src="images/weapons/arts-unit.png">
+                                </button>
+                                <button id="button-great-sword" class="weapon-button" onclick="SelectWeapon(this.value)" value="greatsword">
+                                    <img class="image-weapon" src="images/weapons/great-sword.png">
+                                </button>
+                                <button id="button-hand-cannon" class="weapon-button" onclick="SelectWeapon(this.value)" value="handcannon">
+                                    <img class="image-weapon" src="images/weapons/hand-cannon.png">
+                                </button>
+                                <button id="button-polearm" class="weapon-button" onclick="SelectWeapon(this.value)" value="polearm">
+                                    <img class="image-weapon" src="images/weapons/polearm.png">
+                                </button>
+                                <button id="button-sword" class="weapon-button" onclick="SelectWeapon(this.value)" value="sword">
+                                    <img class="image-weapon" src="images/weapons/sword.png">
+                                </button>
+                            </div>
+                        </div>
+                        <div id="rarity-box">
+                            <label id="rarity-label" class="generic-text-invisible">Rarity</label>
+                            <img class="rarity-icon" src="images/op-rarity.png">
+                            <img class="rarity-icon" src="images/op-rarity.png">
+                            <img class="rarity-icon" src="images/op-rarity.png">
+                            <button id="rarity-4-star-button" class="rarity-button" onclick="SelectRarity(4)">
+                                <img class="rarity-icon" src="images/op-rarity.png">
+                            </button>
+                            <button id="rarity-5-star-button" class="rarity-button" onclick="SelectRarity(5)">
+                                <img id="rarity-5-img" class="rarity-icon" src="images/op-rarity.png">
+                            </button>
+                            <button id="rarity-6-star-button" class="rarity-button" onclick="SelectRarity(6)">
+                                <img id="rarity-6-img" class="rarity-icon" src="images/op-rarity.png">
+                            </button>
+                        </div>
+                    </div>
                 </div>
                 <div id="char-element">
 
                 </div>
-                <div id="rarity-box">
-                    <label id="rarity-label" class="generic-text-invisible">Rarity</label>
-                    <img class="rarity-icon" src="images/op-rarity.png">
-                    <img class="rarity-icon" src="images/op-rarity.png">
-                    <img class="rarity-icon" src="images/op-rarity.png">
-                    <button id="rarity-4-star-button" class="rarity-button" onclick="SelectRarity(4)">
-                        <img class="rarity-icon" src="images/op-rarity.png">
-                    </button>
-                    <button id="rarity-5-star-button" class="rarity-button" onclick="SelectRarity(5)">
-                        <img id="rarity-5-img" class="rarity-icon" src="images/op-rarity.png">
-                    </button>
-                    <button id="rarity-6-star-button" class="rarity-button" onclick="SelectRarity(6)">
-                        <img id="rarity-6-img" class="rarity-icon" src="images/op-rarity.png">
-                    </button>
-                </div>
+                
             </div>
 
             <div id="char-stats">

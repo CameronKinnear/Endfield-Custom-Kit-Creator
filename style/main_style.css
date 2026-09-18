@@ -11,3 +11,8 @@ body {
 #display-box-column {
     width: 33%;
 }
+
+.invisible {
+    display: none;
+    visibility: hidden;
+}
