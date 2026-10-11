@@ -84,7 +84,6 @@ function ApplyFormatting(text) {
         :text - The full string of text to be formatted
         :return - The new string after formatting is applied
     */
-
     text = ApplyCustomKeywordsFormatting(text);
 
     // Formats note tag
@@ -97,4 +96,43 @@ function ApplyFormatting(text) {
     text = text.replaceAll(/\/stagger\((.*?)\)/g, '<span class="format-span color-stagger">$1</span>',);
 
     return text.replace(REPLACEMENT_REGEX, match => FORMATTING[match]);
+}
+
+
+function ApplyCustomKeywordsFormatting(text) {
+    /*
+        Checks the keywords array in local details and formats the
+        inputted text based on its content
+        :text - A string to the formatted
+        :return - The formatted string
+    */
+    const keywordsArray = localDetails['custom keywords'];
+    const keywordslen = keywordsArray.length;
+
+    for (let i = 0; i < keywordslen; i++) {
+        if (text.includes(keywordsArray[i])) {
+            text = text.replaceAll(keywordsArray[i], '<span class="format-span color-keyword">' + keywordsArray[i] + '</span>')
+        }
+    }
+    return text;
+}
+
+
+popupEdit.addEventListener('input', () => {
+    /*
+        An event listener that fires when an input is made
+        inside the popup display box
+    */
+    UpdateDisplay();
+})
+
+
+function UpdateDisplay() {
+    /*
+        Updates the popup display box to display
+        the formatted text
+    */
+    let editorText = popupEdit.value;
+    let formattedText = ApplyFormatting(editorText);
+    popupDisplay.innerHTML = formattedText;
 }

@@ -15,24 +15,12 @@ let aglInp = document.getElementById('agl-val');
 let intInp = document.getElementById('int-val');
 let wilInp = document.getElementById('wil-val');
 
-let rar5 = document.getElementById('rarity-5-star-button');
-let rar6 = document.getElementById('rarity-6-star-button');
 
 let localDetails = null;
-let customKeywords = [];
 
 function LoadBasicDetails() {
     document.getElementById('');
 }
-
-
-
-
-//
-// Save Data Functions \/
-//
-
-
 
 // Saves the details of the passed popup object into local details
 // type (popup box value, string)
@@ -185,23 +173,7 @@ function LoadCharName(charName) {
     document.getElementById('name-input').value = charName;
 }
 
-// Updates HTML to display the rarity passed into this function
-// rarityValue (int)
-// 
-function SelectRarity(rarityValue) {
-    if (rarityValue == 4) {
-        rar5.classList.add('rarity-inactive');
-        rar6.classList.add('rarity-inactive');
-    }
-    else if (rarityValue == 5) {
-        rar5.classList.remove('rarity-inactive');
-        rar6.classList.add('rarity-inactive');
-    }
-    else {
-        rar5.classList.remove('rarity-inactive'); 
-        rar6.classList.remove('rarity-inactive');
-    }
-}
+
 
 
 // Toggles the visibility of the edit box
@@ -234,65 +206,8 @@ function LoadStatDetails() {
     ChangeStatLevel(document.getElementById('wil-stat-button'), localDetails.wil.level);
 }
 
-// Changes the stat passed into the function to the level indicated
-// selectedStat (button element), newLevel (int)
-//
-function ChangeStatLevel(selectedStat, newLevel) {
-    console.log(newLevel);
-    if (newLevel == 1) {
-        MakeInactiveStat(selectedStat);
-    }
-    else if (newLevel == 2) {
-        MakeSubStat(selectedStat);
-    }
-    else {
-        MakeMainStat(selectedStat);
-    }
-}
 
-// Formats a stat as a regular stat
-// stat (button element)
-//
-function MakeInactiveStat(stat) {
-    stat.classList.add('inactive-stat');
-    stat.classList.remove('sub-stat');
-    stat.classList.remove('main-stat');
-    stat.value = 1;
-}
 
-// Formats a stat as a sub stat
-// stat (button element)
-//
-function MakeSubStat(stat) {
-    stat.classList.add('sub-stat');
-    stat.classList.remove('inactive-stat');
-    stat.classList.remove('main-stat');
-    stat.value = 2;
-}
-
-// Formats a stat as a main stat
-// stat (button element)
-//
-function MakeMainStat(stat) {
-    stat.classList.add('main-stat');
-    stat.classList.remove('inactive-stat');
-    stat.classList.remove('sub-stat');
-    stat.value = 3;
-}
-
-// Event listener for edit box inputs
-popupEdit.addEventListener('input', () => {
-    UpdateDisplay();
-})
-
-// Updates the popup display to reflect live formatting
-//
-//
-function UpdateDisplay() {
-    let editorText = popupEdit.value;
-    let formattedText = ApplyFormatting(editorText);
-    popupDisplay.innerHTML = formattedText;
-}
 
 // Takes custom keywords from input and adds them to the input box
 //
@@ -315,21 +230,6 @@ function LoadCustomKeywords(keywords) {
 //
 // Live Formatting Functions \/
 //
-
-// Checks edit box for custom keywords and applies formatting
-// text (string)
-//
-function ApplyCustomKeywordsFormatting(text) {
-    const keywordsArray = localDetails['custom keywords'];
-    console.log(keywordsArray);
-    const keywordslen = keywordsArray.length;
-    for (let i = 0; i < keywordslen; i++) {
-        if (text.includes(keywordsArray[i])) {
-            text = text.replaceAll(keywordsArray[i], '<span class="format-span color-keyword">' + keywordsArray[i] + '</span>')
-        }
-    }
-    return text;
-}
 
 
 
