@@ -1,8 +1,11 @@
 /* ============================================
 This file is the handler for loading data 
-from json filesand displaying it on the webpage 
-============================================= */
+from json files and displaying it on the webpage 
 
+Gets a JSON File -> Saves to the localDetails var
+-> localDetails data is put on page
+============================================= */
+let localDetails = null;
 
 window.addEventListener('DOMContentLoaded', async () => {
     /*
@@ -10,10 +13,9 @@ window.addEventListener('DOMContentLoaded', async () => {
         to retrieve data from the template to display by default
     */
     try {
-        const dater = await fetch('../data/char_template.json');
-        localDetails = await dater.json();
-        customKeywords = localDetails["custom keywords"];
-        LoadCustomKeywords(customKeywords);
+        const DATA = await fetch('../data/char_template.json');
+        localDetails = await DATA.json();
+        LoadCustomKeywords(localDetails["custom keywords"]);
         LoadStatDetails();
         SelectRarity(localDetails.rarity);
         SelectClass(localDetails.class);
@@ -55,4 +57,8 @@ function LoadCustomKeywords(keywords) {
         }
     }
     document.getElementById('custom-keywords').value = finalString;
+}
+
+function LoadCharName(charName) {
+    document.getElementById('name-input').value = charName;
 }

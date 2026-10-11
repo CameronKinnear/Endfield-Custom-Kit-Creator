@@ -145,3 +145,11 @@ function ApplyDataToPopupBox(data) {
     popupName.value = data.name;
     popupEdit.value = data.text;
 }
+
+function ToggleEditBox() {
+    /*
+        Toggles the visibility of the edit box
+    */
+    popupEdit.classList.toggle('edit-box-invisible');
+}
+
