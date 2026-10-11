@@ -23,3 +23,10 @@ window.addEventListener('DOMContentLoaded', async () => {
         ErrorLog(error);
     }
 });
+
+function LoadTemplateData() {
+    /*
+        The main function for displaying
+        all the template data onto the main webpage
+    */
+}

@@ -1,4 +1,10 @@
-let disableOutputs = false;
+/* ============================================
+This file is a basic helper that houses functions
+that dont have anything to do with the webpage
+at large but are useful developer tools
+============================================= */
+
+let disableOutputs = false; // Set to true to disable console logging
 
 function Log(string) {
     /*
