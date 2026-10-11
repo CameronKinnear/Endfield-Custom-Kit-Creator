@@ -106,3 +106,45 @@ function SelectWeapon(newSelectedWeapon) {
     
     WEAPON_SELECTOR.dataset.selectedweapon = newSelectedWeapon;
 }
+
+async function DisplayData(dataSelected) {
+    /*
+        Switches the display box data to the newly selected value
+        and handles logic for toggling visibility
+        :dataSelected - A string representing the newly selected 
+                        data value
+    */
+    const DATA_DISPLAY_CONTAINER = document.getElementById('button-selector');
+    DATA_DISPLAY_CONTAINER.dataset.displayed = dataSelected;
+
+    // Checks if selected and current buttons are the same
+    if (currentlySelectedButton != dataSelected) {
+        popupBox.classList.remove("popup-box-invisible");
+    }
+    else {
+        popupBox.classList.toggle("popup-box-invisible");
+        dataSelected.classList.toggle('selected-button');
+        currentlySelectedButton = null;
+        return;
+    }
+
+    // If this if the first button selected
+    if (currentlySelectedButton != null) {
+        SavePopupDetails(currentlySelectedButton.value);
+        currentlySelectedButton.classList.remove('selected-button')
+    }
+
+    const DATA = localDetails[dataSelected];
+    ApplyDataToPopupBox(DATA);
+    UpdateDisplay();
+}
+
+function ApplyDataToPopupBox(data) {
+    /*
+        Applies the data passed to the popup box
+        :data - json object for popup box data
+    */
+    popupLabel.innerHTML = data.type;
+    popupName.value = data.name;
+    popupEdit.value = data.text;
+}
