@@ -24,13 +24,18 @@ window.addEventListener('DOMContentLoaded', async () => {
     }
 });
 
-
-// Loads the values and levels for stats from local details
-// 
-//
 function LoadStatDetails() {
+    /*
+        Sets the information for stat levels and values
+        to data stored in local details
+    */
     document.getElementById('str-box').dataset.level = localDetails.str.level;
     document.getElementById('agl-box').dataset.level = localDetails.agl.level;
     document.getElementById('int-box').dataset.level = localDetails.int.level;
     document.getElementById('wil-box').dataset.level = localDetails.wil.level;
+
+    document.getElementById('str-val').value = localDetails.str.val;
+    document.getElementById('agl-val').value = localDetails.agl.val;
+    document.getElementById('int-val').value = localDetails.int.val;
+    document.getElementById('wil-val').value = localDetails.wil.val;
 }

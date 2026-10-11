@@ -43,15 +43,6 @@
     z-index: 2;
 }
 
-.class-outline {
-    width: inherit;
-    height: inherit;
-    position: absolute;
-    z-index: 1;
-    outline: 6px solid rgba(128, 128, 128, 0.7);
-    outline-offset: -8px;
-}
-
 .image-weapon {
     width: 40px;
     height: 40px;
@@ -60,4 +51,19 @@
 .selected-rarity {
     background-color: gray;
     color: white;
+}
+
+/* Automatically styles the button based on the selected class*/
+#class-selector[data-selectedclass="guard"]  .class-button[value="guard"] div.class-outline,
+#class-selector[data-selectedclass="caster"] .class-button[value="caster"] div.class-outline,
+#class-selector[data-selectedclass="striker"] .class-button[value="striker"] div.class-outline,
+#class-selector[data-selectedclass="vanguard"] .class-button[value="vanguard"] div.class-outline,
+#class-selector[data-selectedclass="defender"] .class-button[value="defender"] div.class-outline,
+#class-selector[data-selectedclass="supporter"] .class-button[value="supporter"] div.class-outline {
+    outline: 6px solid rgba(128, 128, 128, 0.7);
+    width: inherit;
+    height: inherit;
+    position: absolute;
+    z-index: 1;
+    outline-offset: -8px;
 }

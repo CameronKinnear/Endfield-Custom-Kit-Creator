@@ -73,3 +73,47 @@ function ChangeStatLevel(statElement, changeTo = null) {
         ErrorLog("currentStatLevel variable is not valid (must be basic, sub, or main)");
     }
 }
+
+// Selects class button and saves to local details
+// classType (string)
+//
+function SelectClass(newSelectedClass) {
+    const CLASS_SELECTOR = document.getElementById('class-selector');
+    
+    CLASS_SELECTOR.dataset.selectedclass = newSelectedClass;
+    Log(CLASS_SELECTOR.dataset.selectedclass);
+
+    /*
+    if (classType == 'guard') {
+        selectedClass = document.getElementById('button-guard');
+    }
+    else if (classType == 'caster') {
+        selectedClass = document.getElementById('button-caster');
+    }
+    else if (classType == 'striker') {
+        selectedClass = document.getElementById('button-striker');
+    }
+    else if (classType == 'vanguard') {
+        selectedClass = document.getElementById('button-vanguard');
+    }
+    else if (classType == 'defender') {
+        selectedClass = document.getElementById('button-defender');
+    }
+    else if (classType == 'supporter') {
+        selectedClass = document.getElementById('button-supporter');
+    }
+
+    if (currentlySelectedClass != null && currentlySelectedClass == selectedClass) {
+        return;
+    }
+    
+    selectedClass.classList.add('selected-class');
+    if (currentlySelectedClass != null) {
+        currentlySelectedClass.classList.remove('selected-class');
+    }
+
+    currentlySelectedClass = selectedClass;
+
+    localDetails.class = classType;
+    */
+}

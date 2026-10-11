@@ -18,10 +18,6 @@ let wilInp = document.getElementById('wil-val');
 
 let localDetails = null;
 
-function LoadBasicDetails() {
-    document.getElementById('');
-}
-
 // Saves the details of the passed popup object into local details
 // type (popup box value, string)
 //
