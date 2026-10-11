@@ -15,12 +15,9 @@ window.addEventListener('DOMContentLoaded', async () => {
     try {
         const DATA = await fetch('../data/char_template.json');
         localDetails = await DATA.json();
-        LoadCustomKeywords(localDetails["custom keywords"]);
+        LoadCustomKeywords();
         LoadStatDetails();
-        SelectRarity(localDetails.rarity);
-        SelectClass(localDetails.class);
-        SelectWeapon(localDetails.weapon);
-        LoadCharName(localDetails.charname);
+        LoadBasicDetails();
     } catch (error) {
         ErrorLog(error);
     }
@@ -42,16 +39,18 @@ function LoadStatDetails() {
     document.getElementById('wil-val').value = localDetails.wil.val;
 }
 
-function LoadCustomKeywords(keywords) {
+function LoadCustomKeywords() {
     /*
         Loads the custom keywords from the 
         inputted array
         :keywords - An array of strings
     */
+    const KEYWORDS = localDetails["custom keywords"];
+    
     let finalString = "";
-    let kwlen = keywords.length;
+    let kwlen = KEYWORDS.length;
     for (let i = 0; i < kwlen; i++) {
-        finalString = finalString + keywords[i]
+        finalString = finalString + KEYWORDS[i]
         if (i != kwlen - 1) {
             finalString = finalString + ",";
         }
@@ -59,6 +58,19 @@ function LoadCustomKeywords(keywords) {
     document.getElementById('custom-keywords').value = finalString;
 }
 
-function LoadCharName(charName) {
-    document.getElementById('name-input').value = charName;
+function LoadCharName() {
+    /*
+        Loads the char name from local details
+    */
+    document.getElementById('name-input').value = localDetails.charname;
+}
+
+function LoadBasicDetails() {
+    /*
+        Loads the basic details from the localDetails
+    */
+    SelectRarity(localDetails.rarity);
+    SelectClass(localDetails.class);
+    SelectWeapon(localDetails.weapon);
+    LoadCharName();
 }
