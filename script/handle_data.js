@@ -91,43 +91,6 @@ async function SelectButton(buttonSelected) {
     UpdateDisplay();
 }
 
-// Selects weapon button
-// weaponType (string)
-//
-function SelectWeapon(weaponType) {
-    let selectedWeapon = null;
-    if (weaponType == 'artsunit') {
-        selectedWeapon = document.getElementById('button-arts-unit');
-    }
-    else if (weaponType == 'greatsword') {
-        selectedWeapon = document.getElementById('button-great-sword');
-    }
-    else if (weaponType == 'handcannon') {
-        selectedWeapon = document.getElementById('button-hand-cannon');
-    }
-    else if (weaponType == 'polearm') {
-        selectedWeapon = document.getElementById('button-polearm');
-    }
-    else if (weaponType == 'sword') {
-        selectedWeapon = document.getElementById('button-sword');
-    }
-    
-    if (currentlySelectedWeapon != null && currentlySelectedWeapon == selectedWeapon) {
-        return;
-    }
-    
-    selectedWeapon.classList.add('selected-weapon');
-    if (currentlySelectedWeapon != null) {
-        currentlySelectedWeapon.classList.remove('selected-weapon');
-    }
-
-    currentlySelectedWeapon = selectedWeapon
-
-    localDetails.weapon = weaponType;
-}
-
-
-
 function LoadCharName(charName) {
     document.getElementById('name-input').value = charName;
 }
@@ -150,32 +113,4 @@ function ApplyDataToPopupBox(data) {
     popupName.value = data.name;
     popupEdit.value = data.text;
 }
-
-
-
-
-
-// Takes custom keywords from input and adds them to the input box
-//
-// !! Needs Review
-function LoadCustomKeywords(keywords) {
-    let keywordsBox = document.getElementById('custom-keywords');
-    let finalString = "";
-    let kwlen = keywords.length;
-    for (let i = 0; i < kwlen; i++) {
-        finalString = finalString + keywords[i]
-        if (i != kwlen - 1) {
-            finalString = finalString + ",";
-        }
-    }
-    keywordsBox.value = finalString;
-}
-
-
-
-//
-// Live Formatting Functions \/
-//
-
-
 

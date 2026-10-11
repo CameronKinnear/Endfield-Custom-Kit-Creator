@@ -1,7 +1,7 @@
 {
     "class" : "guard",
     "weapon" : "sword",
-    "rarity" : 5,
+    "rarity" : 6,
     "charname" : "Endministrator",
     
     "str" : {

@@ -25,8 +25,11 @@ function SelectRarity(rarityValue) {
         rarity6.classList.remove('rarity-inactive');
     }
     else {
-        ErrorLog("Invalid rarity input (must be between 4 and 6)")
+        return ErrorLog("Invalid rarity input (must be between 4 and 6)")
     }
+
+    document.getElementById('rarity-selector').dataset.selectedrarity = rarityValue;
+
 }
 
 function ChangeStatLevel(statElement, changeTo = null) {
@@ -87,4 +90,19 @@ function SelectClass(newSelectedClass) {
     if (!VALID_CLASSES.includes(newSelectedClass)) return ErrorLog("Attempted class change is invalid")
     
     CLASS_SELECTOR.dataset.selectedclass = newSelectedClass;
+}
+
+function SelectWeapon(newSelectedWeapon) {
+    /*
+        Changes the selected weapon to the one passed
+        through the function
+        :newSelectedWeapon - A lowercase string that 
+                             determines the new weapon
+    */
+    const WEAPON_SELECTOR = document.getElementById('weapon-type-selector');
+    const VALID_WEAPONS = ['artsunit', 'greatsword', 'handcannon', 'polearm', 'sword'];
+
+    if (!VALID_WEAPONS.includes(newSelectedWeapon)) return ErrorLog("Attempted weapon change is invalid")
+    
+    WEAPON_SELECTOR.dataset.selectedweapon = newSelectedWeapon;
 }

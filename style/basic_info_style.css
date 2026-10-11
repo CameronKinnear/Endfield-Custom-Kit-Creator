@@ -34,6 +34,13 @@
     height: 60px;
 }
 
+.weapon-button {
+    border: none;
+    background-color: transparent;
+    width: 60px;
+    height: 60px;
+}
+
 .image-class {
     width: inherit;
     height: inherit;
@@ -66,4 +73,13 @@
     position: absolute;
     z-index: 1;
     outline-offset: -8px;
+}
+
+/* Automatically styles the button based on the selected weapon*/
+#weapon-type-selector[data-selectedweapon="artsunit"]  .weapon-button[value="artsunit"],
+#weapon-type-selector[data-selectedweapon="greatsword"]  .weapon-button[value="greatsword"],
+#weapon-type-selector[data-selectedweapon="handcannon"]  .weapon-button[value="handcannon"],
+#weapon-type-selector[data-selectedweapon="polearm"]  .weapon-button[value="polearm"],
+#weapon-type-selector[data-selectedweapon="sword"]  .weapon-button[value="sword"] {
+    background-color: gray
 }

@@ -39,3 +39,20 @@ function LoadStatDetails() {
     document.getElementById('int-val').value = localDetails.int.val;
     document.getElementById('wil-val').value = localDetails.wil.val;
 }
+
+function LoadCustomKeywords(keywords) {
+    /*
+        Loads the custom keywords from the 
+        inputted array
+        :keywords - An array of strings
+    */
+    let finalString = "";
+    let kwlen = keywords.length;
+    for (let i = 0; i < kwlen; i++) {
+        finalString = finalString + keywords[i]
+        if (i != kwlen - 1) {
+            finalString = finalString + ",";
+        }
+    }
+    document.getElementById('custom-keywords').value = finalString;
+}
