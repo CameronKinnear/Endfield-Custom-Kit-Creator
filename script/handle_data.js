@@ -126,44 +126,7 @@ function SelectWeapon(weaponType) {
     localDetails.weapon = weaponType;
 }
 
-// Selects class button and saves to local details
-// classType (string)
-//
-function SelectClass(classType) {
-    let selectedClass = null;
 
-    if (classType == 'guard') {
-        selectedClass = document.getElementById('button-guard');
-    }
-    else if (classType == 'caster') {
-        selectedClass = document.getElementById('button-caster');
-    }
-    else if (classType == 'striker') {
-        selectedClass = document.getElementById('button-striker');
-    }
-    else if (classType == 'vanguard') {
-        selectedClass = document.getElementById('button-vanguard');
-    }
-    else if (classType == 'defender') {
-        selectedClass = document.getElementById('button-defender');
-    }
-    else if (classType == 'supporter') {
-        selectedClass = document.getElementById('button-supporter');
-    }
-
-    if (currentlySelectedClass != null && currentlySelectedClass == selectedClass) {
-        return;
-    }
-    
-    selectedClass.classList.add('selected-class');
-    if (currentlySelectedClass != null) {
-        currentlySelectedClass.classList.remove('selected-class');
-    }
-
-    currentlySelectedClass = selectedClass;
-
-    localDetails.class = classType;
-}
 
 function LoadCharName(charName) {
     document.getElementById('name-input').value = charName;

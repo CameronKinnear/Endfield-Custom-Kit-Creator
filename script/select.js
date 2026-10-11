@@ -74,46 +74,17 @@ function ChangeStatLevel(statElement, changeTo = null) {
     }
 }
 
-// Selects class button and saves to local details
-// classType (string)
-//
 function SelectClass(newSelectedClass) {
+    /*
+        Changes the selected class to the one passed
+        through the function
+        :newSelectedClass - A lowercase string that 
+                            determines the new class
+    */
     const CLASS_SELECTOR = document.getElementById('class-selector');
+    const VALID_CLASSES = ['guard', 'caster', 'striker', 'vanguard', 'defender', 'supporter'];
+
+    if (!VALID_CLASSES.includes(newSelectedClass)) return ErrorLog("Attempted class change is invalid")
     
     CLASS_SELECTOR.dataset.selectedclass = newSelectedClass;
-    Log(CLASS_SELECTOR.dataset.selectedclass);
-
-    /*
-    if (classType == 'guard') {
-        selectedClass = document.getElementById('button-guard');
-    }
-    else if (classType == 'caster') {
-        selectedClass = document.getElementById('button-caster');
-    }
-    else if (classType == 'striker') {
-        selectedClass = document.getElementById('button-striker');
-    }
-    else if (classType == 'vanguard') {
-        selectedClass = document.getElementById('button-vanguard');
-    }
-    else if (classType == 'defender') {
-        selectedClass = document.getElementById('button-defender');
-    }
-    else if (classType == 'supporter') {
-        selectedClass = document.getElementById('button-supporter');
-    }
-
-    if (currentlySelectedClass != null && currentlySelectedClass == selectedClass) {
-        return;
-    }
-    
-    selectedClass.classList.add('selected-class');
-    if (currentlySelectedClass != null) {
-        currentlySelectedClass.classList.remove('selected-class');
-    }
-
-    currentlySelectedClass = selectedClass;
-
-    localDetails.class = classType;
-    */
 }
