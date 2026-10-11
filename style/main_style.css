@@ -16,3 +16,14 @@ body {
     visibility: none;
     display: none;
 }
+
+button.strip-style {
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  outline: none;
+}

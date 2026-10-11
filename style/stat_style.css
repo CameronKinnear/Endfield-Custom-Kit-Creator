@@ -5,19 +5,6 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
-.inactive-stat {
-    filter: brightness(80%) invert(1) hue-rotate(90deg);
-    background-color: transparent;
-}
-
-.sub-stat {
-    background-color: gray;
-}
-
-.main-stat {
-    background-color: rgb(211, 211, 49);
-}
-
 .stat-box {
     display: flex;
     flex-direction: column;
@@ -68,4 +55,17 @@ input::-webkit-inner-spin-button {
 
 .stat-button:hover {
     cursor: pointer;
+}
+
+/* Automatic stat image styling based on level*/
+[data-level="basic"] img {
+    filter: invert(1);
+}
+
+[data-level="sub"] img {
+    background-color: gray;
+}
+
+[data-level="main"] img{
+    background-color: rgb(211, 211, 49);
 }

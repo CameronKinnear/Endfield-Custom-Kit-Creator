@@ -15,6 +15,9 @@
         <script src="script/save_data.js" defer></script>
         <script src="script/live_formatting.js" defer></script>
         <script src="script/helper.js" defer></script>
+        <script src="script/select.js" defer></script>
+
+        
     </head>
     <body>
         <div id="buttons-col-1">
@@ -103,29 +106,29 @@
             <div id="char-stats">
 
                 <!-- Input fields and buttons for stats -->
-                <div id="str-box" class="stat-box">
-                    <button id="str-stat-button" class="stat-button inactive-stat" onclick="ChangeStatLevel(this, (value == 3 ? 1 : parseInt(this.value) + 1))" value=1 data-type="str">
+                <div id="str-box" class="stat-box" data-level="basic">
+                    <button id="str-stat-button" class="stat-button strip-style" onclick="ChangeStatLevel(this)">
                         <img src="/images/stats/strength.png" id="str-img" class="stat-image">
                     </button>
                     <label id="str-label" class="stat-label stat-label-text">Strength</label>
                     <input type="number" id="str-val" class="stat-input stat-number">
                 </div>
-                <div id="agl-box" class="stat-box">
-                    <button id="agl-stat-button" class="stat-button inactive-stat" onclick="ChangeStatLevel(this, (value == 3 ? 1 : parseInt(this.value) + 1))" value=1 data-type="agl">
+                <div id="agl-box" class="stat-box" data-level="basic">
+                    <button id="agl-stat-button" class="stat-button strip-style" onclick="ChangeStatLevel(this)">
                         <img src="/images/stats/agility.png" id="agl-img" class="stat-image">
                     </button>
                     <label id="agl-label" class="stat-label stat-label-text">Agility</label>
                     <input type="number" id="agl-val" class="stat-input stat-number">
                 </div>
-                <div id="int-box" class="stat-box">
-                    <button id="int-stat-button" class="stat-button inactive-stat" onclick="ChangeStatLevel(this, (value == 3 ? 1 : parseInt(this.value) + 1))" value=1 data-type="int">
+                <div id="int-box" class="stat-box" data-level="basic">
+                    <button id="int-stat-button" class="stat-button strip-style" onclick="ChangeStatLevel(this)">
                         <img src="/images/stats/intellect.png" id="int-img" class="stat-image">
                     </button>
                     <label id="int-label" class="stat-label stat-label-text">Intellect</label>
                     <input type="number" id="int-val" class="stat-input stat-number">
                 </div>
-                <div id="wil-box" class="stat-box">
-                    <button id="wil-stat-button" class="stat-button inactive-stat" onclick="ChangeStatLevel(this, (value == 3 ? 1 : parseInt(this.value) + 1))" value=1 data-type="wil">
+                <div id="wil-box" class="stat-box" data-level="basic">
+                    <button id="wil-stat-button" class="stat-button strip-style" onclick="ChangeStatLevel(this)">
                         <img src="/images/stats/will.png" id="wil-img" class="stat-image">
                     </button>
                     <label id="will-label" class="stat-label stat-label-text">Will</label>
@@ -184,4 +187,22 @@
             </div>
         </div>
     </body>
+    <!-- SVG for safe transparency -->
+    <svg style="position: absolute; width: 0; height: 0;" aria-hidden="true">
+        <filter id="safe-invert">
+            <!-- Inverts RGB but preserves original Alpha exactly -->
+            <feComponentTransfer>
+                <feFuncR type="linear" slope="-1" intercept="1"/>
+                <feFuncG type="linear" slope="-1" intercept="1"/>
+                <feFuncB type="linear" slope="-1" intercept="1"/>
+            </feComponentTransfer>
+            <!-- Applies your brightness (80%) and hue-rotate (90deg) matrix overrides -->
+            <feColorMatrix type="hueRotate" values="90"/>
+            <feComponentTransfer>
+                <feFuncR type="linear" slope="0.8"/>
+                <feFuncG type="linear" slope="0.8"/>
+                <feFuncB type="linear" slope="0.8"/>
+            </feComponentTransfer>
+        </filter>
+    </svg>
 </html>

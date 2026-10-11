@@ -24,9 +24,13 @@ window.addEventListener('DOMContentLoaded', async () => {
     }
 });
 
-function LoadTemplateData() {
-    /*
-        The main function for displaying
-        all the template data onto the main webpage
-    */
+
+// Loads the values and levels for stats from local details
+// 
+//
+function LoadStatDetails() {
+    document.getElementById('str-box').dataset.level = localDetails.str.level;
+    document.getElementById('agl-box').dataset.level = localDetails.agl.level;
+    document.getElementById('int-box').dataset.level = localDetails.int.level;
+    document.getElementById('wil-box').dataset.level = localDetails.wil.level;
 }

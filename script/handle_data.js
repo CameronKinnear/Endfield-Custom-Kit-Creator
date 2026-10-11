@@ -192,19 +192,6 @@ function ApplyDataToPopupBox(data) {
     popupEdit.value = data.text;
 }
 
-// Loads the values and levels for stats from local details
-// 
-//
-function LoadStatDetails() {
-    strInp.value = localDetails.str.val;
-    ChangeStatLevel(document.getElementById('str-stat-button'), localDetails.str.level);
-    aglInp.value = localDetails.agl.val;
-    ChangeStatLevel(document.getElementById('agl-stat-button'), localDetails.agl.level);
-    intInp.value = localDetails.int.val;
-    ChangeStatLevel(document.getElementById('int-stat-button'), localDetails.int.level);
-    wilInp.value = localDetails.wil.val;
-    ChangeStatLevel(document.getElementById('wil-stat-button'), localDetails.wil.level);
-}
 
 
 

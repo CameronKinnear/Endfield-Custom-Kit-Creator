@@ -29,68 +29,47 @@ function SelectRarity(rarityValue) {
     }
 }
 
-function NextStatLevel(statElement) {
+function ChangeStatLevel(statElement, changeTo = null) {
     /*
         Takes the inputted stat and changes its level.
         The order goes from:
         Basic -> Sub -> Main -> (Repeat)
         :statObject - Any element that is a child of the div
                       or is the div that represents a stat
+        :changeTo - Not required. Forgoes the cycle and 
+                    changes to specified level.
     */
 
     // If passed element isnt the wrapper container, find the container
-    if (!statElement.classList.includes('stat-box')) {
+    if (!statElement.classList.contains('stat-box')) {
+        tempElement = statElement.closest('.stat-box');
+        if (tempElement == null) return ErrorLog("statElement does not have a parent stat-box");
 
+        statElement = tempElement;
     }
 
+    // Gets the level from dataset
     const statContainer = statElement;
-}
+    const currentStatLevel = statContainer.dataset.level;
 
-
-
-
-// Changes the stat passed into the function to the level indicated
-// selectedStat (button element), newLevel (int)
-//
-function ChangeStatLevel(selectedStat, newLevel) {
-    console.log(newLevel);
-    if (newLevel == 1) {
-        MakeInactiveStat(selectedStat);
+    // Change to specified level
+    if (changeTo != null) {
+        if (changeTo != 'basic' || changeTo != 'sub' || changeTo != 'main') return ErrorLog("Invalid stat level (must be basic, sub, or main");
+        statContainer.dataset.level = changeTo;
+        return;
     }
-    else if (newLevel == 2) {
-        MakeSubStat(selectedStat);
+
+    // Upgrade to next level
+    if (currentStatLevel == 'basic') {
+        statContainer.dataset.level = 'sub';
+    }
+    else if (currentStatLevel == 'sub') {
+        statContainer.dataset.level = 'main';
+    }
+    else if (currentStatLevel == 'main') {
+        statContainer.dataset.level = 'basic';
     }
     else {
-        MakeMainStat(selectedStat);
+        ErrorLog("currentStatLevel variable is not valid (must be basic, sub, or main)");
     }
-}
-
-// Formats a stat as a regular stat
-// stat (button element)
-//
-function MakeInactiveStat(stat) {
-    stat.classList.add('inactive-stat');
-    stat.classList.remove('sub-stat');
-    stat.classList.remove('main-stat');
-    stat.value = 1;
-}
-
-// Formats a stat as a sub stat
-// stat (button element)
-//
-function MakeSubStat(stat) {
-    stat.classList.add('sub-stat');
-    stat.classList.remove('inactive-stat');
-    stat.classList.remove('main-stat');
-    stat.value = 2;
-}
-
-// Formats a stat as a main stat
-// stat (button element)
-//
-function MakeMainStat(stat) {
-    stat.classList.add('main-stat');
-    stat.classList.remove('inactive-stat');
-    stat.classList.remove('sub-stat');
-    stat.value = 3;
 }

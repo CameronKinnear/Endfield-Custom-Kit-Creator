@@ -6,19 +6,19 @@
     
     "str" : {
         "val" : 123,
-        "level": 2
+        "level": "sub"
     },
     "agl" : {
         "val" : 140,
-        "level": 3
+        "level": "main"
     },
     "int" : {
         "val" : 96,
-        "level": 1
+        "level": "basic"
     },
     "wil" : {
         "val" : 107,
-        "level": 1
+        "level": "basic"
     },
     
     "basic" : {
