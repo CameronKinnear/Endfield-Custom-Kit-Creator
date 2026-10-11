@@ -115,26 +115,23 @@ async function DisplayData(dataSelected) {
                         data value
     */
     const DATA_DISPLAY_CONTAINER = document.getElementById('button-selector');
-    DATA_DISPLAY_CONTAINER.dataset.displayed = dataSelected;
+    const CURRENT_SELECTION = DATA_DISPLAY_CONTAINER.dataset.displayed;
 
     // Checks if selected and current buttons are the same
-    if (currentlySelectedButton != dataSelected) {
-        popupBox.classList.remove("popup-box-invisible");
-    }
-    else {
-        popupBox.classList.toggle("popup-box-invisible");
-        dataSelected.classList.toggle('selected-button');
-        currentlySelectedButton = null;
+    if (CURRENT_SELECTION == dataSelected) {
+        DATA_DISPLAY_CONTAINER.dataset.displayed = 'none';
+        document.getElementById('popup-box').classList.add('popup-box-invisible');
         return;
     }
 
-    // If this if the first button selected
-    if (currentlySelectedButton != null) {
-        SavePopupDetails(currentlySelectedButton.value);
-        currentlySelectedButton.classList.remove('selected-button')
+    // If no button was selected
+    if (CURRENT_SELECTION == 'none') {
+        document.getElementById('popup-box').classList.remove('popup-box-invisible');
     }
 
+    DATA_DISPLAY_CONTAINER.dataset.displayed = dataSelected;
     const DATA = localDetails[dataSelected];
+
     ApplyDataToPopupBox(DATA);
     UpdateDisplay();
 }
