@@ -205,7 +205,7 @@ function SelectClass(classType) {
         currentlySelectedClass.classList.remove('selected-class');
     }
 
-    currentlySelectedClass = selectedClass
+    currentlySelectedClass = selectedClass;
 
     localDetails.class = classType;
 }
