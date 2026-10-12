@@ -18,6 +18,7 @@ window.addEventListener('DOMContentLoaded', async () => {
         LoadCustomKeywords();
         LoadStatDetails();
         LoadBasicDetails();
+        LoadCharName();
     } catch (error) {
         ErrorLog(error);
     }
@@ -73,4 +74,5 @@ function LoadBasicDetails() {
     SelectClass(localDetails.class);
     SelectWeapon(localDetails.weapon);
     LoadCharName();
+    Log(localDetails.class);
 }

@@ -29,7 +29,6 @@ function SelectRarity(rarityValue) {
     }
 
     document.getElementById('rarity-selector').dataset.selectedrarity = rarityValue;
-
 }
 
 function ChangeStatLevel(statElement, changeTo = null) {
@@ -90,6 +89,7 @@ function SelectClass(newSelectedClass) {
     if (!VALID_CLASSES.includes(newSelectedClass)) return ErrorLog("Attempted class change is invalid")
     
     CLASS_SELECTOR.dataset.selectedclass = newSelectedClass;
+    Log(newSelectedClass);
 }
 
 function SelectWeapon(newSelectedWeapon) {
@@ -129,13 +129,15 @@ async function DisplayData(dataSelected) {
         document.getElementById('popup-box').classList.remove('popup-box-invisible');
     }
 
-    DATA_DISPLAY_CONTAINER.dataset.displayed = dataSelected;
     const DATA = localDetails[dataSelected];
-
+    SavePopupDetails();
     ApplyDataToPopupBox(DATA);
     UpdateDisplay();
+    DATA_DISPLAY_CONTAINER.dataset.displayed = dataSelected;
 }
 
+let popupName = document.getElementById('popup-name');
+let popupLabel = document.getElementById('popup-label');
 function ApplyDataToPopupBox(data) {
     /*
         Applies the data passed to the popup box

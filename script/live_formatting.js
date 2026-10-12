@@ -2,6 +2,8 @@
 This file handles the logic for formatting text
 as it is written on the webpage
 ============================================= */
+let popupDisplay = document.getElementById('popup-display');
+let popupEdit = document.getElementById('popup-edit');
 
 const FORMATTING = {
     /*
@@ -117,7 +119,6 @@ function ApplyCustomKeywordsFormatting(text) {
     return text;
 }
 
-
 popupEdit.addEventListener('input', () => {
     /*
         An event listener that fires when an input is made
@@ -125,7 +126,6 @@ popupEdit.addEventListener('input', () => {
     */
     UpdateDisplay();
 })
-
 
 function UpdateDisplay() {
     /*
