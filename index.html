@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="style/stat_style.css">
         <link rel="stylesheet" href="style/text_style.css">
         <link rel="stylesheet" href="style/basic_info_style.css">
+        <link rel="stylesheet" href="style/skills_style.css">
 
         <!-- Javscript Files -->
         <script src="script/load_data.js" defer></script>
@@ -150,19 +151,46 @@
                 <div id="skills-boxes">
                     <label id="skills-header">Skills</label>
                     <div id="skills-header-background"></div>
-                    <div id="skills-buttons">
-                        <button id="batk-button" class="skill-button" onclick="DisplayData(this.value)" value="basic">BA</button>
-                        <button id="bskl-button" class="skill-button" onclick="DisplayData(this.value)" value="battle">BS</button>
-                        <button id="cskl-button" class="skill-button" onclick="DisplayData(this.value)" value="combo">CS</button>
-                        <button id="uskl-button" class="skill-button" onclick="DisplayData(this.value)" value="ultimate">Ult</button>
+                    <div id="skills-buttons" class="flex-row">
+                        <div class="skill-box flex-col vertical-center">
+                            <div class="skill-button-outline">
+                                <button id="batk-button" class="skill-button" onclick="DisplayData(this.value)" value="basic">BA</button>
+                                <label class="skill-level"></label>
+                            </div>
+                        </div>
+                        <div class="skill-box flex-col vertical-center">
+                            <div class="skill-button-outline">
+                                <button id="bskl-button" class="skill-button" onclick="DisplayData(this.value)" value="battle">BS</button>
+                                <label class="skill-level"></label>
+                            </div>
+                            
+                        </div>
+                        <div class="skill-box flex-col vertical-center">
+                            <div class="skill-button-outline">
+                                <button id="cskl-button" class="skill-button" onclick="DisplayData(this.value)" value="combo">CS</button>
+                                <label class="skill-level"></label>
+                            </div>
+                        </div>
+                        <div class="skill-box flex-col vertical-center">
+                            <div class="skill-button-outline">
+                                <button id="uskl-button" class="skill-button" onclick="DisplayData(this.value)" value="ultimate">Ult</button>
+                                <label class="skill-level"></label>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Buttons for selecting talent -->
                 <div id="talents-boxes">
-                    <div id="talent-buttons">
-                        <button id="talent-1-button" class="talent-button" onclick="DisplayData(this.value)" value="talent 1">Talent 1</button>
-                        <button id="talent-2-button" class="talent-button" onclick="DisplayData(this.value)" value="talent 2">Talent 2</button>
+                    <div id="talent-buttons" class="flex-row">
+                        <div class="talent-box">
+                            <img class="talent-icon">
+                            <button id="talent-1-button" class="talent-button" onclick="DisplayData(this.value)" value="talent 1">Talent 1</button>
+                        </div>
+                        <div class="talent-box">
+                            <img class="talent-icon">
+                            <button id="talent-2-button" class="talent-button" onclick="DisplayData(this.value)" value="talent 2">Talent 2</button>    
+                        </div>
                     </div>
                 </div>
             </div>

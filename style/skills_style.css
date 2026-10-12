@@ -1,0 +1,41 @@
+.skill-box {
+    width: 25%;
+}
+
+#skills-boxes {
+    margin-top: 10px;
+}
+
+.skill-button {
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+    background-color: rgb(94, 93, 93);
+    color: white;
+    border: none;
+}
+
+.skill-button-outline {
+    padding: 2px;
+    border: 2px solid white;
+    border-radius: 100%;
+    border-bottom: 2px solid transparent;
+}
+
+.skill-button:hover {
+    cursor: pointer;
+}
+
+.talent-box {
+    margin-right: 5px;
+    margin-top: 20px;
+}
+
+.talent-button {
+    background-color: rgb(96, 96, 96);
+    color: white;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    border-radius: 20px;
+    border: none
+}
