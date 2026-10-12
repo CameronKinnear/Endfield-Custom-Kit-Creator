@@ -27,6 +27,10 @@ window.addEventListener('DOMContentLoaded', async () => {
 });
 
 function LoadTalentInfo() {
+    /*
+        Loads talent info that is displayed on the webpage
+        Does not include info that is displayed in the popupbox
+    */
     const TALENT1 = document.getElementById('talent-1-button');
     const TALENT2 = document.getElementById('talent-2-button');
     TALENT1.innerHTML = localDetails["talent 1"].name;
@@ -34,6 +38,10 @@ function LoadTalentInfo() {
 }
 
 function LoadSkillInfo() {
+    /*
+        Loads skill info that is displayed on the webpage.
+        Does not include info that is displayed in the popup box
+    */
     const ELEMENT_TO_HEX = {
         "physical" : "#5E5D5C",
         "cryo" : "",
