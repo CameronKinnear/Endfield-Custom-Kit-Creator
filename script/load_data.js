@@ -20,6 +20,7 @@ window.addEventListener('DOMContentLoaded', async () => {
         LoadBasicDetails();
         LoadCharName();
         LoadTalentInfo();
+        LoadSkillInfo();
     } catch (error) {
         ErrorLog(error);
     }
@@ -30,6 +31,13 @@ function LoadTalentInfo() {
     const TALENT2 = document.getElementById('talent-2-button');
     TALENT1.innerHTML = localDetails["talent 1"].name;
     TALENT2.innerHTML = localDetails["talent 2"].name;
+}
+
+function LoadSkillInfo() {
+    const BATK_IMG = document.getElementById('batk-image');
+    const BATK_BUTTON = document.getElementById('batk-button');
+    BATK_IMG.src = localDetails["basic"].image;
+    
 }
 
 function LoadStatDetails() {
