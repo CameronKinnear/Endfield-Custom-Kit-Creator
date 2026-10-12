@@ -1,18 +1,31 @@
 <html>
     <head>
+        <!-- CSS Files -->
         <link rel="stylesheet" href="style/popup_style.css">
         <link rel="stylesheet" href="style/kit_style.css">
         <link rel="stylesheet" href="style/main_style.css">
         <link rel="stylesheet" href="style/stat_style.css">
         <link rel="stylesheet" href="style/text_style.css">
         <link rel="stylesheet" href="style/basic_info_style.css">
+
+        <!-- Javscript Files -->
+        <script src="script/load_data.js" defer></script>
+        <script src="script/save_data.js" defer></script>
+        <script src="script/save_data.js" defer></script>
+        <script src="script/live_formatting.js" defer></script>
+        <script src="script/helper.js" defer></script>
+        <script src="script/select.js" defer></script>
+
+        
     </head>
     <body>
         <div id="buttons-col-1">
             <div id="char-info">
+
+                <!-- Buttons for selecting class -->
                 <div id="class-box">
-                    <label id="class-label" class="invisible">Class</label>
-                    <div id="class-selector">
+                    <label id="class-label">Class</label>
+                    <div id="class-selector" data-selectedclass="guard">
                         <button id="button-guard" class="class-button" onclick="SelectClass(this.value)" value="guard">
                             <div class="class-outline"></div>
                             <img class="image-class" src="images/classes/guard.png">
@@ -39,105 +52,122 @@
                         </button>                    
                     </div>
                 </div>
-                <div id="char-info-right">
-                    <div id="char-info-top">
-                        <div id="name-box">
-                            <label id="name-label" class="invisible">Name</label>
-                            <input type="text" id="name-input">
-                        </div>
-                    </div>
-                    <div id="char-info-bot">
-                        <div id="weapon-type-box">
-                            <label class="invisible">Weapon Type</label>
-                            <div id="weapon-type-selector">
-                                <button id="button-arts-unit" class="weapon-button" onclick="SelectWeapon(this.value)" value="artsunit">
-                                    <img class="image-weapon" src="images/weapons/arts-unit.png">
-                                </button>
-                                <button id="button-great-sword" class="weapon-button" onclick="SelectWeapon(this.value)" value="greatsword">
-                                    <img class="image-weapon" src="images/weapons/great-sword.png">
-                                </button>
-                                <button id="button-hand-cannon" class="weapon-button" onclick="SelectWeapon(this.value)" value="handcannon">
-                                    <img class="image-weapon" src="images/weapons/hand-cannon.png">
-                                </button>
-                                <button id="button-polearm" class="weapon-button" onclick="SelectWeapon(this.value)" value="polearm">
-                                    <img class="image-weapon" src="images/weapons/polearm.png">
-                                </button>
-                                <button id="button-sword" class="weapon-button" onclick="SelectWeapon(this.value)" value="sword">
-                                    <img class="image-weapon" src="images/weapons/sword.png">
-                                </button>
-                            </div>
-                        </div>
-                        <div id="rarity-box">
-                            <label id="rarity-label" class="generic-text-invisible">Rarity</label>
-                            <img class="rarity-icon" src="images/op-rarity.png">
-                            <img class="rarity-icon" src="images/op-rarity.png">
-                            <img class="rarity-icon" src="images/op-rarity.png">
-                            <button id="rarity-4-star-button" class="rarity-button" onclick="SelectRarity(4)">
-                                <img class="rarity-icon" src="images/op-rarity.png">
-                            </button>
-                            <button id="rarity-5-star-button" class="rarity-button" onclick="SelectRarity(5)">
-                                <img id="rarity-5-img" class="rarity-icon" src="images/op-rarity.png">
-                            </button>
-                            <button id="rarity-6-star-button" class="rarity-button" onclick="SelectRarity(6)">
-                                <img id="rarity-6-img" class="rarity-icon" src="images/op-rarity.png">
-                            </button>
-                        </div>
+
+                <!-- Buttons for selecting Weapon -->
+                <div id="weapon-type-box">
+                    <label>Weapon Type</label>
+                    <div id="weapon-type-selector" data-selectedweapon="artsunit">
+                        <button id="button-arts-unit" class="weapon-button" onclick="SelectWeapon(this.value)" value="artsunit">
+                            <img class="image-weapon" src="images/weapons/arts-unit.png">
+                        </button>
+                        <button id="button-great-sword" class="weapon-button" onclick="SelectWeapon(this.value)" value="greatsword">
+                            <img class="image-weapon" src="images/weapons/great-sword.png">
+                        </button>
+                        <button id="button-hand-cannon" class="weapon-button" onclick="SelectWeapon(this.value)" value="handcannon">
+                            <img class="image-weapon" src="images/weapons/hand-cannon.png">
+                        </button>
+                        <button id="button-polearm" class="weapon-button" onclick="SelectWeapon(this.value)" value="polearm">
+                            <img class="image-weapon" src="images/weapons/polearm.png">
+                        </button>
+                        <button id="button-sword" class="weapon-button" onclick="SelectWeapon(this.value)" value="sword">
+                            <img class="image-weapon" src="images/weapons/sword.png">
+                        </button>
                     </div>
                 </div>
-                <div id="char-element">
 
+                <!-- Box for entering name -->
+                <div id="name-box">
+                    <label id="name-label">Name</label>
+                    <input type="text" id="name-input">
                 </div>
                 
+                <!-- Buttons for choosing rarity -->
+                <div id="rarity-box">
+                    <label id="rarity-label" class="generic-text-invisible">Rarity</label>
+                    <div id="rarity-selector" data-selectedrarity="6">
+                        <img class="rarity-icon" src="images/op-rarity.png">
+                        <img class="rarity-icon" src="images/op-rarity.png">
+                        <img class="rarity-icon" src="images/op-rarity.png">
+                        <button id="rarity-4-star-button" class="rarity-button" onclick="SelectRarity(4)" value="4">
+                            <img class="rarity-icon" src="images/op-rarity.png">
+                        </button>
+                        <button id="rarity-5-star-button" class="rarity-button" onclick="SelectRarity(5)" value="5">
+                            <img id="rarity-5-img" class="rarity-icon" src="images/op-rarity.png">
+                        </button>
+                        <button id="rarity-6-star-button" class="rarity-button" onclick="SelectRarity(6)" value="6">
+                            <img id="rarity-6-img" class="rarity-icon" src="images/op-rarity.png">
+                        </button>
+                    </div>
+                </div>
+
             </div>
 
+            <!-- Input fields and buttons for stats -->
             <div id="char-stats">
-                <div id="str-box" class="stat-box">
-                    <button id="str-stat-button" class="stat-button inactive-stat" onclick="ChangeStatLevel(this, (value == 3 ? 1 : parseInt(this.value) + 1))" value=1 data-type="str">
+
+                <!-- Strength Stats -->
+                <div id="str-box" class="stat-box" data-level="basic">
+                    <button id="str-stat-button" class="stat-button strip-style" onclick="ChangeStatLevel(this)">
                         <img src="/images/stats/strength.png" id="str-img" class="stat-image">
                     </button>
                     <label id="str-label" class="stat-label stat-label-text">Strength</label>
                     <input type="number" id="str-val" class="stat-input stat-number">
                 </div>
-                <div id="agl-box" class="stat-box">
-                    <button id="agl-stat-button" class="stat-button inactive-stat" onclick="ChangeStatLevel(this, (value == 3 ? 1 : parseInt(this.value) + 1))" value=1 data-type="agl">
+
+                <!-- Agility Stats -->
+                <div id="agl-box" class="stat-box" data-level="basic">
+                    <button id="agl-stat-button" class="stat-button strip-style" onclick="ChangeStatLevel(this)">
                         <img src="/images/stats/agility.png" id="agl-img" class="stat-image">
                     </button>
                     <label id="agl-label" class="stat-label stat-label-text">Agility</label>
                     <input type="number" id="agl-val" class="stat-input stat-number">
                 </div>
-                <div id="int-box" class="stat-box">
-                    <button id="int-stat-button" class="stat-button inactive-stat" onclick="ChangeStatLevel(this, (value == 3 ? 1 : parseInt(this.value) + 1))" value=1 data-type="int">
+
+                <!-- Inteligence Stats -->
+                <div id="int-box" class="stat-box" data-level="basic">
+                    <button id="int-stat-button" class="stat-button strip-style" onclick="ChangeStatLevel(this)">
                         <img src="/images/stats/intellect.png" id="int-img" class="stat-image">
                     </button>
                     <label id="int-label" class="stat-label stat-label-text">Intellect</label>
                     <input type="number" id="int-val" class="stat-input stat-number">
                 </div>
-                <div id="wil-box" class="stat-box">
-                    <button id="wil-stat-button" class="stat-button inactive-stat" onclick="ChangeStatLevel(this, (value == 3 ? 1 : parseInt(this.value) + 1))" value=1 data-type="wil">
+
+                <!-- Will Stats -->
+                <div id="wil-box" class="stat-box" data-level="basic">
+                    <button id="wil-stat-button" class="stat-button strip-style" onclick="ChangeStatLevel(this)">
                         <img src="/images/stats/will.png" id="wil-img" class="stat-image">
                     </button>
                     <label id="will-label" class="stat-label stat-label-text">Will</label>
                     <input type="number" id="wil-val" class="stat-input stat-number">
                 </div>
+                
             </div>
 
-            <label id="skills-box-label">Skills</label>
-            <div id="skills-boxes">
-                <div id="skills-buttons">
-                    <button id="batk-button" class="skill-button" onclick="SelectButton(this)" value="basic">BA</button>
-                    <button id="bskl-button" class="skill-button" onclick="SelectButton(this)" value="battle">BS</button>
-                    <button id="cskl-button" class="skill-button" onclick="SelectButton(this)" value="combo">CS</button>
-                    <button id="uskl-button" class="skill-button" onclick="SelectButton(this)" value="ultimate">Ult</button>
+            <div id="button-selector" data-displayed="none">
+
+                <!-- Buttons for selecting skills -->
+                <div id="skills-boxes">
+                    <label id="skills-box-label">Skills</label>
+                    <div id="skills-buttons">
+                        <button id="batk-button" class="skill-button" onclick="DisplayData(this.value)" value="basic">BA</button>
+                        <button id="bskl-button" class="skill-button" onclick="DisplayData(this.value)" value="battle">BS</button>
+                        <button id="cskl-button" class="skill-button" onclick="DisplayData(this.value)" value="combo">CS</button>
+                        <button id="uskl-button" class="skill-button" onclick="DisplayData(this.value)" value="ultimate">Ult</button>
+                    </div>
+                </div>
+
+                <!-- Buttons for selecting talent -->
+                <div id="talents-boxes">
+                    <label id="skills-box-label">Talents</label>
+                    <div id="talent-buttons">
+                        <button id="talent-1-button" class="talent-button" onclick="DisplayData(this.value)" value="talent 1">Talent 1</button>
+                        <button id="talent-2-button" class="talent-button" onclick="DisplayData(this.value)" value="talent 2">Talent 2</button>
+                    </div>
                 </div>
             </div>
+            
 
-            <div id="talents-boxes">
-                <div id="talent-buttons">
-                    <button id="talent-1-button" class="talent-button" onclick="SelectButton(this)" value="talent 1">Talent 1</button>
-                    <button id="talent-2-button" class="talent-button" onclick="SelectButton(this)" value="talent 2">Talent 2</button>
-                </div>
-            </div>
-
+            <!-- Box for creating custom keywords -->
             <div id="custom-keywords-box">
                 <label id="custom=keyword-label">Custom Keywords</label>
                 <input type="text" id="custom-keywords">
@@ -148,6 +178,7 @@
         <div id="display-box-column">
             <div id="popup-box" class="popup-box popup-box-invisible">
 
+                <!-- The display box for skills and talents -->
                 <div class="popup-top-row">
                     <button class="popup-edit-button strip-style" onclick="ToggleEditBox(this)" value=""><img src="images/edit-icon.png" class="popup-edit-image"></button>
                     <label id="popup-label" class="popup-label sub-text"></label>
@@ -164,6 +195,5 @@
 
             </div>
         </div>
-        <script src="script/handle_data.js"></script>
     </body>
 </html>
