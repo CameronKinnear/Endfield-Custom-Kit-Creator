@@ -26,6 +26,14 @@
     cursor: pointer;
 }
 
+.skill-rank {
+    width: 50px;
+    height: 20px;
+    background-color: gray;
+    border-radius: 30px;
+    color: white;
+}
+
 .talent-box {
     margin-right: 5px;
     margin-top: 20px;
@@ -35,7 +43,6 @@
     background-color: rgb(96, 96, 96);
     color: white;
     padding-top: 3px;
-    padding-bottom: 3px;
     border-radius: 20px;
     border: none
 }

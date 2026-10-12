@@ -45,6 +45,14 @@
     z-index: 2;
 }
 
+.skill-rank {
+    font-family: "Harmony OS Sans Regular";
+    font-size: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 #skills-header-background {
     width: 100%;
     height: 15px;
