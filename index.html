@@ -103,51 +103,53 @@
             </div>
 
             <!-- Input fields and buttons for stats -->
-            <div id="char-stats">
+            <div id="char-stats-box">
+                <h2 id="attributes-header">Attributes</h2>
+                <div id="char-stats" class="flex-row">
+                    <!-- Strength Stats -->
+                    <div id="str-box" class="stat-box vertical-center flex-col" data-level="basic">
+                        <button id="str-stat-button" class="stat-button strip-style" onclick="ChangeStatLevel(this)">
+                            <img src="/images/stats/strength.png" id="str-img" class="stat-image">
+                        </button>
+                        <label id="str-label" class="stat-label stat-label-text" for="str-val">Strength</label>
+                        <input type="number" id="str-val" class="stat-input stat-number">
+                    </div>
 
-                <!-- Strength Stats -->
-                <div id="str-box" class="stat-box" data-level="basic">
-                    <button id="str-stat-button" class="stat-button strip-style" onclick="ChangeStatLevel(this)">
-                        <img src="/images/stats/strength.png" id="str-img" class="stat-image">
-                    </button>
-                    <label id="str-label" class="stat-label stat-label-text">Strength</label>
-                    <input type="number" id="str-val" class="stat-input stat-number">
-                </div>
+                    <!-- Agility Stats -->
+                    <div id="agl-box" class="stat-box vertical-center flex-col" data-level="basic">
+                        <button id="agl-stat-button" class="stat-button strip-style" onclick="ChangeStatLevel(this)">
+                            <img src="/images/stats/agility.png" id="agl-img" class="stat-image">
+                        </button>
+                        <label id="agl-label" class="stat-label stat-label-text" for="agl-val">Agility</label>
+                        <input type="number" id="agl-val" class="stat-input stat-number">
+                    </div>
 
-                <!-- Agility Stats -->
-                <div id="agl-box" class="stat-box" data-level="basic">
-                    <button id="agl-stat-button" class="stat-button strip-style" onclick="ChangeStatLevel(this)">
-                        <img src="/images/stats/agility.png" id="agl-img" class="stat-image">
-                    </button>
-                    <label id="agl-label" class="stat-label stat-label-text">Agility</label>
-                    <input type="number" id="agl-val" class="stat-input stat-number">
-                </div>
+                    <!-- Inteligence Stats -->
+                    <div id="int-box" class="stat-box vertical-center flex-col" data-level="basic">
+                        <button id="int-stat-button" class="stat-button strip-style" onclick="ChangeStatLevel(this)">
+                            <img src="/images/stats/intellect.png" id="int-img" class="stat-image">
+                        </button>
+                        <label id="int-label" class="stat-label stat-label-text" for="int-val">Intellect</label>
+                        <input type="number" id="int-val" class="stat-input stat-number">
+                    </div>
 
-                <!-- Inteligence Stats -->
-                <div id="int-box" class="stat-box" data-level="basic">
-                    <button id="int-stat-button" class="stat-button strip-style" onclick="ChangeStatLevel(this)">
-                        <img src="/images/stats/intellect.png" id="int-img" class="stat-image">
-                    </button>
-                    <label id="int-label" class="stat-label stat-label-text">Intellect</label>
-                    <input type="number" id="int-val" class="stat-input stat-number">
+                    <!-- Will Stats -->
+                    <div id="wil-box" class="stat-box vertical-center flex-col" data-level="basic">
+                        <button id="wil-stat-button" class="stat-button strip-style" onclick="ChangeStatLevel(this)">
+                            <img src="/images/stats/will.png" id="wil-img" class="stat-image">
+                        </button>
+                        <label id="will-label" class="stat-label stat-label-text" for="wil-val">Will</label>
+                        <input type="number" id="wil-val" class="stat-input stat-number">
+                    </div>
                 </div>
-
-                <!-- Will Stats -->
-                <div id="wil-box" class="stat-box" data-level="basic">
-                    <button id="wil-stat-button" class="stat-button strip-style" onclick="ChangeStatLevel(this)">
-                        <img src="/images/stats/will.png" id="wil-img" class="stat-image">
-                    </button>
-                    <label id="will-label" class="stat-label stat-label-text">Will</label>
-                    <input type="number" id="wil-val" class="stat-input stat-number">
-                </div>
-                
             </div>
 
             <div id="button-selector" data-displayed="none">
 
                 <!-- Buttons for selecting skills -->
                 <div id="skills-boxes">
-                    <label id="skills-box-label">Skills</label>
+                    <label id="skills-header">Skills</label>
+                    <div id="skills-header-background"></div>
                     <div id="skills-buttons">
                         <button id="batk-button" class="skill-button" onclick="DisplayData(this.value)" value="basic">BA</button>
                         <button id="bskl-button" class="skill-button" onclick="DisplayData(this.value)" value="battle">BS</button>
@@ -158,7 +160,6 @@
 
                 <!-- Buttons for selecting talent -->
                 <div id="talents-boxes">
-                    <label id="skills-box-label">Talents</label>
                     <div id="talent-buttons">
                         <button id="talent-1-button" class="talent-button" onclick="DisplayData(this.value)" value="talent 1">Talent 1</button>
                         <button id="talent-2-button" class="talent-button" onclick="DisplayData(this.value)" value="talent 2">Talent 2</button>
