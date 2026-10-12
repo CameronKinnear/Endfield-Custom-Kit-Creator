@@ -19,10 +19,18 @@ window.addEventListener('DOMContentLoaded', async () => {
         LoadStatDetails();
         LoadBasicDetails();
         LoadCharName();
+        LoadTalentInfo();
     } catch (error) {
         ErrorLog(error);
     }
 });
+
+function LoadTalentInfo() {
+    const TALENT1 = document.getElementById('talent-1-button');
+    const TALENT2 = document.getElementById('talent-2-button');
+    TALENT1.innerHTML = localDetails["talent 1"].name;
+    TALENT2.innerHTML = localDetails["talent 2"].name;
+}
 
 function LoadStatDetails() {
     /*
