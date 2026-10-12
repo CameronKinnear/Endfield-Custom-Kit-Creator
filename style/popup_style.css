@@ -1,5 +1,5 @@
 .popup-box {
-    background-color: #313131;
+    background-color: var(--dark-gray);
     width: 400px;
     color: rgb(204, 204, 204);
     padding: 2%;

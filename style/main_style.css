@@ -1,3 +1,8 @@
+:root {
+    --dark-gray: #313131;
+    --light-gray: #929292;
+}
+
 body {
     display: flex;
     flex-direction: row;

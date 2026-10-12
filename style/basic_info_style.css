@@ -14,6 +14,7 @@
     flex-direction: row;
 }
 
+/* Rarity Style */
 #rarity-box {
     display: flex;
     flex-direction: row;
@@ -39,24 +40,19 @@
     opacity: 0.4;
 }
 
+.selected-rarity {
+    background-color: gray;
+    color: white;
+}
+
+
+/* Class Style */
 .class-invisible {
     display: none;
     visibility: hidden;
 }
 
-.weapon-invisible {
-    display: none;
-    visibility: hidden;
-}
-
 .class-button {
-    border: none;
-    background-color: transparent;
-    width: 60px;
-    height: 60px;
-}
-
-.weapon-button {
     border: none;
     background-color: transparent;
     width: 60px;
@@ -72,17 +68,6 @@
     z-index: 2;
 }
 
-.image-weapon {
-    width: inherit;
-    margin: 0;
-    height: inherit;
-}
-
-.selected-rarity {
-    background-color: gray;
-    color: white;
-}
-
 /* Automatically styles the button based on the selected class*/
 #class-selector[data-selectedclass="guard"]  .class-button[value="guard"] div.class-outline,
 #class-selector[data-selectedclass="caster"] .class-button[value="caster"] div.class-outline,
@@ -96,6 +81,36 @@
     position: absolute;
     z-index: 1;
     outline-offset: -8px;
+}
+
+/* Weapon Style */
+
+#weapon-type-selector {
+    display: flex;
+    flex-direction: row;
+}
+
+.weapon-invisible {
+    display: none;
+    visibility: hidden;
+}
+
+
+.weapon-button {
+    border: none;
+    background-color: transparent;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-weapon {
+    width: inherit;
+    margin: 0;
+    height: inherit;
+    align-self: center;
 }
 
 /* Automatically styles the button based on the selected weapon*/
