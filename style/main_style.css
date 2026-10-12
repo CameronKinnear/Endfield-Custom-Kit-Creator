@@ -12,18 +12,7 @@ body {
     width: 33%;
 }
 
-.no-display-invisible {
-    visibility: none;
+.invisible {
     display: none;
-}
-
-button.strip-style {
-  background: transparent;
-  border: none;
-  padding: 0;
-  margin: 0;
-  font: inherit;
-  color: inherit;
-  cursor: pointer;
-  outline: none;
+    visibility: hidden;
 }

@@ -1,5 +1,27 @@
+#char-info {
+    display: flex;
+    flex-direction: column;
+}
+
+#char-info-right {
+    flex-direction: column;
+    margin-left: 10px;
+}
+
+#char-info-bot {
+    margin-top: 5px;
+    display: flex;
+    flex-direction: row;
+}
+
+#rarity-box {
+    display: flex;
+    flex-direction: row;
+    margin-left: 5px;
+}
 .rarity-icon {
-    width: 30px;
+    width: 25px;
+    height: 25px;
     height: auto;
 }
 
@@ -51,8 +73,9 @@
 }
 
 .image-weapon {
-    width: 40px;
-    height: 40px;
+    width: inherit;
+    margin: 0;
+    height: inherit;
 }
 
 .selected-rarity {
