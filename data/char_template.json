@@ -32,6 +32,7 @@
     "battle" : {
         "type" : "Battle Skill",
         "element" : "physical",
+        "image" : "",
         "name" : "Constructive Sequence",
         "text" : "A forceful burst of Originium Crystals that attacks enemies within the area of effect. Deals Physical DMG and applies Crush.",
         "rank" : 9,
@@ -40,6 +41,7 @@
     "combo" : {
         "type" : "Combo Skill",
         "element" : "physical",
+        "image" : "",
         "name" : "Sealing Sequence",
         "text" : "COMBO TRIGGER: When another operator in the team deals DMG with combo skills.\nRushes to the enemy's side to deal Physical DMG and attach Originium Crystals that temporarily seal them. Applying Physical Status or Vulnerability to the sealed enemy shatters the Originium Crystals and deals additional Physical DMG.",
         "rank" : 9,
@@ -48,6 +50,7 @@
     "ultimate" : {
         "type" : "Ultimate",
         "element" : "physical",
+        "image" : "",
         "name" : "Bombardment Sequence",
         "text" : "Bombards the ground with Originium Crystals, dealing massive Physical DMG to all enemies within a fan-shaped area. If the enemy already has Originium Crystals on them, this skill shatters the Originium Crystals and deals 1 more hit of Physical DMG.",
         "rank" : 9,

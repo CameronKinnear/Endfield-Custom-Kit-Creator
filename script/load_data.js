@@ -34,9 +34,32 @@ function LoadTalentInfo() {
 }
 
 function LoadSkillInfo() {
+    const ELEMENT_TO_HEX = {
+        "physical" : "#5E5D5C",
+        "cryo" : "",
+        "nature" : "",
+        "electric" : "",
+        "heat" : ""
+    };
+
+    const root = document.documentElement;
+
     const BATK_IMG = document.getElementById('batk-image');
-    const BATK_BUTTON = document.getElementById('batk-button');
     BATK_IMG.src = localDetails["basic"].image;
+    root.style.setProperty('--batk-element', ELEMENT_TO_HEX[localDetails["basic"].element]);
+
+    const BSKL_IMG = document.getElementById('bskl-image');
+    BSKL_IMG.src = localDetails["battle"].image;
+    root.style.setProperty('--bskl-element', ELEMENT_TO_HEX[localDetails["battle"].element]);
+
+    const CSKL_IMG = document.getElementById('cskl-image');
+    CSKL_IMG.src = localDetails["combo"].image;
+    root.style.setProperty('--cskl-element', ELEMENT_TO_HEX[localDetails["combo"].element]);
+
+    const ULT_IMG = document.getElementById('uskl-image');
+    ULT_IMG.src = localDetails["ultimate"].image;
+    root.style.setProperty('--ult-element', ELEMENT_TO_HEX[localDetails["ultimate"].element]);
+    
     
 }
 
