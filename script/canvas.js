@@ -1,11 +1,14 @@
 /* ============================================
 This file is used to control the canvas elements
 for skill and talent icons
+
+NEEDS CLEANUP
 ============================================= */
 const canvas = document.getElementById('canvas-editor');
 const canvasCtx = canvas.getContext('2d');
 const applyChanges = document.getElementById('apply-skill-image');
 let currentFile = null;
+let currentImage = null;
 
 function ShowCanvasEditor() {
     document.getElementById('skill-edit-canvas').classList.toggle('invisible');
@@ -20,32 +23,40 @@ FILE_INPUT.addEventListener('change', async (evnt) => {
     if (fileList.length == 0) return ErrorLog("No Files Selected");
 
     const file = fileList[0];
-    currentFile = file;
-    ShowFileOnCanvas(file);
+    const url = URL.createObjectURL(file);
+    const image = new Image();
+
+    image.onload = () => {
+        URL.revokeObjectURL(url);
+        currentImage = image;
+        distFromCenterX = 0;
+        distFromCenterY = 0;
+        RequestRedraw();
+    };
+    image.src = url;
 })
 
-function ShowFileOnCanvas(file, imgScale = 1, imgOffsetX = 0, imgOffsetY = 0) {
-    ClearCanvas();
-    const fileReader = new FileReader();
+function ShowFileOnCanvas() {
+    canvasCtx.clearRect(0, 0, canvas.width, canvas.height);
+    if (!currentImage) return;
 
-    fileReader.onload = function(evnt) {
-        
-        const image = new Image();
+    const scale = parseFloat(sizeSlider.value) || 1;
+    const w = currentImage.width * scale;
+    const h = currentImage.height * scale;
+    const x = (canvas.width - w) / 2 - distFromCenterX;
+    const y = (canvas.height - h) / 2 - distFromCenterY;
 
-        image.onload = function() {
+    canvasCtx.drawImage(currentImage, x, y, w, h);
+}
 
-            // Display image on center of canvas
-            let x = ((canvas.width - (image.width * imgScale)) / 2) - imgOffsetX;
-            let y = ((canvas.height - (image.height * imgScale)) / 2) - imgOffsetY;
-            let imgSizeX = image.width * imgScale;
-            let imgSizeY = image.height * imgScale;
-            canvasCtx.drawImage(image, x, y, imgSizeX, imgSizeY);
-        }
-
-        image.src = evnt.target.result;
-    }
-
-    fileReader.readAsDataURL(file);
+// Batch redraws so we draw at most once per display frame
+function RequestRedraw() {
+    if (needsRedraw) return;
+    needsRedraw = true;
+    requestAnimationFrame(() => {
+        needsRedraw = false;
+        DrawImage();
+    });
 }
 
 const sizeSlider = document.getElementById('img-slider');
@@ -77,9 +88,9 @@ function UpdateDistFromCenter(e) {
     const rect = canvas.getBoundingClientRect();
     const centerX = (rect.right - rect.left) / 2;
     const centerY = (rect.bottom - rect.top) / 2;
+
     distFromCenterX = centerX - (e.clientX - rect.left);
     distFromCenterY = centerY - (e.clientY - rect.top);
-    Log(distFromCenterX + " " + distFromCenterY);
 }
 
 const stopAction = () => {
@@ -98,3 +109,9 @@ canvas.addEventListener('mouseleave', () => {
     stopAction()
     isMouseDown = false;
 });
+
+function update() {
+  canvasCtx.clearRect(0, 0, canvas.width, canvas.height); // Clear once per frame
+  
+}
+requestAnimationFrame(update);
