@@ -1,0 +1,10 @@
+.canvas-editor {
+    border-radius: 100%;
+    background-color: white;
+}
+
+#skill-edit-canvas {
+    background-color: gray;
+    padding: 50px;
+    height: 300px;
+}

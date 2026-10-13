@@ -80,3 +80,17 @@
 .selected-button {
     background-color: gray;
 }
+
+.popup-edit-icon {
+    background-color: var(--endf-yellow);
+    height: 70%;
+    border: none;
+    border-radius: 5px;
+    color: var(--dark-gray);
+    margin-left: 5px;
+    align-self: center;
+}
+
+.popup-edit-icon:hover {
+    cursor: pointer;
+}

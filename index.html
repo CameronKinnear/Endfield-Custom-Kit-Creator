@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="style/text_style.css">
         <link rel="stylesheet" href="style/basic_info_style.css">
         <link rel="stylesheet" href="style/skills_style.css">
+        <link rel="stylesheet" href="style/canvas_style.css">
 
         <!-- Javscript Files -->
         <script src="script/load_data.js" defer></script>
@@ -16,6 +17,7 @@
         <script src="script/live_formatting.js" defer></script>
         <script src="script/helper.js" defer></script>
         <script src="script/select.js" defer></script>
+        <script src="script/canvas.js" defer></script>
 
         
     </head>
@@ -155,7 +157,7 @@
                         <div class="skill-box flex-col vertical-center">
                             <div class="skill-button-outline">
                                 <button id="batk-button" class="skill-button" onclick="DisplayData(this.value)" value="basic">
-                                    <img id="batk-image" class="skill-image" src="">
+                                    <canvas id="batk-image" class="skill-image"></canvas>
                                 </button>
                             </div>
                             <label class="skill-rank">Rank 1</label>
@@ -163,7 +165,7 @@
                         <div class="skill-box flex-col vertical-center">
                             <div class="skill-button-outline">
                                 <button id="bskl-button" class="skill-button" onclick="DisplayData(this.value)" value="battle">
-                                    <img id="bskl-image" class="skill-image" src="">
+                                    <canvas id="bskl-image" class="skill-image"></canvas>
                                 </button>
                             </div>
                             <label class="skill-rank">Rank 1</label>
@@ -171,7 +173,7 @@
                         <div class="skill-box flex-col vertical-center">
                             <div class="skill-button-outline">
                                 <button id="cskl-button" class="skill-button" onclick="DisplayData(this.value)" value="combo">
-                                    <img id="cskl-image" class="skill-image" src="">
+                                    <canvas id="cskl-image" class="skill-image"></canvas>
                                 </button>
                             </div>
                             <label class="skill-rank">Rank 1</label>
@@ -179,7 +181,7 @@
                         <div class="skill-box flex-col vertical-center">
                             <div class="skill-button-outline">
                                 <button id="uskl-button" class="skill-button" onclick="DisplayData(this.value)" value="ultimate">
-                                    <img id="uskl-image" class="skill-image" src="">
+                                    <canvas id="uskl-image" class="skill-image"></canvas>
                                 </button>
                             </div>
                             <label class="skill-rank">Rank 1</label>
@@ -217,6 +219,7 @@
                 <!-- The display box for skills and talents -->
                 <div class="popup-top-row">
                     <button class="popup-edit-button strip-style" onclick="ToggleEditBox(this)" value=""><img src="images/edit-icon.png" class="popup-edit-image"></button>
+                    <button id="popup-edit-icon" class="popup-edit-icon invisible" onclick="ShowCanvasEditor()">Edit Skill Icon</button>
                     <label id="popup-label" class="popup-label sub-text"></label>
                 </div>
 
@@ -230,6 +233,9 @@
                 </div>
 
             </div>
+        </div>
+        <div id="skill-edit-canvas" class="invisible">
+            <canvas id="canvas-editor" class="canvas-editor" width="300px" height="300px"></canvas>
         </div>
     </body>
 </html>

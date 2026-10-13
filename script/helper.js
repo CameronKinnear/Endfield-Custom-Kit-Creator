@@ -29,3 +29,4 @@ function ErrorLog(string) {
     if (disableOutputs == true) return null;
     return console.error('ERROR LOG: ' + string);
 }
+

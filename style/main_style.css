@@ -1,6 +1,9 @@
+
+/* Base color scheme */
 :root {
     --dark-gray: #313131;
     --light-gray: #929292;
+    --endf-yellow: #d3d331;
 }
 
 body {
@@ -9,6 +12,7 @@ body {
     background-color: rgb(155, 154, 154);
 }
 
+/* Major Columns */
 #buttons-col-1 {
     width: 33%;
 }
@@ -32,6 +36,7 @@ button.strip-style {
     appearance: none; 
 }
 
+/* Display flex styling */
 .flex-col {
     display: flex;
     flex-direction: column;

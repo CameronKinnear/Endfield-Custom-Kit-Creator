@@ -153,5 +153,7 @@ function ToggleEditBox() {
         Toggles the visibility of the edit box
     */
     popupEdit.classList.toggle('edit-box-invisible');
+    document.getElementById('popup-edit-icon').classList.toggle('invisible');
+    document.getElementById('skill-edit-canvas').classList.add('invisible');
 }
 
