@@ -44,10 +44,10 @@ function LoadSkillInfo() {
     */
     const ELEMENT_TO_HEX = {
         "physical" : "#5E5D5C",
-        "cryo" : "",
-        "nature" : "",
-        "electric" : "",
-        "heat" : ""
+        "cryo" : "#11B7CD",
+        "nature" : "#A7BD1B",
+        "electric" : "#FBC700",
+        "heat" : "#FF603F"
     };
 
     const root = document.documentElement;
