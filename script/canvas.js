@@ -35,8 +35,8 @@ function ShowFileOnCanvas(file, imgScale = 1, imgOffsetX = 0, imgOffsetY = 0) {
         image.onload = function() {
 
             // Display image on center of canvas
-            let x = ((canvas.width - (image.width * imgScale)) / 2) + imgOffsetX;
-            let y = ((canvas.height - (image.height * imgScale)) / 2) + imgOffsetY;
+            let x = ((canvas.width - (image.width * imgScale)) / 2) - imgOffsetX;
+            let y = ((canvas.height - (image.height * imgScale)) / 2) - imgOffsetY;
             let imgSizeX = image.width * imgScale;
             let imgSizeY = image.height * imgScale;
             canvasCtx.drawImage(image, x, y, imgSizeX, imgSizeY);
@@ -54,9 +54,47 @@ sizeSlider.addEventListener('input', () => {
     ClearCanvas();
     let newSize = sizeSlider.value;
 
-    ShowFileOnCanvas(currentFile, newSize);
+    ShowFileOnCanvas(currentFile, newSize, distFromCenterX, distFromCenterY);
 })
 
 function ClearCanvas() {
     canvasCtx.clearRect(0, 0, canvas.width, canvas.height);
 }
+
+let holdInterval = null;
+let isMouseDown = false;
+let distFromCenterX = null;
+let distFromCenterY = null;
+canvas.addEventListener('mousedown', (evnt) => {
+
+    UpdateDistFromCenter(evnt);
+    holdInterval = setInterval((e) => {
+        isMouseDown = true;
+    }, 100); // Triggers every 100 milliseconds
+});
+
+function UpdateDistFromCenter(e) {
+    const rect = canvas.getBoundingClientRect();
+    const centerX = (rect.right - rect.left) / 2;
+    const centerY = (rect.bottom - rect.top) / 2;
+    distFromCenterX = centerX - (e.clientX - rect.left);
+    distFromCenterY = centerY - (e.clientY - rect.top);
+    Log(distFromCenterX + " " + distFromCenterY);
+}
+
+const stopAction = () => {
+    clearInterval(holdInterval);
+};
+
+canvas.addEventListener('mousemove', (e) => {
+    if (isMouseDown == true) UpdateDistFromCenter(e);
+    ShowFileOnCanvas(currentFile, sizeSlider.value, distFromCenterX, distFromCenterY);
+});
+canvas.addEventListener('mouseup', () => {
+    stopAction()
+    isMouseDown = false;
+});
+canvas.addEventListener('mouseleave', () => {
+    stopAction()
+    isMouseDown = false;
+});

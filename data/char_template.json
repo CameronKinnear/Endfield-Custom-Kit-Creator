@@ -24,7 +24,13 @@
     "basic" : {
         "type" : "Basic Attack",
         "element" : "physical",
-        "image" : "images/template_skills/icon_attack_sword.png",
+        "image" : {
+            "url" : "",
+            "width" : 100,
+            "height" : 100,
+            "offsetX" : 0,
+            "offsetY" : 0
+        },
         "name" : "Destructive Sequence",
         "text" : "BASIC ATTACK:\nAn attack with up to 5 sequences that deals Physical DMG. As the controlled operator, Final Strike also deals /stagger(18) Stagger.\n\nDIVE ATTACK:\nBasic attack performed in mid-air becomes a dive attack that deals Physical DMG to nearby enemies.\n\nFINISHER:\nBasic attack performed near a Staggered enemy becomes a finisher attack that deals massive Physical DMG and recovers some SP.",
         "rank" : 9
