@@ -12,7 +12,6 @@ function ShowCanvasEditor() {
 }
 
 const FILE_INPUT = document.getElementById('skill-icon-input');
-
 FILE_INPUT.addEventListener('change', async (evnt) => {
     /*
         On user file input
@@ -50,7 +49,6 @@ function ShowFileOnCanvas(file, imgScale = 1, imgOffsetX = 0, imgOffsetY = 0) {
 }
 
 const sizeSlider = document.getElementById('img-slider');
-
 sizeSlider.addEventListener('input', () => {
     Log(sizeSlider.value);
     ClearCanvas();
