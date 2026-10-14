@@ -11,17 +11,17 @@ let currentFile = null;
 let currentImage = null;
 let needsRedraw = false;
 
+/**
+ * Toggles the visibility of the canvas editor
+ */
 function ShowCanvasEditor() {
     document.getElementById('skill-edit-canvas').classList.toggle('invisible');
 }
 
 const FILE_INPUT = document.getElementById('skill-icon-input');
 FILE_INPUT.addEventListener('change', async (evnt) => {
-    /*
-        On user file input
-    */
     const fileList = evnt.target.files;
-    if (fileList.length == 0) return ErrorLog("No Files Selected");
+    if (fileList.length == 0) return console.error("No Files Selected");
 
     const file = fileList[0];
     const url = URL.createObjectURL(file);
@@ -62,7 +62,6 @@ function RequestRedraw() {
 
 const sizeSlider = document.getElementById('img-slider');
 sizeSlider.addEventListener('input', () => {
-    Log(sizeSlider.value);
     ClearCanvas();
     let newSize = sizeSlider.value;
 
@@ -117,7 +116,6 @@ function update() {
  * copies it to the currently selected skill
  */
 function ApplyChangesToSkillIcon() {
-    
     const DATA_SELECTOR = document.getElementById('button-selector');
     const skillDisplayed = DATA_SELECTOR.dataset.displayed;
     const buttonParent = DATA_SELECTOR.querySelector('button[value="' + skillDisplayed + '"]');

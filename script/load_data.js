@@ -7,11 +7,11 @@ Gets a JSON File -> Saves to the localDetails var
 ============================================= */
 let localDetails = null;
 
+/**
+ * Runs on DOMContentLoad (page is first loaded) and is used
+ * to retrieve data from the template to display by default
+ */
 window.addEventListener('DOMContentLoaded', async () => {
-    /*
-        Runs on DOMContentLoad (page is first loaded) and is used
-        to retrieve data from the template to display by default
-    */
     try {
         const DATA = await fetch('../data/char_template.json');
         localDetails = await DATA.json();
@@ -22,26 +22,26 @@ window.addEventListener('DOMContentLoaded', async () => {
         LoadTalentInfo();
         LoadSkillInfo();
     } catch (error) {
-        ErrorLog(error);
+        console.error(error);
     }
 });
 
+/**
+ * Loads talent info that is displayed on the webpage
+ * Does not include info that is displayed in the popupbox
+ */
 function LoadTalentInfo() {
-    /*
-        Loads talent info that is displayed on the webpage
-        Does not include info that is displayed in the popupbox
-    */
     const TALENT1 = document.getElementById('talent-1-button');
     const TALENT2 = document.getElementById('talent-2-button');
     TALENT1.innerHTML = localDetails["talent 1"].name;
     TALENT2.innerHTML = localDetails["talent 2"].name;
 }
 
+/**
+ * Loads skill info that is displayed on the webpage.
+ * Does not include info that is displayed in the popup box
+ */
 function LoadSkillInfo() {
-    /*
-        Loads skill info that is displayed on the webpage.
-        Does not include info that is displayed in the popup box
-    */
     const ELEMENT_TO_HEX = {
         "physical" : "#5E5D5C",
         "cryo" : "#11B7CD",
@@ -53,7 +53,6 @@ function LoadSkillInfo() {
     const root = document.documentElement;
 
     const BATK_IMG = document.getElementById('batk-image');
-    Log(BATK_IMG.width);
     root.style.setProperty('--batk-element', ELEMENT_TO_HEX[localDetails["basic"].element]);
 
     const BSKL_IMG = document.getElementById('bskl-image');
@@ -68,11 +67,11 @@ function LoadSkillInfo() {
     
 }
 
+/**
+ * Sets the information for stat levels and values
+ * to data stored in local details
+ */
 function LoadStatDetails() {
-    /*
-        Sets the information for stat levels and values
-        to data stored in local details
-    */
     document.getElementById('str-box').dataset.level = localDetails.str.level;
     document.getElementById('agl-box').dataset.level = localDetails.agl.level;
     document.getElementById('int-box').dataset.level = localDetails.int.level;
@@ -84,12 +83,10 @@ function LoadStatDetails() {
     document.getElementById('wil-val').value = localDetails.wil.val;
 }
 
+/**
+ * Loads the custom keywords from the localDetails
+ */
 function LoadCustomKeywords() {
-    /*
-        Loads the custom keywords from the 
-        inputted array
-        :keywords - An array of strings
-    */
     const KEYWORDS = localDetails["custom keywords"];
     
     let finalString = "";
@@ -103,20 +100,19 @@ function LoadCustomKeywords() {
     document.getElementById('custom-keywords').value = finalString;
 }
 
+/**
+ * Loads the char name from localDetails
+ */
 function LoadCharName() {
-    /*
-        Loads the char name from local details
-    */
     document.getElementById('name-input').value = localDetails.charname;
 }
 
+/**
+ * Loads the basic details from the localDetails
+ */
 function LoadBasicDetails() {
-    /*
-        Loads the basic details from the localDetails
-    */
     SelectRarity(localDetails.rarity);
     SelectClass(localDetails.class);
     SelectWeapon(localDetails.weapon);
     LoadCharName();
-    Log(localDetails.class);
 }

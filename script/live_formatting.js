@@ -6,11 +6,6 @@ let popupDisplay = document.getElementById('popup-display');
 let popupEdit = document.getElementById('popup-edit');
 
 const FORMATTING = {
-    /*
-        The key value pairs that determine the formatting
-        :key - The expression to be replaced
-        :value - What the key is replaced with
-    */
     // DMG Types
     'Electric DMG' : '<span class="format-span color-electric">Electric DMG</span>',
     'Heat DMG' : '<span class="format-span color-heat">Heat DMG</span>',
@@ -78,14 +73,14 @@ const REPLACEMENT_REGEX = new RegExp(
     'g'   
 );
 
+/**
+ * Takes the provided input and changes its
+ * content based on keywords to automatcially
+ * format it
+ * @param {String} text - The text to be formatted
+ * @returns The newly formatted string
+ */
 function ApplyFormatting(text) {
-    /*
-        Takes the provided input and changes its
-        content based on keywords to automatcially
-        format it
-        :text - The full string of text to be formatted
-        :return - The new string after formatting is applied
-    */
     text = ApplyCustomKeywordsFormatting(text);
 
     // Formats note tag
@@ -101,13 +96,13 @@ function ApplyFormatting(text) {
 }
 
 
+/**
+ * Checks the keywords array in local details and formats the
+ * inputted text based on its content
+ * @param {String} text - A string to be formatted
+ * @returns The newly formatted string
+ */
 function ApplyCustomKeywordsFormatting(text) {
-    /*
-        Checks the keywords array in local details and formats the
-        inputted text based on its content
-        :text - A string to the formatted
-        :return - The formatted string
-    */
     const keywordsArray = localDetails['custom keywords'];
     const keywordslen = keywordsArray.length;
 
@@ -119,19 +114,19 @@ function ApplyCustomKeywordsFormatting(text) {
     return text;
 }
 
+/**
+ * An event listener that fires when an input is made
+ * inside the popup display box
+ */
 popupEdit.addEventListener('input', () => {
-    /*
-        An event listener that fires when an input is made
-        inside the popup display box
-    */
     UpdateDisplay();
 })
 
+/**
+ * Updates the popup display box to display
+ * the formatted text
+ */
 function UpdateDisplay() {
-    /*
-        Updates the popup display box to display
-        the formatted text
-    */
     let editorText = popupEdit.value;
     let formattedText = ApplyFormatting(editorText);
     popupDisplay.innerHTML = formattedText;

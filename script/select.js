@@ -4,14 +4,16 @@ buttons, fields, and inputting text relating
 to rarity, skills, talents, stats, etc.
 ============================================= */
 
+
 let rarity5 = document.getElementById('rarity-5-star-button');
 let rarity6 = document.getElementById('rarity-6-star-button');
+/**
+ * Changes the rarity icons class style class to reflect
+ * if it is active or inactive
+ * @param {Number} rarityValue - An integer between 4 - 6 
+ *  to represent the new rarity selected
+ */
 function SelectRarity(rarityValue) {
-    /*
-        Changes the each rarity icons class to
-        reflect if it is inactive or not.
-        :rarityValue - An integer between 4 - 6
-    */
     if (rarityValue == 4) {
         rarity5.classList.add('rarity-inactive');
         rarity6.classList.add('rarity-inactive');
@@ -25,27 +27,26 @@ function SelectRarity(rarityValue) {
         rarity6.classList.remove('rarity-inactive');
     }
     else {
-        return ErrorLog("Invalid rarity input (must be between 4 and 6)")
+        return console.error("Invalid rarity input (must be between 4 and 6)");
     }
 
     document.getElementById('rarity-selector').dataset.selectedrarity = rarityValue;
 }
 
+/**
+ * Takes the inputted stat and changes its level.
+ * The order goes from:
+ * Basic -> Sub -> Main -> (Repeat)
+ * @param {HTMLObjectElement} statElement - Any element that is a child of the div
+ *  or is the div that represents a stat
+ * @param {String} changeTo - Not required. Forgoes the cycle and 
+ *  changes to specified level. 
+ */
 function ChangeStatLevel(statElement, changeTo = null) {
-    /*
-        Takes the inputted stat and changes its level.
-        The order goes from:
-        Basic -> Sub -> Main -> (Repeat)
-        :statObject - Any element that is a child of the div
-                      or is the div that represents a stat
-        :changeTo - Not required. Forgoes the cycle and 
-                    changes to specified level.
-    */
-
     // If passed element isnt the wrapper container, find the container
     if (!statElement.classList.contains('stat-box')) {
         tempElement = statElement.closest('.stat-box');
-        if (tempElement == null) return ErrorLog("statElement does not have a parent stat-box");
+        if (tempElement == null) return console.error("statElement does not have a parent stat-box");
 
         statElement = tempElement;
     }
@@ -56,7 +57,7 @@ function ChangeStatLevel(statElement, changeTo = null) {
 
     // Change to specified level
     if (changeTo != null) {
-        if (changeTo != 'basic' || changeTo != 'sub' || changeTo != 'main') return ErrorLog("Invalid stat level (must be basic, sub, or main");
+        if (changeTo != 'basic' || changeTo != 'sub' || changeTo != 'main') return console.error("Invalid stat level (must be basic, sub, or main");
         statContainer.dataset.level = changeTo;
         return;
     }
@@ -72,48 +73,46 @@ function ChangeStatLevel(statElement, changeTo = null) {
         statContainer.dataset.level = 'basic';
     }
     else {
-        ErrorLog("currentStatLevel variable is not valid (must be basic, sub, or main)");
+        console.error("currentStatLevel variable is not valid (must be basic, sub, or main)");
     }
 }
 
+/**
+ * Changes the selected class to the one passed through the function
+ * @param {String} newSelectedClass - A lowercase string that 
+ *  determines the new class
+ */
 function SelectClass(newSelectedClass) {
-    /*
-        Changes the selected class to the one passed
-        through the function
-        :newSelectedClass - A lowercase string that 
-                            determines the new class
-    */
     const CLASS_SELECTOR = document.getElementById('class-selector');
     const VALID_CLASSES = ['guard', 'caster', 'striker', 'vanguard', 'defender', 'supporter'];
 
-    if (!VALID_CLASSES.includes(newSelectedClass)) return ErrorLog("Attempted class change is invalid")
+    if (!VALID_CLASSES.includes(newSelectedClass)) return console.error("Attempted class change is invalid")
     
     CLASS_SELECTOR.dataset.selectedclass = newSelectedClass;
-    Log(newSelectedClass);
 }
 
+/**
+ * Changes the selected weapon to the one passed
+ * through the function
+ * @param {String} newSelectedWeapon - A lowercase string that 
+ *  determines the new weapon
+ */
 function SelectWeapon(newSelectedWeapon) {
-    /*
-        Changes the selected weapon to the one passed
-        through the function
-        :newSelectedWeapon - A lowercase string that 
-                             determines the new weapon
-    */
     const WEAPON_SELECTOR = document.getElementById('weapon-type-selector');
     const VALID_WEAPONS = ['artsunit', 'greatsword', 'handcannon', 'polearm', 'sword'];
 
-    if (!VALID_WEAPONS.includes(newSelectedWeapon)) return ErrorLog("Attempted weapon change is invalid")
+    if (!VALID_WEAPONS.includes(newSelectedWeapon)) return console.error("Attempted weapon change is invalid")
     
     WEAPON_SELECTOR.dataset.selectedweapon = newSelectedWeapon;
 }
 
+/**
+ * Switches the display box data to the newly selected value
+ * and handles logic for toggling visibility
+ * @param {String} dataSelected - A string representing 
+ *  the newly selected data value
+ */
 async function DisplayData(dataSelected) {
-    /*
-        Switches the display box data to the newly selected value
-        and handles logic for toggling visibility
-        :dataSelected - A string representing the newly selected 
-                        data value
-    */
     const DATA_DISPLAY_CONTAINER = document.getElementById('button-selector');
     const CURRENT_SELECTION = DATA_DISPLAY_CONTAINER.dataset.displayed;
 
@@ -138,20 +137,20 @@ async function DisplayData(dataSelected) {
 
 let popupName = document.getElementById('popup-name');
 let popupLabel = document.getElementById('popup-label');
+/**
+ * Applies the data passed to the popup box
+ * @param {JSON} data - JSON object for popup box data
+ */
 function ApplyDataToPopupBox(data) {
-    /*
-        Applies the data passed to the popup box
-        :data - json object for popup box data
-    */
     popupLabel.innerHTML = data.type;
     popupName.value = data.name;
     popupEdit.value = data.text;
 }
 
+/**
+ * Toggles the visibility of the edit box
+ */
 function ToggleEditBox() {
-    /*
-        Toggles the visibility of the edit box
-    */
     popupEdit.classList.toggle('edit-box-invisible');
     document.getElementById('popup-edit-icon').classList.toggle('invisible');
     document.getElementById('skill-edit-canvas').classList.add('invisible');
